@@ -18,7 +18,7 @@ import os
 # envファイルにTrue、Falseと書くとDjangoがString型と認識してしまいます
 # os.environ.get("DEBUG") == "True"を満たすとboolean型のTrueになり、
 # env内のDEBUGがTrue以外ならFalseになります
-DEBUG = os.environ.get("DEBUG") == "True"
+# DEBUG = os.environ.get("DEBUG") == "True"
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'pairleary_app.apps.PairlearyAppConfig',
 ]
 
 MIDDLEWARE = [
