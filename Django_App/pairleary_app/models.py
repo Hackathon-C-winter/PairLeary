@@ -14,6 +14,7 @@ class Content(models.Model):
     def __str__(self):
         return self.title
 
+#検索条件について定義したテーブル
 class Conditions(models.Model):
     condition_id = models.IntegerField(primary_key=True)
     user_id = models.ForeignKey("User", to_field='id', null=True)
