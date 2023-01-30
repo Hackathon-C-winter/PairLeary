@@ -14,3 +14,6 @@ class Conditions(models.Model):
     def __str__(self):
         return self.condition_id
 
+#各種レコードについて定義したテーブル
+class Records(models.Model):
+    pass
