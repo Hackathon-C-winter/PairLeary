@@ -1,10 +1,41 @@
 {% extends 'base.html' %}
 {% block title %}
-
+<title>Signin</title>
 {% endblock %}
 {% block body %}
 <body>
-    
-
+    <div class="app-logo">PairLeary</div>
+    <div class="subtitle">夢は、目標に向かって毎日歩みを進めた者だけが叶えられる</div>
+    <div class="formbox">
+        <h2>Sign in</h2>
+        <form>
+            <div class="inputBox"> <!-- ユーザー名フォーム -->
+                <input type="text" name="" required="">
+                <label>Name</label>
+            </div>
+            <div class="inputBox"> <!-- メールアドレスフォーム -->
+                <input type="email" name="" required="">
+                <label>Mail address</label>
+            </div>
+            <div class="inputBox"> <!-- パスワードフォーム -->
+                <input type="password" name="" required="">
+                <label>Password</label>
+            </div>
+            <div class="inputBox"> <!-- 確認パスワードフォーム -->
+                <input type="password" name="" required="">
+                <label>Confirm Password</label>
+            </div>
+            <div class="radio-button">
+                <input type="radio" name="gender" value="man">Man
+                <input type="radio" name="gender" value="woman">Woman
+                <input type="radio" name="gender" value="noanswer">No Answer
+            </div>    
+            <input type="submit" name="" value="Log in"> <!-- ログインボタン -->
+            <div class="change-registration"> <!--ログインへの遷移部分-->
+                <p>Do not have an account?　→</p>
+                <button class="change-registration__button">Sign in</button>
+            </div>
+        </form>
+    </div>
 </body>
 {% endblock %}

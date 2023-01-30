@@ -1,10 +1,17 @@
 {% extends 'base.html' %}
 {% block title %}
-
 {% endblock %}
 {% block body %}
 <body>
-    
-
+    <header>
+        <div class="app-logo">PairLeary</div>
+        <nav class="header-list">
+            <ul>
+                <li class="matching"><a href="{{ url_for('matching') }}">Matching</a></li> <!-- Machingページへ遷移 -->
+                <li class="mypage"><a href="{{ url_for('mypage') }}">My Page</a></li> <!-- Mypageへ遷移 -->
+                <li class="logout" id="logout-btn">Logout</li> <!-- ログアウトへ -->
+            </ul>
+        </nav>
+    </header>
 </body>
 {% endblock %}

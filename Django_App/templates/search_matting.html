@@ -1,10 +1,55 @@
 {% extends 'base.html' %}
 {% block title %}
-
+    <title>Matching-Room</title>
 {% endblock %}
 {% block body %}
 <body>
-    
+    <!--start--背景の白ボックスとページタイトル ※共通CSS-->
+    <div class="background-box">
+        <div class="background-box__page-title">
+            <img src="#" alt="">
+            <p class="background-box__page-title--name">Matching Room</p>
+            <p class="background-box__page-title--subname">マッチングを探す</p>
+        </div>
+        <div class="background-box__border"></div> <!--ページタイトル下の横線-->
+    </div>
+    <!--end--背景の白ボックスとページタイトル ※共通CSS-->
+    <main>
+        <!--start--検索条件入力エリア-->
+        <div class="search-select">
+            <h2>探す条件</h2>
+            <h3>目的</h3>
+            <div class="search-select__radio-button-purpose">
+                <input type="radio" name="purpose" value="community">コミュニティ
+                <input type="radio" name="purpose" value="develop">開発目的
+            </div>
+            <h3>性別</h3>
+            <div class="search-select__radio-button-gender">
+                <input type="radio" name="gender" value="man">男性
+                <input type="radio" name="gender" value="woman">女性
+                <input type="radio" name="gender" value="both">どちらでもOK
+            </div>
+            <input type="submit" value="検索">
+        </div>
+        <!--end--検索条件入力エリア-->
+        <!--start--検索結果表示エリア-->       
+        <div class="search-result">
+            <h2>検索結果</h2>
+            <p>マッチングできない場合は新規予約してみよう→</p>
+            <input type="submit" value="新規予約 >">
+        </div>
+        <!--end--検索結果表示エリア-->       
+    </main>
+
+    <!--start--ページ右下のTutorial アイコン ※共通CSS-->
+    <div class="tutorial">
+        <img src="#" alt="" class="tutorial">
+        <div class="tutorial__title">
+            <p class="tutorial__title--main">Tutorial</p>
+            <p class="tutorial__title--sub">アプリの使い方</p>
+        </div>
+    </div>
+    <!--end--ページ右下のTutorial アイコン ※共通CSS-->
 
 </body>
 {% endblock %}
