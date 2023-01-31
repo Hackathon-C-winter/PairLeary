@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import LoginUser, MyPage, CreateOrder, SearchMatting, SignupUser, Tutorial
+from .views import LoginUser, MyPage, CreateOrder, SearchMatting, SignupUser, Tutorial, Header
 
 
 urlpatterns = [
@@ -10,5 +10,7 @@ urlpatterns = [
     path('matting/', SearchMatting.as_view(), name='search_matting'),
     path('signup/', SignupUser.as_view(), name='signup'),
     path('tutorial/', Tutorial.as_view(), name='tutorial'),
+    path('header/', Header.as_view(), name='header'),
+
 
 ]

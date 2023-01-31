@@ -20,3 +20,7 @@ class SearchMatting(TemplateView):
 
 class Tutorial(TemplateView):
     template_name = "tutorial.html"
+
+class Header(TemplateView):
+    template_name = "header.html"
+
