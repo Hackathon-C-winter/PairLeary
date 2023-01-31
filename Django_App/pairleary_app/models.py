@@ -2,7 +2,7 @@
 # f,rom email.policy import default
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.utils import timezone
     
 #検索条件について定義したテーブル
 class Conditions(models.Model):
@@ -24,3 +24,11 @@ class Records(models.Model):
 #予約の日時についてのテーブル
 class Orders(models.Model):
     order_id = models.IntegerField(primary_key=True)
+    condition_id = models.ForeignKey('Conditions', on_delete=models.SET_NULL, to_field='condition_id', null=True)
+    order_date = models.DateTimeField(help_text='予約日付')
+    order_time_start = models.DateTimeField(help_text='予約開始時間')
+    order_time_end = models.DateTimeField(help_text='予約終了時間')
+
+    def save(self, *args, **kwargs):
+        self.order_date = timezone.now()  # 保存されるたびに更新
+        return super(Orders, self).save(*args, **kwargs)
