@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+    <!-- CSSファイルインポート ★CSSファイルのリンク先は実装時に要修正-->
+    <link rel="stylesheet" href="{% ..static 'css/PairLeary-header.css' %}">
+{% block title %}
+{% endblock %}
+{% block body %}
+<body>
+    <header>
+        <div class="app-logo">PairLeary</div>
+        <nav class="header-list">
+            <ul>
+                <li class="matching">Matching</li> <!-- Machingページへ遷移 -->
+                <li class="mypage">My Page</li> <!-- Mypageへ遷移 -->
+                <li class="logout" id="logout-btn">Logout</li> <!-- ログアウトへ -->
+            </ul>
+        </nav>
+    </header>
+</body>
+{% endblock %}
