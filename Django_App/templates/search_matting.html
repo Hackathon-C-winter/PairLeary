@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
-    <!-- CSSファイルインポート ★CSSファイルのリンク先は実装時に要修正-->
+<!-- CSSファイルインポート ★CSSファイルのリンク先は実装時に要修正-->
+{% block head %}
+    <!-- {% load static %}
+    <link rel="stylesheet" href="{% static 'css/#.css' %}"> -->
+{% endblock %}
 
 {% block title %}
     <title>Matching-Room</title>
 {% endblock %}
+
 {% block body %}
 <body>
     <!--start--背景の白ボックスとページタイトル ※共通CSS-->
@@ -42,16 +47,5 @@
         </div>
         <!--end--検索結果表示エリア-->       
     </main>
-
-    <!--start--ページ右下のTutorial アイコン ※共通CSS-->
-    <div class="tutorial">
-        <img src="#" alt="" class="tutorial">
-        <div class="tutorial__title">
-            <p class="tutorial__title--main">Tutorial</p>
-            <p class="tutorial__title--sub">アプリの使い方</p>
-        </div>
-    </div>
-    <!--end--ページ右下のTutorial アイコン ※共通CSS-->
-
 </body>
 {% endblock %}

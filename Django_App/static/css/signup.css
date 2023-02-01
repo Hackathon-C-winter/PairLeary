@@ -1,0 +1,11 @@
+/* Singupページ CSS */
+
+/* base.htmlにあるheaderを隠す */
+header {
+    display: none;
+}
+
+/* base.htmlにあるtutorialを隠す */
+.tutorial {
+    display: none;
+}

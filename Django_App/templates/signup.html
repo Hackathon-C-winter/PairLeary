@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
-    <!-- CSSファイルインポート ★CSSファイルのリンク先は実装時に要修正-->
+<!-- CSSファイルインポート-->
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+{% endblock %}
 
 {% block title %}
     <title>Signin</title>
 {% endblock %}
+
 {% block body %}
 <body>
     <div class="app-logo">PairLeary</div>
@@ -35,7 +40,7 @@
             <input type="submit" name="" value="Log in"> <!-- ログインボタン -->
             <div class="change-registration"> <!--ログインへの遷移部分-->
                 <p>Do not have an account?　→</p>
-                <button class="change-registration__button">Sign in</button>
+                <button class="change-registration__button"><a href="{% url 'login' %}">Log in</a></button>
             </div>
         </form>
     </div>

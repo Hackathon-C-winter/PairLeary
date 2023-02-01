@@ -17,7 +17,7 @@ header {
 }
 
 /* Pairleary フォントと位置指定 */
-.app-logo {
+.header-app-logo {
     position: absolute;
     width: 155px;
     height: 55px;
