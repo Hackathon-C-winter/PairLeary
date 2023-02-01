@@ -138,6 +138,7 @@ USE_TZ = True
 STATIC_ROOT = "/static/"
 STATIC_URL = "/static/"
 
+# ローカル作業時は下記のコードでstaticフォルダを適用する
 STATICFILES_DIRS = [BASE_DIR / "static" ]
 
 # Default primary key field type
