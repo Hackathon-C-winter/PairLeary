@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 <!-- CSSファイルインポート ★CSSファイルのリンク先は実装時に要修正-->
 {% block head %}
-    <!-- {% load static %}
-    <link rel="stylesheet" href="{% static 'css/#.css' %}"> -->
+    {% load static %}
+    <!-- モーダルのCSS読み込み -->
+    <link rel="stylesheet" href="{% static 'css/modal.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tutorial.css' %}">
 {% endblock %}
 
 {% block title %}
@@ -22,23 +24,24 @@
     <!--end--背景の白ボックスとページタイトル ※共通CSS-->
 
     <div class="container">
-        <button class="modal-toggle btn-example" data-modal="modalOne">
+        <button class="modal-toggle" data-modal="modal-1">
             <h2>How to use</h2>
             <p>ペアリーの使い方</p>
         </button>
-        <button class="modal-toggle btn-example" data-modal="modalTwo">
+        <button class="modal-toggle" data-modal="modal-2">
             <h2>detail</h2>
             <p>ペアリーの説明</p>
         </button>
-        <button class="modal-toggle btn-example" data-modal="modalThree">
+        <button class="modal-toggle" data-modal="modal-3">
             <h2>What is Pairleary</h2>
             <p>ペアリーの目的</p>  
         </button>
     </div>
-    <!-- modalOne -->
-    <div id="modalOne" class="modal">
-        <div class="modal-content">
-            <div class="modal-top">
+    <!-- srart--モーダル -->
+    <!--start-- modal-1 -->
+    <div id="modal-1" class="modal">
+        <div class="modal__content">
+            <div class="modal__content--title">
                 <h2>How to use</h2>
             </div>
             <span class="modal-close">×</span>
@@ -48,36 +51,38 @@
             <p></p>
         </div>
     </div>
-    <!-- modalOne -->
-    <!-- modalTwo -->
-    <div id="modalTwo" class="modal">
-        <div class="modal-content">
-            <div class="modal-top">
+    <!--end-- modal-1 -->
+    <!--start-- modal-2 -->
+    <div id="modal-2" class="modal">
+        <div class="modal__content">
+            <div class="modal__content--title">
                 <h2>detail</h2>
             </div>
             <span class="modal-close">×</span>
         </div>
         <div class="modal-container">
+            <img class="img" src="#" alt="">
             <p></p>
         </div>
     </div>
-    <!-- modalTwo -->
-    <!-- modalThree -->
-    <div id="modalThree" class="modal">
-        <div class="modal-content">
-            <div class="modal-top">
+    <!--end-- modal-2 -->
+    <!--start-- modal-3 -->
+    <div id="modal-3" class="modal">
+        <div class="modal__content">
+            <div class="modal__content--title">
                 <h2>What is Pairleary</h2>
+            </div>
+            <span class="modal-close">×</span>
             </div>
             <span class="modal-close">×</span>
         </div>
         <div class="modal-container">
+            <img class="img" src="#" alt="">
             <p></p>
         </div>
-    </div>
-    <!-- modalThree -->
-    <!-- {% block script %}
+    <!-- end--modal-3 -->
+    <!-- end--モーダル -->
     {% load static %}
-        <script src="{% static 'js/modal.js' %}"></script>
-    {% endblock %} -->
+        <script src="{% static 'js/modal.js' %}" type="text/javascript"></script>
 </body>
 {% endblock %}

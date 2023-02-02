@@ -1,4 +1,4 @@
-// "modal-toggle" classを全て取得
+// tutorialのモーダルのJS指定
 const modalBtns = document.querySelectorAll(".modal-toggle");
 modalBtns.forEach(function (btn) {
     btn.onclick = function () {
