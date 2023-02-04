@@ -1,0 +1,59 @@
+@charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* header 色指定 */
+header {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    background: linear-gradient(89.85deg, rgba(40, 53, 147, 0.9) -3.64%, rgba(40, 53, 147, 0.7) 40.19%, rgba(233, 30, 99, 0.6) 101.22%);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2.5px);
+}
+
+/* Pairleary フォントと位置指定 */
+.header-app-logo {
+    position: absolute;
+    width: 155px;
+    height: 55px;
+    margin-left: 2%;
+    font-family: 'Oleo Script Swash Caps';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 55px;
+    color: #FFFFFF;
+}
+
+/* リスト 右寄せ */
+.header-list {
+    margin-left: auto;
+}
+
+/* リスト 横並びとフォント指定 */
+.header-list ul {
+    display: flex;
+    list-style: none;
+    font-family: 'Noto Sans JP';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 29px;
+    color: #FFFFFF;
+}
+
+/* リスト 間幅指定 */
+.header-list li {
+    padding: 0 40px;
+}
+
+/* リスト aタグ 文字の装飾 */
+.header-list a {
+    text-decoration: none;
+    color: #FFFFFF;
+}

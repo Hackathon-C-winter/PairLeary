@@ -1,0 +1,64 @@
+/* tutorialページのモーダルのCSS指定ファイル */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal__content {
+    background-color: #f4f4f4;
+    margin: 20% auto;
+    width: 50%;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+    animation-name: modalopen;
+    animation-duration: 1s;
+}
+/* .modal-content-2 {
+    background-color: #f4f4f4;
+    margin: 20% auto;
+    width: 50%;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+    animation-name: modalopen;
+    animation-duration: 1s;
+}
+.modal-content-3 {
+    background-color: #f4f4f4;
+    margin: 20% auto;
+    width: 50%;
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+    animation-name: modalopen;
+    animation-duration: 1s;
+} */
+
+/* モーダルを開く際のアニメーション */
+@keyframes modalopen {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+.modal__content--title h2 {
+    margin: 1rem 0;
+}
+
+.modal-content__header {
+    background: rgba(63, 81, 181, 0.3);
+    padding: 3px 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* モーダル内のXボタンの指定 */
+.modal-close {
+    font-size: 2rem;
+    cursor: pointer;
+}
+.modal-close:hover {
+    cursor: pointer;
+}

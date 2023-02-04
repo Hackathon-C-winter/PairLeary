@@ -1,12 +1,17 @@
 {% extends 'base.html' %}
-    <!-- CSSファイルインポート ★CSSファイルのリンク先は実装時に要修正-->
-    
+<!-- CSSファイルインポート-->
+{% block head %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
 {% block title %}
     <title>Login</title>
 {% endblock %}
+
 {% block body %}
 <body>
-    <div class="background-img"> <!--背景画像 左右の六角形の画像群2点-->
+    <div class="background-img"> <!--背景画像 左右の六角形の画像群2点 ※背景画像はCSSで挿入-->
         <img src="" alt=""> <!--左側の画像-->
         <img src="" alt=""> <!--右側の画像-->
     </div>
@@ -26,7 +31,7 @@
             <input type="submit" name="" value="Log in"> <!-- ログインボタン -->
             <div class="change-registration"> <!--サインインへの遷移部分-->
                 <p>Do not have an account?　→</p>
-                <button class="change-registration__button">Sign in</button>
+                <button class="change-registration__button"><a href="{% url 'signup' %}">Sign in</a></button>
             </div>
         </form>
     </div>

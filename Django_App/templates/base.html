@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> <!--Googlegfonts,headerとtutorialロゴ部分を記述しています -->
 <html lang="ja">
     <head>
         <meta charset="UTF-8">
@@ -9,15 +9,39 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Oleo+Script+Swash+Caps:wght@400;700&display=swap" rel="stylesheet">
-
-        <!-- 共通のCSSファイルインポート ★CSSファイルのリンク先は実装時に要修正-->
-
-
-        {% block title %}{% endblock %}
+        <!-- 共通のCSSファイルインポート -->
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <!-- 各ページのCSSファイルインポート -->
+        {% block head %}{% endblock %}
     </head>
-
     <body>
-        {% block body %}HelloWorld{% endblock %}
-        {% block script %}{% endblock %}
+        <!--start--headerエリア ※CSS→base.css-->
+        <header>
+            <div class="header-app-logo">PairLeary</div>
+            <nav class="header-list">
+                <ul>
+                    <li class="matching"><a href="{% url 'search_matting' %}">Matching</a></li> <!-- Machingページへ遷移 -->
+                    <li class="mypage"><a href="{% url 'mypage' %}">My Page</a></li> <!-- Mypageへ遷移 -->
+                    <li class="logout" id="logout-btn">Logout</li> <!-- ログアウトへ -->
+                </ul>
+            </nav>
+        </header>
+
+        <!--end--headerエリア ※CSS→base.css-->
+
+        <!--start 各ページのbody部分のインポート -->
+        {% block body %}{% endblock %}
+        <!--end 各ページのbody部分のインポート -->
+        
+        <!--start--ページ右下のTutorial アイコン ※CSS→base.css-->
+        <div class="tutorial">
+            <img src="#" alt="" class="tutorial">
+            <div class="tutorial__title">
+                <p class="tutorial__title--main"><a href="{% url 'tutorial' %}">Tutorial</a></p>
+                <p class="tutorial__title--sub">アプリの使い方</p>
+            </div>
+        </div>
+        <!--end--ページ右下のTutorial アイコン ※CSS→base.css-->
     </body>
 </html>
