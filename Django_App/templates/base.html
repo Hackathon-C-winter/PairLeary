@@ -27,7 +27,6 @@
                 </ul>
             </nav>
         </header>
-
         <!--end--headerエリア ※CSS→base.css-->
 
         <!--start 各ページのbody部分のインポート -->
@@ -43,5 +42,9 @@
             </div>
         </div>
         <!--end--ページ右下のTutorial アイコン ※CSS→base.css-->
+
+        <!-- headerの装飾 表示中のページ名部分をhover表示-->
+        {% load static %}
+        <script src="{% static 'js/header.js' %}" type="text/javascript"></script>
     </body>
 </html>
