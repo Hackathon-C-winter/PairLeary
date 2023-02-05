@@ -22,7 +22,7 @@
     </div>
     <!--end--背景の白ボックスとページタイトル ※共通CSS-->
     <main>
-        <!--start--検索条件入力エリア-->
+        <!--start--検索条件入力・新規予約エリア-->
         <div class="search-select">
             <h2>探す条件</h2>
             <h3>目的</h3>
@@ -37,13 +37,14 @@
                 <input type="radio" name="gender" value="both">どちらでもOK
             </div>
             <input type="submit" value="検索">
+            <!-- 新規予約部分 -->
+            <p>マッチング出来ない？新規予約をしてみよう</p>
+            <button class="csearch-result__button"><a href="{% url 'create_order' %}">新規予約＞</a></button>
         </div>
-        <!--end--検索条件入力エリア-->
+        <!--end--検索条件入力・新規予約エリア-->
+
         <!--start--検索結果表示エリア-->       
         <div class="search-result">
-            <h2>検索結果</h2>
-            <p>マッチングできない場合は新規予約してみよう→</p>
-            <input type="submit" value="新規予約 >">
         </div>
         <!--end--検索結果表示エリア-->       
     </main>

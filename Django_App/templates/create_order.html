@@ -6,11 +6,52 @@
 {% endblock %}
 
 {% block title %}
-    <title>Create-order.html</title>
+    <title>Create-order</title>
 {% endblock %}
 
 {% block body %}
 <body>
-    create_orderページ（予約ページ）
+    <!--start--背景の白ボックスとページタイトル ※共通CSS-->
+    <div class="background-box">
+        <div class="background-box__page-title">
+            <img src="#" alt="">
+            <p class="background-box__page-title--name">Create Matching</p>
+            <p class="background-box__page-title--subname">マッチングを新しく予約する</p>
+        </div>
+        <div class="background-box__border"></div> <!--ページタイトル下の横線-->
+    </div> 
+    <!--end--背景の白ボックスとページタイトル ※共通CSS-->
+    <!--start--希望条件入力フォーム -->
+    <div class="order-formbox">
+        <h2>希望条件を入力してください</h2>
+        <form>
+            <div class="matching-date"> <!-- マッチング日フォーム -->
+                <label>マッチング日</label>
+                <input type="date" placeholder="西暦年/月/日" name="" required="">
+            </div>
+            <div class="matching-time"> <!-- マッチングの時間帯 -->
+                <label>マッチング日</label>
+                <input type="radio" name="time" value="morning">午前
+                <input type="radio" name="time" value="afernoon">午後
+                <input type="radio" name="time" value="evening">夜
+            </div>
+            <div class="matching-purpose"> <!-- 相手を探す目的 -->
+                <label>相手を探す目的</label>
+                <input type="radio" name="purpose" value="communication">コミュニケーション
+                <input type="radio" name="purpose" value="develop">開発
+            </div>
+            <div class="matching-gender"> <!-- 希望する相手の性別 -->
+                <label>希望する相手の性別</label>
+                <input type="radio" name="gender" value="man">男性
+                <input type="radio" name="gender" value="woman">女性
+                <input type="radio" name="gender" value="noanswer">どちらでもOK
+            </div>
+        </form>
+        <!-- 予約キャンセルボタン（マッチング検索画面に遷移） -->
+        <button class="order-formbox__cancelbtn"><a href="{% url 'search_matting' %}">キャンセル</a></button>
+        <!-- 申し込みボタン -->
+        <input type="submit" name="" value="申し込み＞">
+    </div>
+    <!--end--希望条件入力フォーム -->
 </body>
 {% endblock %}
