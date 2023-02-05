@@ -14,7 +14,7 @@
     <!--start--背景の白ボックスとページタイトル ※共通CSS-->
     <div class="background-box">
         <div class="background-box__page-title">
-            <img src="#" alt="">
+            <img src="#" alt="mypage-icon">
             <p class="background-box__page-title--name">My Page</p>
             <p class="background-box__page-title--subname">ユーザー情報</p>
         </div>
@@ -22,32 +22,38 @@
     </div> 
     <!--end--背景の白ボックスとページタイトル ※共通CSS-->
     <main>
-        <!--start--編集 ユーザー名-->
-        <div class="edit-user-name">
-            <div class="edit-user-name__user-img"></div>
-            <h2>ユーザー名</h2>
-            <button class="edit-button"><!--編集ボタン ※共通CSS-->
-                <a href="#"></a>
-            </button>
-        </div>
-        <!--end--編集 ユーザー名-->
         <!--start--編集 編集 mail パスワード-->
         <div class="edit-user-detail">
-            <div class="inputBox"> <!-- メールアドレスフォーム -->
-                <input type="email" name="" required="">
-                <label>メールアドレス</label>
-            </div>
-            <div class="inputBox"> <!-- パスワードフォーム -->
-                <input type="password" name="" required="">
-                <label>パスワード</label>
-            </div>
-            <div class="gender">
-                <div class="inputBox"> <!-- 性別フォーム -->
-                    <input type="text" name="" required="">
-                    <label>性別</label>
-                </div>
+            <!-- ユーザーネームフォーム -->
+            <div class="inputBox">
+                <label>ユーザー名</label>
+                <input type="text" name="" required="">
                 <button class="edit-button"><!--編集ボタン ※共通CSS-->
-                    <a href="#"></a>
+                    <img src="{% static 'img/myPage/icons/mypage-edit-btn.svg' %}"></a>
+                </button>
+            </div>
+            <!-- メールアドレスフォーム -->
+            <div class="inputBox">
+                <label>メールアドレス</label>
+                <input type="email" name="" required="">
+                <button class="edit-button"><!--編集ボタン ※共通CSS-->
+                    <img src="{% static 'img/myPage/icons/mypage-edit-btn.svg' %}"></a>
+                </button>
+            </div>
+            <!-- パスワードフォーム -->
+            <div class="inputBox">
+                <label>パスワード</label>
+                <input type="password" name="" required="">
+                <button class="edit-button"><!--編集ボタン ※共通CSS-->
+                    <img src="{% static 'img/myPage/icons/mypage-edit-btn.svg' %}"></a>
+                </button>
+            </div>
+            <!-- 性別フォーム -->
+            <div class="inputBox">
+                <label>性別</label>
+                <input type="text" name="" required="">
+                <button class="edit-button"><!--編集ボタン ※共通CSS-->
+                    <img src="{% static 'img/myPage/icons/mypage-edit-btn.svg' %}"></a>
                 </button>
             </div>
         </div>
@@ -59,9 +65,7 @@
                 <p>予約状況</p>
             </div>
             <div class="booking-box__right">
-                <button class="edit-button"><!--編集ボタン ※共通CSS-->
-                    <a href="#"></a>
-                </button> 
+
             </div>
         </div>
         <!--end--予約状況 一覧-->

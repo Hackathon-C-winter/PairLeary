@@ -73,6 +73,11 @@ header {
     /* border: #313131 solid; */
 }
 
+/* ログアウトボタンの指定 */
+#logout-btn {
+    cursor: pointer;
+}
+
 /* headerの表示中のメニュー名をhover指定 */
 .header-list li:after {
     position: absolute;

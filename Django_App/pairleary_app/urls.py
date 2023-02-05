@@ -1,14 +1,16 @@
 from django.urls import path
-from .views import LoginUser, MyPage, CreateOrder, SearchMatting, SignupUser, Tutorial, Header
+from .views import loginfunc, MyPage, CreateOrder, SearchMatting,signupfunc, Tutorial, Header
 
 
 urlpatterns = [
     # path('signup/', signupfunc, name='signup'),
-    path('login/', LoginUser.as_view(), name='login'),
+    # path('login/', LoginUser.as_view(), name='login'),
+    path('login/', loginfunc, name='login'),
     path('mypage/', MyPage.as_view(), name='mypage'),
     path('order/', CreateOrder.as_view(), name='create_order'),
     path('matting/', SearchMatting.as_view(), name='search_matting'),
-    path('signup/', SignupUser.as_view(), name='signup'),
+    # path('signup/', SignupUser.as_view(), name='signup'),
+    path('signup/', signupfunc, name='signup'),
     path('tutorial/', Tutorial.as_view(), name='tutorial'),
     path('header/', Header.as_view(), name='header'),
 
