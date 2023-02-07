@@ -24,18 +24,18 @@
         <form class="form-signin" method="POST">{% csrf_token %}
             <div class="inputBox"> <!-- ユーザーネームフォーム -->
                 <label for="inputusername" class="inputBox__title">Username</label>
-                <input type="text" id="username" class="form-control" placeholder="slack名" maxlength=36 name="username" required autofocus>
+                <input type="text" id="username" class="inputBox__inputform" placeholder="slack名" name="username" required autofocus>
             </div>
             <div class="inputBox"> <!-- パスワードフォーム -->
                 <label for="inputPassword" class="inputBox__title">Password</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="パスワード" name="password" required>
+                <input type="password" id="inputPassword" class="inputBox__inputform" placeholder="パスワード" name="password" required>
             </div>
             <!-- ログインボタン -->
             <button class="registration-button" type="submit">Login</button>
             <!--サインインへの遷移部分-->
             <div class="change-registration">
                 <p>Do not have an account? →</p>
-                <button class="change-registration__button"><a href="{% url 'signup' %}">Sign in</a></button>
+                <button class="change-registration__button"><a href="{% url 'signup' %}">Sign up</a></button>
             </div>
         </form>
     </div>
