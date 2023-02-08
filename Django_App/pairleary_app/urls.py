@@ -13,6 +13,4 @@ urlpatterns = [
     path('signup/', signupfunc, name='signup'),
     path('tutorial/', Tutorial.as_view(), name='tutorial'),
     path('header/', Header.as_view(), name='header'),
-
-
 ]
