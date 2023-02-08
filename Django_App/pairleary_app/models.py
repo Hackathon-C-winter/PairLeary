@@ -34,6 +34,7 @@ class Orders(models.Model):
     order_id = models.IntegerField(primary_key=True)
     user_id = models.ForeignKey(User, on_delete=models.SET_NULL,to_field='id', null=True,related_name='user_id')
     order_date = models.DateTimeField(help_text='予約日付')
+    order_time_range_type = models.CharField(default='null',max_length=10)
     category = models.CharField(default='null', max_length=150)
     hope_gender_type = models.CharField(max_length=1, choices=[(None, "--"), ("m", "男性"), ("f", "女性")], default=None, verbose_name="性別", blank=True, null=True)
     comment = models.CharField(default='null', max_length=255)
