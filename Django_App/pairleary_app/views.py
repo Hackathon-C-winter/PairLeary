@@ -44,7 +44,7 @@ class MyPage(TemplateView):
 class CreateOrder(TemplateView):
     template_name = "create_order.html"
 
-class SearchMatting(TemplateView):
+class SearchMatching(TemplateView):
     template_name = "search_matting.html"
 
 class Tutorial(TemplateView):
