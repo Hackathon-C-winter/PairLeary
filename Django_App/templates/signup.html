@@ -20,7 +20,7 @@
         <form class="form-signin" method="POST">{% csrf_token %}
             <div class="inputBox"> <!-- ユーザー名フォーム -->
                 <label for="inputusername" class="inputBox__title">User Name</label>
-                <input type="text" id="inputusername" class="inputBox__inputform" placeholder="slack名" name="username" required autofocus>
+                <input type="text" id="inputusername" class="inputBox__inputform" placeholder="slackと同名（全角18文字まで）" name="username" required autofocus>
             </div>
             
             <!-- メールアドレスフォーム -->

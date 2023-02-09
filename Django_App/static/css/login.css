@@ -24,6 +24,28 @@ body {
     height: 100vh;
 }
 
+.background-img {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100vh;
+}
+
+.background-img__right {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.white-box {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-color: #FFFFFF;
+    filter: opacity(50%);
+}
+
 /* PairLearyロゴの指定 */
 .app-logo {
     position: relative;
