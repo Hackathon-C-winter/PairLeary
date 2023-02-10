@@ -12,9 +12,10 @@ from django.contrib.auth import authenticate, login, logout
 def signupfunc(request):
     if request.method == "POST":
         username = request.POST['username']
+        email = request.POST['email']
         password = request.POST['password']
         try:
-            user = User.objects.create_user(username, '', password)
+            user = User.objects.create_user(username, email, password)
             # return render(request, 'login.html', {'some': 100})
             return redirect('login')
         except IntegrityError:
@@ -44,8 +45,8 @@ class MyPage(TemplateView):
 class CreateOrder(TemplateView):
     template_name = "create_order.html"
 
-class SearchMatting(TemplateView):
-    template_name = "search_matting.html"
+class SearchMatching(TemplateView):
+    template_name = "search_matching.html"
 
 class Tutorial(TemplateView):
     template_name = "tutorial.html"
