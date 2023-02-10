@@ -10,8 +10,15 @@ header {
     display: none;
 }
 
+/*** フェードインアニメーション ***/
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
 /* 背景画像の指定ロゴ・フォームのセンター指定 */
 body {
+    animation: fadeIn 2s forwards;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,6 +31,7 @@ body {
     height: 100vh;
 }
 
+/* 左右の背景画像（六角形の画像軍）の全体指定 */
 .background-img {
     position: absolute;
     display: flex;
@@ -32,12 +40,23 @@ body {
     height: 100vh;
 }
 
+/* 左右の背景画像（六角形の画像軍）の個々の指定 */
+.background-img__left {
+    position: absolute;
+    display: flex;
+    justify-content: flex-start;
+    height:100vh;
+}
 .background-img__right {
     position: absolute;
+    display: flex;
+    align-content: flex-start;
+    height:100vh;
     right: 0;
     bottom: 0;
 }
 
+/* 背景を薄くする */
 .white-box {
     position: absolute;
     width: 100%;
