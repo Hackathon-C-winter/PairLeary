@@ -11,18 +11,18 @@
 
 {% block body %}
 <body>
-    <!--start--背景の白ボックスとページタイトル ※共通CSS-->
-    <div class="background-box">
-        <div class="background-box__page-title">
-            <img src="#" alt="">
-            <p class="background-box__page-title--name">Matching Room</p>
-            <p class="background-box__page-title--subname">マッチングを探す</p>
-        </div>
-        <div class="background-box__border"></div> <!--ページタイトル下の横線-->
-    </div>
-    <!--end--背景の白ボックスとページタイトル ※共通CSS-->
+    <!--start--背景の白ボックスとページタイトル ※共通CSS-base.css -->
+    <div class="background-white-box"></div>
     <main>
-        <!--start--検索条件入力・新規予約エリア-->
+        <div class="page-title">
+            <img src="{% static 'img/search_matching/search-matching-icon.svg' %}" alt="マッチング部屋">
+            <div class="page-title-box">
+                <p class="page-title__page-title-box--page-name">Matching Room</p>
+                <p class="page-title__page-title-box--page-subname">マッチングを探す</p>
+            </div>
+        </div>
+        <!--end--背景の白ボックスとページタイトル ※共通CSS-base.css-->
+            <!--start--検索条件入力・新規予約エリア-->
         <div class="search-select">
             <h2>探す条件</h2>
             <h3>目的</h3>
@@ -44,9 +44,9 @@
         <!--end--検索条件入力・新規予約エリア-->
 
         <!--start--検索結果表示エリア-->       
-        <div class="search-result">
-        </div>
+        <div class="search-result"></div>
         <!--end--検索結果表示エリア-->       
     </main>
+
 </body>
 {% endblock %}
