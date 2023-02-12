@@ -109,7 +109,7 @@ label:hover {
 .border {
     position: relative;
     width: 150px;
-    margin: 28px 0px;
+    margin: 30px 0px 25px 0px;
     border: none;
     border-bottom: 1px solid #000000;
 }
@@ -123,4 +123,3 @@ form p {
     color: #000000;
     line-height: 23px;
 }
-
