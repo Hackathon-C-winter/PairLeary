@@ -1,22 +1,126 @@
 /* マッチング部屋 search-macthing.htmlのCSS */
 
+form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 205px;
+    height: 690px;
+    left: 3%;
+    margin-top: 25px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    border: 2px solid #FFFFFF;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.25), 1px 3px 8px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
 
-
-.h2 {
-    font-family: 'Open Sans';
-    font-style: normal;
+h2 {
+    position: relative;
+    align-self: flex-start;
+    margin-left: 5px;
     font-weight: 700;
     font-size: 20px;
-    line-height: 27px;
-    color: #000000;
-}
-.h3 {
-    font-family: 'Noto Sans JP';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 23px;
     color: #000000;
 }
 
+h3 {
+    position: relative;
+    align-self: flex-start;
+    margin-left: 5px;
+    margin-top: 20px;
+    font-weight: 700;
+    font-size: 16px;
+    color: #000000;
+}
+
+/* ラジオボタンの指定 */
+.radio-button {
+    display: none;
+}
+label {
+    display: block;
+    position: relative;
+    width: 150px;
+    height: 35px;
+    margin-top: 7px;
+    text-align: center;
+    background: #D9D9D9;
+    border: 2px solid #676767;
+    border-radius: 10px;
+    color: #283593;
+}
+/* マウスオーバー時の背景色を指定する */
+label:hover {
+    background-color: #BEBEBE; 
+    color: #283593;
+    transition: all 0.3s;
+}
+.radio-button:checked + label {
+    background-color: #283593;
+    color: #FFFFFF;
+    transition: all 0.3s;
+}
+
+/* 三角 */
+.triangle {
+    position: relative;
+    width: 0;
+    height: 0;
+    margin: 22px 0px;
+    border-style: solid;
+    border-width: 15px 30px 0 30px;
+    border-color: #283593 transparent transparent transparent;
+}
+
+/* 検索・新規予約ボタンの指定 */
+.form-button {
+    position: relative;
+    width: 148px;
+    height: 40px;
+    background: #D9D9D9;
+    border: 2px solid #676767;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 16px;
+    color: #283593;
+    box-shadow: 2px 2px rgb(58, 58, 58);
+}
+
+.form-button:hover {
+    background-color: #e6e6e6; 
+    color: #283593;
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px;
+    transition: all 0.2s;
+}
+.form-button:active {
+    transform: translate(0.05em, 0.05em);
+    box-shadow: 0.05em 0.05em;
+}
+.form-button a {
+    display: block;
+    text-decoration: none;
+    color: #283593;
+}
+
+/* 横線 */
+.border {
+    position: relative;
+    width: 150px;
+    margin: 28px 0px;
+    border: none;
+    border-bottom: 1px solid #000000;
+}
+
+/* マッチング出来ない～の指定 */
+form p {
+    position: relative;
+    display: block;
+    font-weight: 400;
+    font-size: 16px;
+    color: #000000;
+    line-height: 23px;
+}
 

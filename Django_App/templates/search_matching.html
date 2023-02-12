@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 <!-- CSSファイルインポート ★CSSファイルのリンク先は実装時に要修正-->
 {% block head %}
-    <!-- {% load static %}
-    <link rel="stylesheet" href="{% static 'css/#.css' %}"> -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/search_matching.css' %}">
 {% endblock %}
 
 {% block title %}
@@ -12,8 +12,7 @@
 {% block body %}
 <body>
     <!--start--背景の白ボックスとページタイトル ※共通CSS-base.css -->
-    <div class="background-white-box"></div>
-    <main>
+    <div class="background-white-box">
         <div class="page-title">
             <img src="{% static 'img/search_matching/search-matching-icon.svg' %}" alt="マッチング部屋">
             <div class="page-title-box">
@@ -22,31 +21,51 @@
             </div>
         </div>
         <!--end--背景の白ボックスとページタイトル ※共通CSS-base.css-->
-            <!--start--検索条件入力・新規予約エリア-->
-        <div class="search-select">
+
+        <!--start--検索条件入力・新規予約エリア-->
+        <form>
             <h2>探す条件</h2>
             <h3>目的</h3>
-            <div class="search-select__radio-button-purpose">
-                <input type="radio" name="purpose" value="community">コミュニティ
-                <input type="radio" name="purpose" value="develop">開発目的
+            <div class="select-button">
+                <input type="radio" id="community" class="radio-button" name="purpose" value="community">
+                <label for="community">コミュニティ</label>
+            </div>
+            <div class="select-button">
+                <input type="radio" id="develop" class="radio-button" name="purpose" value="develop">
+                <label for="develop">開発目的</label>
             </div>
             <h3>性別</h3>
-            <div class="search-select__radio-button-gender">
-                <input type="radio" name="gender" value="man">男性
-                <input type="radio" name="gender" value="woman">女性
-                <input type="radio" name="gender" value="both">どちらでもOK
+            <div class="select-button">
+                <input type="radio" id="man" class="radio-button" name="gender" value="m">
+                <label for="man">男性</label>
             </div>
-            <input type="submit" value="検索">
+            <div class="select-button">
+                <input type="radio" id="female" class="radio-button" name="gender" value="f">
+                <label for="female">女性</label>
+            </div>
+            <div class="select-button">
+                <input type="radio" id="both" class="radio-button" name="gender" value="-">
+                <label for="both">どちらでもOK</label>
+            </div>
+            <!-- 青い三角 -->
+            <div class="triangle"></div>
+            <!-- 検索ボタン -->
+            <input type="submit" class="form-button" name="" value="検索">
+            <!-- 罫線 -->
+            <div class="border"></div>
             <!-- 新規予約部分 -->
-            <p>マッチング出来ない？新規予約をしてみよう</p>
-            <button class="csearch-result__button"><a href="{% url 'create_order' %}">新規予約＞</a></button>
-        </div>
+            <p>マッチング出来ない？<br>新規予約をしてみよう</p>
+            <!-- 青い三角 -->
+            <div class="triangle"></div>
+            <!-- 新規予約ボタン -->
+            <button class="form-button"><a href="{% url 'create_order' %}">新規予約 ></a></button>
+        </form>
         <!--end--検索条件入力・新規予約エリア-->
 
         <!--start--検索結果表示エリア-->       
         <div class="search-result"></div>
         <!--end--検索結果表示エリア-->       
-    </main>
+    </div>
 
 </body>
 {% endblock %}
