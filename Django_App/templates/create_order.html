@@ -11,26 +11,26 @@
 
 {% block body %}
 <body>
-    <!--start--背景の白ボックスとページタイトル ※共通CSS-->
-    <div class="background-box">
-        <div class="background-box__page-title">
+    <!--start--背景の白ボックスとページタイトル ※共通CSS-base.css -->
+    <div class="background-white-box"></div>
+        <div class="page-title">
             <img src="#" alt="">
-            <p class="background-box__page-title--name">Create Matching</p>
-            <p class="background-box__page-title--subname">マッチングを新しく予約する</p>
+            <div class="page-title-box">
+                <p class="page-title__page-title-box--page-name">Create Matching</p>
+                <p class="page-title__page-title-box--page-subname">マッチングを新しく予約する</p>
+            </div>
         </div>
-        <div class="background-box__border"></div> <!--ページタイトル下の横線-->
-    </div> 
     <!--end--背景の白ボックスとページタイトル ※共通CSS-->
     <!--start--希望条件入力フォーム -->
     <div class="order-formbox">
         <h2>希望条件を入力してください</h2>
-        <form>
+        <form method="POST">{% csrf_token %}
             <div class="order-date"> <!-- マッチング日フォーム -->
                 <label>マッチング日</label>
-                <input type="date" placeholder="西暦年/月/日" name="" required="">
+                <input type="date" placeholder="西暦年/月/日" name="date" required=""> <!-- commentは変更不可 -->
             </div>
             <div class="order-time"> <!-- マッチングの時間帯 -->
-                <label>マッチング日</label>
+                <label>マッチング時間</label>
                 <input type="radio" name="time" value="morning">午前
                 <input type="radio" name="time" value="afernoon">午後
                 <input type="radio" name="time" value="evening">夜
@@ -42,15 +42,19 @@
             </div>
             <div class="order-gender"> <!-- 希望する相手の性別 -->
                 <label>希望する相手の性別</label>
-                <input type="radio" name="gender" value="man">男性
-                <input type="radio" name="gender" value="woman">女性
-                <input type="radio" name="gender" value="noanswer">どちらでもOK
+                <input type="radio" name="gender" value="m">男性
+                <input type="radio" name="gender" value="f">女性
+                <input type="radio" name="gender" value="-">どちらでもOK
             </div>
+            <div class="comment_class">
+                <label>コメント</label>
+                <input type="text" name="comment" value=""> <!-- commentは変更不可 -->
+            </div>
+            <!-- 予約キャンセルボタン（マッチング検索画面に遷移） -->
+            <button class="order-formbox__cancelbtn"><a href="{% url 'search_matching' %}">キャンセル</a></button>
+            <!-- 申し込みボタン -->
+            <input type="submit" name="" value="申し込み >">
         </form>
-        <!-- 予約キャンセルボタン（マッチング検索画面に遷移） -->
-        <button class="order-formbox__cancelbtn"><a href="{% url 'search_matching' %}">キャンセル</a></button>
-        <!-- 申し込みボタン -->
-        <input type="submit" name="" value="申し込み＞">
     </div>
     <!--end--希望条件入力フォーム -->
 </body>
