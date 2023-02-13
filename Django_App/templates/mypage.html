@@ -59,14 +59,25 @@
         </div>
         <!--end--編集 mail パスワード-->
         <!--start--予約状況 一覧-->
+        
         <div class="booking-box">
+            {% for order in order_data %}
             <div class="booking-box__left">
                 <img src="#" alt="">
-                <p>予約状況</p>
+                <ul>
+                    <li>{{order.order_date}}</li>
+                    <li>{{order.order_time_range_type}}</li>
+                    <li>{{order.category}}</li>
+                    <li>{{order.hope_gender_type}}</li>
+                    <li></li>
+                </ul>
+                <p></p>
             </div>
-            <div class="booking-box__right">
-
+            <div class="booking-box__right">      
             </div>
+            {% empty %}     
+                <p>まだ予約はありません。</p>
+            {% endfor %}
         </div>
         <!--end--予約状況 一覧-->
     </main>

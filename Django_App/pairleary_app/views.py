@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, View
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.contrib.auth import authenticate, login, logout
+from .models import Orders
 
 
 # Create your views here.
@@ -39,8 +40,18 @@ def loginfunc(request):
     return render(request, 'login.html', {})
 
 
-class MyPage(TemplateView):
-    template_name = "mypage.html"
+# class MyPage(TemplateView):
+#     template_name = "mypage.html"
+
+class MyPage(View):
+    def get(self, request, *args, **kwargs):
+        order_data = Orders.objects.all()
+        user_data = User.objects.all()
+
+        return render(request, 'mypage.html', {
+            'order_data': order_data,
+            'user_data': user_data,
+        })
 
 class CreateOrder(TemplateView):
     template_name = "create_order.html"
