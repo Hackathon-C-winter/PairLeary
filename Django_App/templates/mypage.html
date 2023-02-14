@@ -11,14 +11,14 @@
 
 {% block body %}
 <body>
-    <!--start--背景の白ボックスとページタイトル ※共通CSS-->
-    <div class="background-box">
-        <div class="background-box__page-title">
-            <img src="#" alt="mypage-icon">
-            <p class="background-box__page-title--name">My Page</p>
-            <p class="background-box__page-title--subname">ユーザー情報</p>
+    <!--start--背景の白ボックスとページタイトル ※共通CSS-base.css -->
+    <div class="background-white-box"></div>
+    <div class="page-title">
+        <img src="#" alt="mypage-icon">
+        <div class="page-title-box">
+            <p class="page-title__page-title-box--page-name">My Page</p>
+            <p class="page-title__page-title-box--page-subname">ユーザー情報</p>
         </div>
-        <div class="background-box__border"></div> <!--ページタイトル下の横線-->
     </div> 
     <!--end--背景の白ボックスとページタイトル ※共通CSS-->
     <main>
@@ -29,7 +29,7 @@
                 <label>ユーザー名</label>
                 <input type="text" name="" required="">
                 <button class="edit-button"><!--編集ボタン ※共通CSS-->
-                    <img src="{% static 'img/myPage/icons/mypage-edit-btn.svg' %}"></a>
+                    <img src="{% static 'img/myPage/mypage-edit-btn.svg' %}"></a>
                 </button>
             </div>
             <!-- メールアドレスフォーム -->
@@ -37,7 +37,7 @@
                 <label>メールアドレス</label>
                 <input type="email" name="" required="">
                 <button class="edit-button"><!--編集ボタン ※共通CSS-->
-                    <img src="{% static 'img/myPage/icons/mypage-edit-btn.svg' %}"></a>
+                    <img src="{% static 'img/myPage/mypage-edit-btn.svg' %}"></a>
                 </button>
             </div>
             <!-- パスワードフォーム -->
@@ -59,14 +59,25 @@
         </div>
         <!--end--編集 mail パスワード-->
         <!--start--予約状況 一覧-->
+        
         <div class="booking-box">
+            {% for order in order_data %}
             <div class="booking-box__left">
                 <img src="#" alt="">
-                <p>予約状況</p>
+                <ul>
+                    <li>{{order.order_date}}</li>
+                    <li>{{order.order_time_range_type}}</li>
+                    <li>{{order.category}}</li>
+                    <li>{{order.hope_gender_type}}</li>
+                    <li></li>
+                </ul>
+                <p></p>
             </div>
-            <div class="booking-box__right">
-
+            <div class="booking-box__right">      
             </div>
+            {% empty %}     
+                <p>まだ予約はありません。</p>
+            {% endfor %}
         </div>
         <!--end--予約状況 一覧-->
     </main>
