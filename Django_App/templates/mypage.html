@@ -69,11 +69,11 @@
                     <li>{{order.order_time_range_type}}</li>
                     <li>{{order.category}}</li>
                     <li>{{order.hope_gender_type}}</li>
-                    <li></li>
                 </ul>
-                <p></p>
+                
             </div>
-            <div class="booking-box__right">      
+            <div class="booking-box__right">
+                <p>{{order.comment}}</p>      
             </div>
             {% empty %}     
                 <p>まだ予約はありません。</p>
