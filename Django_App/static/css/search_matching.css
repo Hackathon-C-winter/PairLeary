@@ -54,6 +54,7 @@ label {
     border: 2px solid #676767;
     border-radius: 10px;
     color: #283593;
+    cursor: pointer;
 }
 /* マウスオーバー時の背景色を指定する */
 label:hover {
@@ -63,6 +64,7 @@ label:hover {
 }
 .radio-button:checked + label {
     background-color: #283593;
+    border: 2px solid #283593;
     color: #FFFFFF;
     transition: all 0.3s;
 }
@@ -92,13 +94,14 @@ label:hover {
     font-size: 16px;
     color: #283593;
     box-shadow: 2px 2px rgb(58, 58, 58);
+    cursor: pointer;
 }
 
 .form-button:hover {
     background-color: #e6e6e6; 
     color: #283593;
     transform: translate(-1px, -1px);
-    box-shadow: 3px 3px;
+    box-shadow: 3px 3px rgb(58, 58, 58);
     transition: all 0.2s;
 }
 .form-button:active {
