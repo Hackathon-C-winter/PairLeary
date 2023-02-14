@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block title %}
-    <title>Signin</title>
+    <title>signup</title>
 {% endblock %}
 
 {% block body %}
@@ -14,23 +14,24 @@
     <div class="app-logo">PairLeary</div>
     <div class="subtitle">夢は、目標に向かって毎日歩みを進めた者だけが叶えられる</div>
     <div class="formbox">
-        <h2>Sign in</h2>
+        <h2>Sign up</h2>
+        <p>アカウント新規登録</p>
         {{ error }}
         <form class="form-signin" method="POST">{% csrf_token %}
             <div class="inputBox"> <!-- ユーザー名フォーム -->
-                <label for="inputusername" class="sr-only">User Name</label>
-                <input type="text" id="inputusername" class="form-control" placeholder="username" name="username" required autofocus>
+                <label for="inputusername" class="inputBox__title">User Name</label>
+                <input type="text" id="inputusername" class="inputBox__inputform" placeholder="slackと同名（全角18文字まで）" name="username" required autofocus>
             </div>
             
             <!-- メールアドレスフォーム -->
-            <div class="inputBox">
+            <div class="inputBox"> <!-- cssが適用されていない -->
                 <label>Mail address</label>
                 <input type="email" name="email" required="">
             </div>
 
             <div class="inputBox"> <!-- パスワードフォーム -->
-                <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+                <label for="inputPassword" class="inputBox__title">Password</label>
+                <input type="password" id="inputPassword" class="inputBox__inputform" placeholder="パスワード" name="password" required>
             </div>
 
             <!-- 確認パスワードフォーム -->
@@ -45,12 +46,12 @@
                 <input type="radio" name="gender" value="noanswer">No Answer
             </div> -->
 
-            <!-- サインインボタン -->
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <!-- サインアップボタン -->
+            <button class="registration-button" type="submit">Sign up</button>
 
             <!--ログインへの遷移部分-->
             <div class="change-registration">
-                <p>Do not have an account?　→</p>
+                <p>Already have an account?→</p>
                 <button class="change-registration__button"><a href="{% url 'login' %}">Log in</a></button>
             </div>
         </form>
