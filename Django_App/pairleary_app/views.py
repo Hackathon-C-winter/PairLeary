@@ -1,30 +1,23 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
-from django.contrib.auth.models import User
 from django.db import IntegrityError
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
+from .models import CustomUser
 
 
-# Create your views here.
-
-# class SignupUser(TemplateView):
-#     template_name = "signup.html"
 def signupfunc(request):
     if request.method == "POST":
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
         try:
-            user = User.objects.create_user(username, email, password)
-            # return render(request, 'login.html', {'some': 100})
+            user = CustomUser.objects.create_user(username, email, password)
             return redirect('login')
         except IntegrityError:
             return render(request, 'signup.html', {'error': 'このユーザーは登録済みです。'})
     return render(request, 'signup.html')
 
 
-# class LoginUser(TemplateView):
-#     template_name = "login.html"
 def loginfunc(request):
     if request.method == "POST":
         username = request.POST['username']
@@ -34,8 +27,7 @@ def loginfunc(request):
             login(request, user)
             return redirect('mypage')
         else:
-            # return render(request, 'tutorial.html', {})
-            return  redirect('signup')
+            return redirect('signup')
     return render(request, 'login.html', {})
 
 
