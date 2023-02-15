@@ -23,28 +23,28 @@
         <!--end--背景の白ボックスとページタイトル ※共通CSS-base.css-->
 
         <!--start--検索条件入力・新規予約エリア-->
-        <form>
+        <form>{% csrf_token %}
             <h2>探す条件</h2>
             <h3>目的</h3>
             <div class="select-button">
-                <input type="radio" id="community" class="radio-button" name="purpose" value="community">
+                <input type="radio" id="community" class="radio-button" name="purpose" value="コミュニティ">
                 <label for="community">コミュニティ</label>
             </div>
             <div class="select-button">
-                <input type="radio" id="develop" class="radio-button" name="purpose" value="develop">
+                <input type="radio" id="develop" class="radio-button" name="purpose" value="開発">
                 <label for="develop">開発目的</label>
             </div>
             <h3>性別</h3>
             <div class="select-button">
-                <input type="radio" id="man" class="radio-button" name="gender" value="m">
+                <input type="radio" id="man" class="radio-button" name="gender" value="男性">
                 <label for="man">男性</label>
             </div>
             <div class="select-button">
-                <input type="radio" id="female" class="radio-button" name="gender" value="f">
+                <input type="radio" id="female" class="radio-button" name="gender" value="女性">
                 <label for="female">女性</label>
             </div>
             <div class="select-button">
-                <input type="radio" id="both" class="radio-button" name="gender" value="-">
+                <input type="radio" id="both" class="radio-button" name="gender" value="どちらでもOK">
                 <label for="both">どちらでもOK</label>
             </div>
             <!-- 青い三角 -->
