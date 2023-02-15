@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, View
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.contrib.auth import authenticate, login, logout
-from .models import Orders
 from django.contrib.auth.mixins import UserPassesTestMixin # 追加
+from .models import CustomUser, Orders
 
 
 # 新規登録
@@ -14,11 +14,13 @@ def signupfunc(request):
         email = request.POST['email']
         password = request.POST['password']
         try:
-            user = User.objects.create_user(username, email, password)
+            user = CustomUser.objects.create_user(username, email, password)
+            # user = User.objects.create_user(username, email, password)
             return redirect('login')
         except IntegrityError:
             return render(request, 'signup.html', {'error': 'このユーザーは登録済みです。'})
     return render(request, 'signup.html')
+
 
 # ログイン
 def loginfunc(request):
@@ -30,8 +32,7 @@ def loginfunc(request):
             login(request, user)
             return redirect('mypage')
         else:
-            # return render(request, 'tutorial.html', {})
-            return  redirect('signup')
+            return redirect('signup')
     return render(request, 'login.html', {})
 
 
@@ -50,7 +51,7 @@ class OnlyYouMixin(UserPassesTestMixin):
 class MyPage(View, OnlyYouMixin):
     def get(self, request, *args, **kwargs):
         order_data = Orders.objects.all()
-        user_data = User.objects.all()
+        user_data = CustomUser.objects.all()
 
         return render(request, 'mypage.html', {
             'order_data': order_data,
