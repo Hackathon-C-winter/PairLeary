@@ -3,6 +3,7 @@ from django.views.generic import TemplateView, View
 # from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.mixins import UserPassesTestMixin # 追加
 from .models import CustomUser, Orders
 
 
@@ -38,7 +39,16 @@ def loginfunc(request):
 # class MyPage(TemplateView):
 #     template_name = "mypage.html"
 
-class MyPage(View):
+class OnlyYouMixin(UserPassesTestMixin):
+    raise_exception = True
+
+    def test_func(self):
+        # 今ログインしてるユーザーのpkと、そのマイページのpkが同じなら許可
+        user = self.request.user
+        return user.pk == self.kwargs['pk']
+
+
+class MyPage(View, OnlyYouMixin):
     def get(self, request, *args, **kwargs):
         order_data = Orders.objects.all()
         user_data = CustomUser.objects.all()

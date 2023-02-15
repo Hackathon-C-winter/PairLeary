@@ -24,10 +24,9 @@ class Orders(models.Model):
     order_date = models.DateField(null=False,help_text='予約日付')
     order_time_range_type = models.CharField(default='null',max_length=10)
     category = models.CharField(default='null', max_length=150)
-    hope_gender_type = models.CharField(max_length=1, choices=[(None, "-"), ("m", "男性"), ("f", "女性")], default=None, verbose_name="性別", blank=True, null=True)
+    hope_gender_type = models.CharField(max_length=15, default=None, verbose_name="性別", blank=True, null=True)
     comment = models.CharField(default='null', max_length=255)
     matched_user_id = models.ForeignKey(CustomUser, on_delete=models.SET_NULL,to_field='id', null=True,related_name='matched_user_id')
 
     def save(self, *args, **kwargs):
-        # self.order_date = timezone.now()  # 保存されるたびに更新
         return super(Orders, self).save(*args, **kwargs)
