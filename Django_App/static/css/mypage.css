@@ -1,0 +1,142 @@
+/* MyPage ユーザー情報ページ mypage.htmlのCSS */
+
+/* ユーザー登録情報の白い四角 */
+.edit-user-detail {
+    position: relative;
+    display: flex;
+    width: 840px;
+    height: 230px;
+    top: 20px;
+    left: calc(50% - 420px);
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.25), 1px 3px 8px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+/* スマイルマーク */
+.edit-user-detail__icon {
+    position: relative;
+    text-align: center;
+    width: 160px;
+    height: 71px;
+    top: calc(50% - 36px);
+}
+.edit-user-detail__icon img {
+    width: 40px;
+    height: 40px;
+}
+
+/* 縦線 */
+.edit-user-detail__border {
+    position: relative;
+    width: 1.5px;
+    height: 190px;
+    top: 20px;
+    background: #676767;
+}
+
+/* フォーム全体　横線 */
+.inputBox {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 600px;
+    height: 50px;
+    left: 40px;
+    top: 8px;
+    border-bottom: 1px solid #676767;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    color: #676767;
+}
+
+/* テキストボックス指定 */
+.inputBox__textbox {
+    position: absolute;
+    width: 350px;
+    height: 35px;
+    left: 150px;
+    font-weight: 400;
+    font-size: 18px;
+    color: #000000;
+    border: none;
+    background: transparent;
+}
+
+/* 登録情報編集ボタン */
+.edit-button {
+    position: relative;
+    display: block;
+    width: 35px;
+    height: 35px;
+    margin-left: auto;
+    padding-right: 40px;
+    border: none;
+    outline: none;
+    background: transparent;
+    cursor: pointer;
+}
+/* 登録情報編集ボタン　hover指定 */
+.edit-button__hover {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    filter: alpha(opacity=0);
+    -moz-opacity:0;
+    opacity:0;
+    transition: all 0.3s;
+}
+.edit-button__hover:hover {
+    filter: alpha(opacity=100);
+    -moz-opacity:1;
+    opacity:1;
+}
+
+/* 予約状況表示ボックス */
+.booking-box {
+    position: relative;
+    display: flex;
+    width: 840px;
+    height: 500px;
+    top: 40px;
+    left: calc(50% - 420px);
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.25), 1px 3px 8px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+/* 予約状況アイコン指定 */
+.booking-box__left {
+    position: relative;
+    text-align: center;
+    width: 160px;
+    height: 68px;
+    top: calc(50% - 34px);
+}
+
+/* 縦線 */
+.booking-box__border {
+    position: relative;
+    width: 1.5px;
+    height: 460px;
+    top: 20px;
+    background: #676767;
+}
+
+/* 予約一覧表示エリア */
+.booking-box__right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 680px;
+    height: 500px;
+}
+/* まだ予約はありません表示指定 */
+.comment {
+    position: absolute;
+    width: 176px;
+    height: 30px;
+    top: 30px;
+    left: calc(50% - 34px);
+}

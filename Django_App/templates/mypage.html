@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 <!-- CSSファイルインポート ★CSSファイルのリンク先は実装時に要修正-->
 {% block head %}
-    <!-- {% load static %}
-    <link rel="stylesheet" href="{% static 'css/#.css' %}"> -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/mypage.css' %}">
 {% endblock %}
 
 {% block title %}
@@ -12,74 +12,88 @@
 {% block body %}
 <body>
     <!--start--背景の白ボックスとページタイトル ※共通CSS-base.css -->
-    <div class="background-white-box"></div>
-    <div class="page-title">
-        <img src="#" alt="mypage-icon">
-        <div class="page-title-box">
-            <p class="page-title__page-title-box--page-name">My Page</p>
-            <p class="page-title__page-title-box--page-subname">ユーザー情報</p>
-        </div>
-    </div> 
+    <div class="background-white-box">
+        <div class="page-title">
+            <img src="{% static 'img/mypage/mypage-user-icon.svg' %}" alt="mypage-icon">
+            <div class="page-title-box">
+                <p class="page-title__page-title-box--page-name">My Page</p>
+                <p class="page-title__page-title-box--page-subname">ユーザー情報</p>
+            </div>
+        </div> 
     <!--end--背景の白ボックスとページタイトル ※共通CSS-->
-    <main>
+
         <!--start--編集 編集 mail パスワード-->
         <div class="edit-user-detail">
             <!-- ユーザーネームフォーム -->
-            <div class="inputBox">
-                <label>ユーザー名</label>
-                <input type="text" name="" required="">
-                <button class="edit-button"><!--編集ボタン ※共通CSS-->
-                    <img src="{% static 'img/myPage/mypage-edit-btn.svg' %}"></a>
-                </button>
+            <div class="edit-user-detail__icon">
+                <img src="{% static 'img/mypage/user-icon.svg' %}" alt="mypage-icon">
+                <p>登録情報</p>
             </div>
-            <!-- メールアドレスフォーム -->
-            <div class="inputBox">
-                <label>メールアドレス</label>
-                <input type="email" name="" required="">
-                <button class="edit-button"><!--編集ボタン ※共通CSS-->
-                    <img src="{% static 'img/myPage/mypage-edit-btn.svg' %}"></a>
-                </button>
-            </div>
-            <!-- パスワードフォーム -->
-            <div class="inputBox">
-                <label>パスワード</label>
-                <input type="password" name="" required="">
-                <button class="edit-button"><!--編集ボタン ※共通CSS-->
-                    <img src="{% static 'img/myPage/icons/mypage-edit-btn.svg' %}"></a>
-                </button>
-            </div>
-            <!-- 性別フォーム -->
-            <div class="inputBox">
-                <label>性別</label>
-                <input type="text" name="" required="">
-                <button class="edit-button"><!--編集ボタン ※共通CSS-->
-                    <img src="{% static 'img/myPage/icons/mypage-edit-btn.svg' %}"></a>
-                </button>
-            </div>
+            <div class="edit-user-detail__border"></div>
+            <form>
+                <div class="inputBox">
+                    <label>ユーザー名</label>
+                    <input type="text" class="inputBox__textbox" name="" required="">
+                    <button class="edit-button"><!--編集ボタン ※共通CSS-->
+                        <img src="{% static 'img/myPage/mypage-edit-btn+.svg' %}"></a>
+                        <img src="{% static 'img/myPage/mypage-edit-btn-hover.svg' %}" class="edit-button__hover"></a>
+                    </button>
+                </div>
+                <!-- メールアドレスフォーム -->
+                <div class="inputBox">
+                    <label>メールアドレス</label>
+                    <input type="email" class="inputBox__textbox" name="" required="">
+                    <button class="edit-button"><!--編集ボタン ※共通CSS-->
+                        <img src="{% static 'img/myPage/mypage-edit-btn+.svg' %}"></a>
+                        <img src="{% static 'img/myPage/mypage-edit-btn-hover.svg' %}" class="edit-button__hover"></a>
+                    </button>
+                </div>
+                <!-- パスワードフォーム -->
+                <div class="inputBox">
+                    <label>パスワード</label>
+                    <input type="password" class="inputBox__textbox" name="" required="">
+                    <button class="edit-button"><!--編集ボタン ※共通CSS-->
+                        <img src="{% static 'img/myPage/mypage-edit-btn+.svg' %}"></a>
+                        <img src="{% static 'img/myPage/mypage-edit-btn-hover.svg' %}" class="edit-button__hover"></a>
+                    </button>
+                </div>
+                <!-- 性別フォーム -->
+                <div class="inputBox">
+                    <label>性別</label>
+                    <input type="text" class="inputBox__textbox" name="" required="">
+                    <button class="edit-button"><!--編集ボタン ※共通CSS-->
+                        <img src="{% static 'img/myPage/mypage-edit-btn+.svg' %}"></a>
+                        <img src="{% static 'img/myPage/mypage-edit-btn-hover.svg' %}" class="edit-button__hover"></a>
+                    </button>
+                </div>
+            </form>
         </div>
         <!--end--編集 mail パスワード-->
-        <!--start--予約状況 一覧-->
-        
+
+        <!--start--予約状況 一覧-->       
         <div class="booking-box">
-            {% for order in order_data %}
             <div class="booking-box__left">
-                <img src="#" alt="">
-                <ul>
-                    <li>{{order.order_date}}</li>
-                    <li>{{order.order_time_range_type}}</li>
-                    <li>{{order.category}}</li>
-                    <li>{{order.hope_gender_type}}</li>
-                </ul>
-                
+                <img src="{% static 'img/mypage/reservation-icon.svg' %}" alt="reservation-icon">
+                <p>予約状況</p>
             </div>
+            <div class="booking-box__border"></div>
+            {% for order in order_data %}
             <div class="booking-box__right">
-                <p>{{order.comment}}</p>      
+                <div class="booking-box__right--order-list">
+                    <ul>
+                        <li>{{order.order_date}}</li>
+                        <li>{{order.order_time_range_type}}</li>
+                        <li>{{order.category}}</li>
+                        <li>{{order.hope_gender_type}}</li>
+                    </ul>    
+                </div>
+                <p class="comment">{{order.comment}}</p>      
+                {% empty %}     
+                <p class="comment">まだ予約はありません。</p>
+                {% endfor %}
             </div>
-            {% empty %}     
-                <p>まだ予約はありません。</p>
-            {% endfor %}
         </div>
         <!--end--予約状況 一覧-->
-    </main>
+    </div>
 </body>
 {% endblock %}
