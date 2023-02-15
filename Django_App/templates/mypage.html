@@ -69,26 +69,29 @@
             </form>
         </div>
         <!--end--編集 mail パスワード-->
-        <!--start--予約状況 一覧-->
         
+        <!--start--予約状況 一覧-->       
         <div class="booking-box">
-            {% for order in order_data %}
             <div class="booking-box__left">
-                <img src="#" alt="">
-                <ul>
-                    <li>{{order.order_date}}</li>
-                    <li>{{order.order_time_range_type}}</li>
-                    <li>{{order.category}}</li>
-                    <li>{{order.hope_gender_type}}</li>
-                </ul>
-                
+                <img src="{% static 'img/mypage/reservation-icon.svg' %}" alt="reservation-icon">
+                <p>予約状況</p>
             </div>
+            <div class="booking-box__border"></div>
+            {% for order in order_data %}
             <div class="booking-box__right">
-                <p>{{order.comment}}</p>      
+                <div class="booking-box__right--order-list">
+                    <ul>
+                        <li>{{order.order_date}}</li>
+                        <li>{{order.order_time_range_type}}</li>
+                        <li>{{order.category}}</li>
+                        <li>{{order.hope_gender_type}}</li>
+                    </ul>    
+                </div>
+                <p class="comment">{{order.comment}}</p>      
+                {% empty %}     
+                <p class="comment">まだ予約はありません。</p>
+                {% endfor %}
             </div>
-            {% empty %}     
-                <p>まだ予約はありません。</p>
-            {% endfor %}
         </div>
         <!--end--予約状況 一覧-->
     </div>

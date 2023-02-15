@@ -17,7 +17,7 @@
     position: relative;
     text-align: center;
     width: 160px;
-    height: 200px;
+    height: 71px;
     top: calc(50% - 36px);
 }
 
@@ -42,9 +42,7 @@
     height: 50px;
     left: 40px;
     top: 8px;
-
     border-bottom: 1px solid #676767;
-
     font-weight: 400;
     font-size: 16px;
     line-height: 23px;
@@ -89,6 +87,7 @@
 
 .booking-box {
     position: relative;
+    display: flex;
     width: 840px;
     height: 500px;
     top: 40px;
@@ -96,4 +95,37 @@
     background: rgba(255, 255, 255, 0.5);
     box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.25), 1px 3px 8px 4px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
+}
+
+.booking-box__left {
+    position: relative;
+    text-align: center;
+    width: 160px;
+    height: 68px;
+    top: calc(50% - 34px);
+}
+
+.booking-box__border {
+    position: relative;
+    width: 1px;
+    height: 460px;
+    top: 20px;
+    background: #000000;
+}
+
+.booking-box__right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 680px;
+    height: 500px;
+}
+/* まだ予約はありません表示指定 */
+.comment {
+    position: absolute;
+    width: 176px;
+    height: 30px;
+    top: 30px;
+    left: calc(50% - 34px);
 }
