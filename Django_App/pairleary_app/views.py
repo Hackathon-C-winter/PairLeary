@@ -41,7 +41,7 @@ def loginfunc(request):
 class MyPage(View):
     def get(self, request, *args, **kwargs):
         order_data = Orders.objects.all()
-        user_data = User.objects.all()
+        user_data = CustomUser.objects.all()
 
         return render(request, 'mypage.html', {
             'order_data': order_data,
