@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 <!-- CSSファイルインポート ★CSSファイルのリンク先は実装時に要修正-->
 {% block head %}
-    <!-- {% load static %}
-    <link rel="stylesheet" href="{% static 'css/#' %}"> -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/create_order.css' %}">
 {% endblock %}
 
 {% block title %}
@@ -12,9 +12,9 @@
 {% block body %}
 <body>
     <!--start--背景の白ボックスとページタイトル ※共通CSS-base.css -->
-    <div class="background-white-box"></div>
+    <div class="background-white-box">
         <div class="page-title">
-            <img src="#" alt="">
+            <img src="{% static 'img/create_order/create_order_icon.svg' %}" alt="">
             <div class="page-title-box">
                 <p class="page-title__page-title-box--page-name">Create Matching</p>
                 <p class="page-title__page-title-box--page-subname">マッチングを新しく予約する</p>
@@ -22,40 +22,41 @@
         </div>
     <!--end--背景の白ボックスとページタイトル ※共通CSS-->
     <!--start--希望条件入力フォーム -->
-    <div class="order-formbox">
-        <h2>希望条件を入力してください</h2>
-        <form method="POST">{% csrf_token %}
-            <div class="order-date"> <!-- マッチング日フォーム -->
-                <label>マッチング日</label>
-                <input type="date" placeholder="西暦年/月/日" name="date" required=""> <!-- commentは変更不可 -->
-            </div>
-            <div class="order-time"> <!-- マッチングの時間帯 -->
-                <label>マッチング時間</label>
-                <input type="radio" name="time" value="午前">午前
-                <input type="radio" name="time" value="午後">午後
-                <input type="radio" name="time" value="夜">夜
-            </div>
-            <div class="order-purpose"> <!-- 相手を探す目的 -->
-                <label>相手を探す目的</label>
-                <input type="radio" name="purpose" value="コミュニケーション">コミュニケーション
-                <input type="radio" name="purpose" value="開発">開発
-            </div>
-            <div class="order-gender"> <!-- 希望する相手の性別 -->
-                <label>希望する相手の性別</label>
-                <input type="radio" name="gender" value="男性">男性
-                <input type="radio" name="gender" value="女性">女性
-                <input type="radio" name="gender" value="どちらでもOK">どちらでもOK
-            </div>
-            <div class="comment_class">
-                <label>コメント</label>
-                <input type="text" name="comment" value=""> <!-- commentは変更不可 -->
-            </div>
-            <!-- 予約キャンセルボタン（マッチング検索画面に遷移） -->
-            <button class="order-formbox__cancelbtn"><a href="{% url 'search_matching' %}">キャンセル</a></button>
-            <!-- 申し込みボタン -->
-            <input type="submit" name="" value="申し込み >">
-        </form>
+        <div class="order-formbox">
+            <h2>希望条件を入力してください</h2>
+            <form method="POST">{% csrf_token %}
+                <div class="order-date"> <!-- マッチング日フォーム -->
+                    <label>マッチング日</label>
+                    <input type="date" placeholder="西暦年/月/日" name="date" required=""> <!-- commentは変更不可 -->
+                </div>
+                <div class="order-time"> <!-- マッチングの時間帯 -->
+                    <label>マッチング時間</label>
+                    <input type="radio" name="time" value="午前">午前
+                    <input type="radio" name="time" value="午後">午後
+                    <input type="radio" name="time" value="夜">夜
+                </div>
+                <div class="order-purpose"> <!-- 相手を探す目的 -->
+                    <label>相手を探す目的</label>
+                    <input type="radio" name="purpose" value="コミュニケーション">コミュニケーション
+                    <input type="radio" name="purpose" value="開発">開発
+                </div>
+                <div class="order-gender"> <!-- 希望する相手の性別 -->
+                    <label>希望する相手の性別</label>
+                    <input type="radio" name="gender" value="男性">男性
+                    <input type="radio" name="gender" value="女性">女性
+                    <input type="radio" name="gender" value="どちらでもOK">どちらでもOK
+                </div>
+                <div class="comment_class">
+                    <label>コメント</label>
+                    <input type="text" name="comment" value=""> <!-- commentは変更不可 -->
+                </div>
+                <!-- 予約キャンセルボタン（マッチング検索画面に遷移） -->
+                <button class="order-formbox__cancelbtn"><a href="{% url 'search_matching' %}">キャンセル</a></button>
+                <!-- 申し込みボタン -->
+                <input type="submit" name="" value="申し込み >">
+            </form>
+        </div>
+        <!--end--希望条件入力フォーム -->
     </div>
-    <!--end--希望条件入力フォーム -->
 </body>
 {% endblock %}
