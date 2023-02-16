@@ -4,6 +4,7 @@ from django.views.generic import TemplateView, View
 from django.db import IntegrityError
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import UserPassesTestMixin # 追加
+from django.contrib.auth.decorators import login_required
 from .models import CustomUser, Orders
 
 
@@ -51,12 +52,14 @@ class OnlyYouMixin(UserPassesTestMixin):
 class MyPage(View, OnlyYouMixin):
     def get(self, request, *args, **kwargs):
         order_data = Orders.objects.all()
-        user_data = CustomUser.objects.all()
 
         return render(request, 'mypage.html', {
             'order_data': order_data,
-            'user_data': user_data,
         })
+
+@login_required
+def userlist(request):
+    return render(request, 'mypage.html')
 
 # マッチング新規予約
 def create_order(request):

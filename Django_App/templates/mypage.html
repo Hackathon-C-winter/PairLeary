@@ -11,6 +11,7 @@
 
 {% block body %}
 <body>
+    {% if request.user.is_authenticated %}
     <!--start--背景の白ボックスとページタイトル ※共通CSS-base.css -->
     <div class="background-white-box">
         <div class="page-title">
@@ -33,7 +34,7 @@
             <form>
                 <div class="inputBox">
                     <label>ユーザー名</label>
-                    <input type="text" class="inputBox__textbox" name="" required="">
+                    <input type="text" class="inputBox__textbox" name="username" required="" value="{{ user.username }}">
                     <button class="edit-button"><!--編集ボタン ※共通CSS-->
                         <img src="{% static 'img/myPage/mypage-edit-btn+.svg' %}"></a>
                         <img src="{% static 'img/myPage/mypage-edit-btn-hover.svg' %}" class="edit-button__hover"></a>
@@ -42,7 +43,7 @@
                 <!-- メールアドレスフォーム -->
                 <div class="inputBox">
                     <label>メールアドレス</label>
-                    <input type="email" class="inputBox__textbox" name="" required="">
+                    <input type="email" class="inputBox__textbox" name="email" required="" value="{{ user.email }}">
                     <button class="edit-button"><!--編集ボタン ※共通CSS-->
                         <img src="{% static 'img/myPage/mypage-edit-btn+.svg' %}"></a>
                         <img src="{% static 'img/myPage/mypage-edit-btn-hover.svg' %}" class="edit-button__hover"></a>
@@ -51,7 +52,7 @@
                 <!-- パスワードフォーム -->
                 <div class="inputBox">
                     <label>パスワード</label>
-                    <input type="password" class="inputBox__textbox" name="" required="">
+                    <input type="password" class="inputBox__textbox" name="password" required="" value="{{ user.password }}">
                     <button class="edit-button"><!--編集ボタン ※共通CSS-->
                         <img src="{% static 'img/myPage/mypage-edit-btn+.svg' %}"></a>
                         <img src="{% static 'img/myPage/mypage-edit-btn-hover.svg' %}" class="edit-button__hover"></a>
@@ -60,7 +61,7 @@
                 <!-- 性別フォーム -->
                 <div class="inputBox">
                     <label>性別</label>
-                    <input type="text" class="inputBox__textbox" name="" required="">
+                    <input type="text" class="inputBox__textbox" name="gender" required="" value="{{ user.gender_type }}">
                     <button class="edit-button"><!--編集ボタン ※共通CSS-->
                         <img src="{% static 'img/myPage/mypage-edit-btn+.svg' %}"></a>
                         <img src="{% static 'img/myPage/mypage-edit-btn-hover.svg' %}" class="edit-button__hover"></a>
@@ -87,7 +88,16 @@
                         <li>{{order.hope_gender_type}}</li>
                     </ul>    
                 </div>
-                <p class="comment">{{order.comment}}</p>      
+                <div>
+                    <ul>
+                        <li>{{ user.username }}さん</li>
+                        <li>{{ user.gender_type }}</li>
+                        <li class="comment">{{ order.comment }}</li>
+                    </ul>
+                </div>
+                <p>ここに予約状態が入る予定</p>
+                <!-- <p class="comment">{{ order.comment }}</p>  95行目に移動しました -->
+                    
                 {% empty %}     
                 <p class="comment">まだ予約はありません。</p>
                 {% endfor %}
@@ -95,5 +105,6 @@
         </div>
         <!--end--予約状況 一覧-->
     </div>
+    {% endif %}
 </body>
 {% endblock %}
