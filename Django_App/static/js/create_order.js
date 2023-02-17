@@ -1,0 +1,4 @@
+flatpickr('#calender', {
+    locale: 'ja'
+});
+
