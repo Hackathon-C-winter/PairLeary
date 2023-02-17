@@ -91,8 +91,30 @@ def create_order(request):
     else:
         return render(request, 'create_order.html')
 
-class SearchMatching(TemplateView):
-    template_name = "search_matching.html"
+# ログインしているユーザーにのみ表示される
+# @login_required(login_url='/login/')
+# マッチング検索機能
+def search_matching(request):
+
+    if request.method == "POST":
+        #フォームから入力された条件を受け取る
+        category = request.POST.get("purpose")
+        gender = request.POST.get("gender")
+        #ordersテーブルからカテゴリがcategory、性別がgender、マッチング相手がいないデータを取得
+        orders = Orders.objects.filter(
+            category=category, 
+            matched_user_id__isnull=True, 
+            user_id__gender_type=gender
+            ).exclude(user_id=request.user).select_related('user_id')
+        print(orders.query)
+
+        if orders:
+            context = {'orders': orders}
+        else:
+            context = {'error_message': '条件に一致するデータがありません'}
+    else:
+        context = {}
+    return render(request, 'search_matching.html', context)
 
 class Tutorial(TemplateView):
     template_name = "tutorial.html"
