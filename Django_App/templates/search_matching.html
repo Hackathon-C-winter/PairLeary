@@ -23,7 +23,7 @@
         <!--end--背景の白ボックスとページタイトル ※共通CSS-base.css-->
 
         <!--start--検索条件入力・新規予約エリア-->
-        <form>{% csrf_token %}
+        <form method="POST">{% csrf_token %}
             <h2>探す条件</h2>
             <h3>目的</h3>
             <div class="select-button">
@@ -63,7 +63,22 @@
         <!--end--検索条件入力・新規予約エリア-->
 
         <!--start--検索結果表示エリア-->       
-        <div class="search-result"></div>
+        <div class="search-result">
+            {% if error_message %}
+            <p>{{ error_message }}</p>
+            {% else %}
+            <ul>
+                {% for order in orders %}
+                    <li>{{ order.user_id }}</li>
+                    <li>{{ order.order_date }}</li>
+                    <li>{{ order.category }}</li>
+                    <li>{{ order.hope_gender_type }}</li>
+                    <li>{{ order.comment }}</li>
+                    
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
         <!--end--検索結果表示エリア-->       
     </div>
 
