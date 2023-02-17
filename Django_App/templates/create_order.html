@@ -33,7 +33,7 @@
             <h2>希望条件を入力してください</h2>
             <form method="POST">{% csrf_token %}
                 <h3>マッチング日</h3> <!-- マッチング日フォーム -->
-                <input type="input" id="calender" placeholder="日付を選択してください" class="order-date "name="date" required="" readonly="readonly"> <!-- "name="date"は変更不可 -->
+                <input type="input" id="calender" placeholder="日付を選択してください" class="order-date" name="date" required="" readonly="readonly"> <!-- "name="date"は変更不可 -->
 
                 <h3>マッチング時間</h3> <!-- マッチングの時間帯 -->
                 <div class="select">
@@ -90,7 +90,7 @@
         </div>
         <!--end--希望条件入力フォーム -->
     </div>
-        <!-- カレンダー表示-->
+        <!-- カレンダー表示　JS読み込み-->
         {% load static %}
         <script src="{% static 'js/create_order.js' %}" type="text/javascript"></script>
 </body>
