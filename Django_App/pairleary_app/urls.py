@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import loginfunc, MyPage, create_order, search_matching, signupfunc, Tutorial, Header
+from .views import loginfunc, MyPage, create_order, search_matching,\
+      signupfunc, Tutorial, Header, logoutfunc
 
 
 urlpatterns = [
@@ -14,4 +15,5 @@ urlpatterns = [
     path('signup/', signupfunc, name='signup'),
     path('tutorial/', Tutorial.as_view(), name='tutorial'),
     path('header/', Header.as_view(), name='header'),
+    path('logout/', logoutfunc, name='logout')
 ]

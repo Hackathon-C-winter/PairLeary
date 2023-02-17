@@ -3,7 +3,7 @@ from django.views.generic import TemplateView, View
 # from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.mixins import UserPassesTestMixin # 追加
+from django.contrib.auth.mixins import UserPassesTestMixin  # 追加
 from django.contrib.auth.decorators import login_required
 from .models import CustomUser, Orders
 
@@ -37,8 +37,14 @@ def loginfunc(request):
     return render(request, 'login.html', {})
 
 
+def logoutfunc(request):
+    logout(request)
+    return redirect('login')
+
+
 # class MyPage(TemplateView):
 #     template_name = "mypage.html"
+
 
 class OnlyYouMixin(UserPassesTestMixin):
     raise_exception = True
@@ -95,7 +101,11 @@ def search_matching(request):
         category = request.POST.get("purpose")
         gender = request.POST.get("gender")
         #ordersテーブルからカテゴリがcategory、性別がgender、マッチング相手がいないデータを取得
-        orders = Orders.objects.filter(category=category, matched_user_id__isnull=True, user_id__gender_type=gender).exclude(user_id=request.user)
+        orders = Orders.objects.filter(
+            category=category, 
+            matched_user_id__isnull=True, 
+            user_id__gender_type=gender
+            ).exclude(user_id=request.user).select_related('user_id')
         print(orders.query)
 
         if orders:
@@ -111,4 +121,3 @@ class Tutorial(TemplateView):
 
 class Header(TemplateView):
     template_name = "header.html"
-
