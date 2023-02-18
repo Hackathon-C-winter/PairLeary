@@ -97,7 +97,7 @@
     position: relative;
     display: flex;
     width: 840px;
-    height: 500px;
+    height: 55%;
     top: 40px;
     left: calc(50% - 420px);
     background: rgba(255, 255, 255, 0.5);
@@ -117,9 +117,9 @@
 /* 縦線 */
 .booking-box__border {
     position: relative;
-    width: 1.5px;
-    height: 460px;
-    top: 20px;
+    width: 2px;
+    height: 90%;
+    top: 4.5%;
     background: #676767;
 }
 
@@ -139,4 +139,21 @@
     height: 30px;
     top: 30px;
     left: calc(50% - 34px);
+}
+
+.booking-box__right--order-list {
+    position: relative;
+    display: flex;
+    border: #000000;
+}
+
+.booking-box__right ul {
+    position: relative;
+    /* display: block; */
+    background-color: aqua;
+}
+.booking-box__right ul li {
+    position: relative;
+    display: block;
+    border: blue solid;
 }

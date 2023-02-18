@@ -1,4 +1,10 @@
 
+main {
+    position: relative;
+    display: flex;
+    height: calc(100% - 90px);
+    border: #283593 solid;
+}
 
 form {
     position: relative;
@@ -132,3 +138,23 @@ form p {
     color: #000000;
     line-height: 23px;
 }
+
+.search-result {
+    position: relative;
+    width: 755px;
+    left: 3%;
+    display: flex;
+    flex-direction: column;
+    /* border: #676767 solid; */
+}
+
+.search-result p {
+    position: absolute;
+    left: 30%;
+    top: 3%;
+    font-weight: 700;
+    font-size: 16px;
+
+}
+
+

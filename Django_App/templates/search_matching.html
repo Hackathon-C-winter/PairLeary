@@ -21,66 +21,69 @@
             </div>
         </div>
         <!--end--背景の白ボックスとページタイトル ※共通CSS-base.css-->
+        <main>
+            <!--start--検索条件入力・新規予約エリア-->
+            <form method="POST">{% csrf_token %}
+                <h2>探す条件</h2>
+                <h3>目的</h3>
+                <div class="select-button">
+                    <input type="radio" id="community" class="radio-button" name="purpose" value="コミュニティ">
+                    <label for="community">コミュニティ</label>
+                </div>
+                <div class="select-button">
+                    <input type="radio" id="develop" class="radio-button" name="purpose" value="開発">
+                    <label for="develop">開発目的</label>
+                </div>
+                <h3>性別</h3>
+                <div class="select-button">
+                    <input type="radio" id="man" class="radio-button" name="gender" value="男性">
+                    <label for="man">男性</label>
+                </div>
+                <div class="select-button">
+                    <input type="radio" id="female" class="radio-button" name="gender" value="女性">
+                    <label for="female">女性</label>
+                </div>
+                <div class="select-button">
+                    <input type="radio" id="both" class="radio-button" name="gender" value="どちらでもOK">
+                    <label for="both">どちらでもOK</label>
+                </div>
+                <!-- 青い三角 -->
+                <div class="triangle"></div>
+                <!-- 検索ボタン -->
+                <input type="submit" class="form-button" name="" value="検索">
+                <!-- 罫線 -->
+                <div class="border"></div>
+                <!-- 新規予約部分 -->
+                <p>マッチング出来ない？<br>新規予約をしてみよう</p>
+                <!-- 青い三角 -->
+                <div class="triangle"></div>
+                <!-- 新規予約ボタン -->
+                <button class="form-button"><a href="{% url 'create_order' %}">新規予約 ></a></button>
+            </form>
+            <!--end--検索条件入力・新規予約エリア-->
 
-        <!--start--検索条件入力・新規予約エリア-->
-        <form method="POST">{% csrf_token %}
-            <h2>探す条件</h2>
-            <h3>目的</h3>
-            <div class="select-button">
-                <input type="radio" id="community" class="radio-button" name="purpose" value="コミュニティ">
-                <label for="community">コミュニティ</label>
-            </div>
-            <div class="select-button">
-                <input type="radio" id="develop" class="radio-button" name="purpose" value="開発">
-                <label for="develop">開発目的</label>
-            </div>
-            <h3>性別</h3>
-            <div class="select-button">
-                <input type="radio" id="man" class="radio-button" name="gender" value="男性">
-                <label for="man">男性</label>
-            </div>
-            <div class="select-button">
-                <input type="radio" id="female" class="radio-button" name="gender" value="女性">
-                <label for="female">女性</label>
-            </div>
-            <div class="select-button">
-                <input type="radio" id="both" class="radio-button" name="gender" value="どちらでもOK">
-                <label for="both">どちらでもOK</label>
-            </div>
-            <!-- 青い三角 -->
-            <div class="triangle"></div>
-            <!-- 検索ボタン -->
-            <input type="submit" class="form-button" name="" value="検索">
-            <!-- 罫線 -->
-            <div class="border"></div>
-            <!-- 新規予約部分 -->
-            <p>マッチング出来ない？<br>新規予約をしてみよう</p>
-            <!-- 青い三角 -->
-            <div class="triangle"></div>
-            <!-- 新規予約ボタン -->
-            <button class="form-button"><a href="{% url 'create_order' %}">新規予約 ></a></button>
-        </form>
-        <!--end--検索条件入力・新規予約エリア-->
-
-        <!--start--検索結果表示エリア-->       
-        <div class="search-result">
-            {% if error_message %}
-            <p>{{ error_message }}</p>
-            {% else %}
-            <ul>
+            <!--start--検索結果表示エリア-->       
+            <div class="search-result">
+                {% if error_message %}
+                <p>{{ error_message }}</p>
+                {% else %}
                 {% for order in orders %}
-                    <li>{{ order.user_id }}</li>
+                <ul>
                     <li>{{ order.order_date }}</li>
                     <li>{{ order.category }}</li>
                     <li>{{ order.hope_gender_type }}</li>
+                </ul>
+                <ul>
+                    <li>{{ order.user_id }}</li>
                     <li>{{ order.comment }}</li>
-                    
+                </ul>
+                <!-- 参加する！ボタン -->
+                <input type="submit" class="search-result__apply" name="" value="参加する！ >">
                 {% endfor %}
-            </ul>
-            {% endif %}
-        </div>
-        <!--end--検索結果表示エリア-->       
+                {% endif %}
+            </div>
+            <!--end--検索結果表示エリア-->       
+        </main>
     </div>
-
 </body>
 {% endblock %}
