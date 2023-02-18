@@ -7,7 +7,6 @@ from django.contrib.auth.mixins import UserPassesTestMixin  # 追加
 from django.contrib.auth.decorators import login_required
 from .models import CustomUser, Orders
 
-
 # 新規登録
 def signupfunc(request):
     if request.method == "POST":
@@ -22,7 +21,6 @@ def signupfunc(request):
             return render(request, 'signup.html', {'error': 'このユーザーは登録済みです。'})
     return render(request, 'signup.html')
 
-
 # ログイン
 def loginfunc(request):
     if request.method == "POST":
@@ -36,36 +34,18 @@ def loginfunc(request):
             return redirect('signup')
     return render(request, 'login.html', {})
 
-
+# ログアウト
 def logoutfunc(request):
     logout(request)
     return redirect('login')
 
-
-# class MyPage(TemplateView):
-#     template_name = "mypage.html"
-
-
-class OnlyYouMixin(UserPassesTestMixin):
-    raise_exception = True
-
-    def test_func(self):
-        # 今ログインしてるユーザーのpkと、そのマイページのpkが同じなら許可
-        user = self.request.user
-        return user.pk == self.kwargs['pk']
-
-
-class MyPage(View, OnlyYouMixin):
-    def get(self, request, *args, **kwargs):
-        order_data = Orders.objects.all()
-
-        return render(request, 'mypage.html', {
-            'order_data': order_data,
-        })
-
+# マイページ
 @login_required
-def userlist(request):
-    return render(request, 'mypage.html')
+def mypage(request):
+    user = request.user
+    # ユーザーIDがログインしているユーザーと一致する予約情報を取得
+    order_data = Orders.objects.filter(user_id_id = user)
+    return render(request, 'mypage.html', {'order_data': order_data,})
 
 # マッチング新規予約
 def create_order(request):
@@ -106,7 +86,6 @@ def search_matching(request):
                 category=category, 
                 matched_user_id__isnull=True, 
                 ).exclude(user_id=request.user).select_related('user_id')
-            print(orders.query)
         else:
             #ordersテーブルからカテゴリがcategory、性別がgender、マッチング相手がいないデータを取得
             orders = Orders.objects.filter(
@@ -114,7 +93,6 @@ def search_matching(request):
                 matched_user_id__isnull=True, 
                 user_id__gender_type=gender
                 ).exclude(user_id=request.user).select_related('user_id')
-            print(orders.query)
 
         if orders:
             context = {'orders': orders}
