@@ -1,4 +1,10 @@
 
+main {
+    position: relative;
+    display: flex;
+    height: calc(100% - 90px);
+    border: #283593 solid;
+}
 
 form {
     position: relative;
@@ -42,7 +48,7 @@ h3 {
 label {
     display: block;
     position: relative;
-    width: 150px;
+    width: 160px;
     height: 35px;
     margin-top: 7px;
     text-align: center;
@@ -83,7 +89,7 @@ label:hover {
 /* 検索・新規予約ボタンの指定 */
 .form-button {
     position: relative;
-    width: 148px;
+    width: 158px;
     height: 40px;
     background: #D9D9D9;
     border: 3px solid #676767;
@@ -117,7 +123,7 @@ label:hover {
 /* 横線 */
 .border {
     position: relative;
-    width: 150px;
+    width: 160px;
     margin: 30px 0px 25px 0px;
     border: none;
     border-bottom: 1px solid #000000;
@@ -132,3 +138,23 @@ form p {
     color: #000000;
     line-height: 23px;
 }
+
+.search-result {
+    position: relative;
+    width: 755px;
+    left: 3%;
+    display: flex;
+    flex-direction: column;
+    /* border: #676767 solid; */
+}
+
+.search-result p {
+    position: absolute;
+    left: 30%;
+    top: 3%;
+    font-weight: 700;
+    font-size: 16px;
+
+}
+
+

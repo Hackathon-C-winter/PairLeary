@@ -18,7 +18,7 @@ header {
 
 /* 背景画像の指定ロゴ・フォームのセンター指定 */
 body {
-    animation: fadeIn 2s forwards;
+    animation: fadeIn 0.5s forwards;
     display: flex;
     flex-direction: column;
     justify-content: center;
