@@ -100,13 +100,21 @@ def search_matching(request):
         #フォームから入力された条件を受け取る
         category = request.POST.get("purpose")
         gender = request.POST.get("gender")
-        #ordersテーブルからカテゴリがcategory、性別がgender、マッチング相手がいないデータを取得
-        orders = Orders.objects.filter(
-            category=category, 
-            matched_user_id__isnull=True, 
-            user_id__gender_type=gender
-            ).exclude(user_id=request.user).select_related('user_id')
-        print(orders.query)
+        #ordersテーブルからカテゴリがcategory、性別がどちらでもOK、マッチング相手がいないデータを取得
+        if gender == 'どちらでもOK':
+            orders = Orders.objects.filter(
+                category=category, 
+                matched_user_id__isnull=True, 
+                ).exclude(user_id=request.user).select_related('user_id')
+            print(orders.query)
+        else:
+            #ordersテーブルからカテゴリがcategory、性別がgender、マッチング相手がいないデータを取得
+            orders = Orders.objects.filter(
+                category=category, 
+                matched_user_id__isnull=True, 
+                user_id__gender_type=gender
+                ).exclude(user_id=request.user).select_related('user_id')
+            print(orders.query)
 
         if orders:
             context = {'orders': orders}
