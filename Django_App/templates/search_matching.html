@@ -78,7 +78,12 @@
                     <li>{{ order.comment }}</li>
                 </ul>
                 <!-- 参加する！ボタン -->
-                <input type="submit" class="search-result__apply" name="" value="参加する！ >">
+                <!-- <input type="submit" class="search-result__apply" name="matching_button" value="参加する！ >"> -->
+                <form method="POST" action="{% url 'search_matching' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="order_id" value="{{ order.order_id }}">
+                    <input type="submit" class="search-result__apply" name="matching_button" value="参加する！ >">
+                </form>
                 {% endfor %}
                 {% endif %}
             </div>
