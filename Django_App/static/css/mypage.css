@@ -1,5 +1,6 @@
 /* MyPage ユーザー情報ページ mypage.htmlのCSS */
 
+
 /* ユーザー登録情報の白い四角 */
 .edit-user-detail {
     position: relative;
@@ -157,3 +158,4 @@
     display: block;
     border: blue solid;
 }
+
