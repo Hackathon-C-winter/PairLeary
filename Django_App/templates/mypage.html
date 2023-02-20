@@ -3,6 +3,7 @@
 {% block head %}
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/mypage.css' %}">
+    <link rel="stylesheet" href="{% static 'css/search_result_list.css' %}">
 {% endblock %}
 
 {% block title %}
@@ -77,27 +78,33 @@
                 <p>予約状況</p>
             </div>
             <div class="booking-box__border"></div>
-            {% for order in order_data %}
-            <div class="booking-box__right">
-                <div class="booking-box__right--order-list">
-                    <ul>
-                        <li>{{order.order_date}}</li>
-                        <li>{{order.order_time_range_type}}</li>
-                        <li>{{order.category}}</li>
-                        <li>{{order.hope_gender_type}}</li>
-                    </ul>    
-                    <ul>
-                        <li>{{ user.username }}さん</li>
-                        <li>{{ user.gender_type }}</li>
-                        <li>{{ order.comment }}</li>
-                    </ul>
+            <div class="search-mypage">
+                {% for order in order_data %}
+                <div class="booking-box__right">
+                    <div class="search__result--box-left-up">
+                        <p class="search__result--year">{{ order.order_date|date:"Y年" }}</p>
+                        <p class="search__result--month-day">{{ order.order_date|date:"m月j日" }}</p>
+                        <p class="search__result--time">{{order.order_time_range_type}}</p>
+                    </div>
+
+                    <div class="search__result--box-left-bottom">
+                        <p id="add-class-name" class="search__result--purpose">{{ order.category }}</p>
+                        <p id="add-class-name" class="search__result--gender">{{ order.hope_gender_type }}希望</p>
+                    </div>
+                    <div class="search__result--box-right-up">
+                        <p class="search__result--user-name">{{ user.username }}さん</p>
+                        <p class="search__result--user-gender">{{ user.gender_type }}</p>
+                    </div>
+                    <div class="search__result--box-right-bottom">
+                        <p class="search__result--comment">{{ order.comment }}</p>
+                    </div>
+                    <!-- <p>マッチング<br>待ち</p> -->
+                    <!-- <p class="comment">{{ order.comment }}</p>  95行目に移動しました -->
+                    <!-- {{order.matched_user_id}} -->
+                    {% empty %}     
+                    <p class="comment">まだ予約はありません。</p>
+                    {% endfor %}
                 </div>
-                <p>ここに予約状態が入る予定</p>
-                <!-- <p class="comment">{{ order.comment }}</p>  95行目に移動しました -->
-                    
-                {% empty %}     
-                <p class="comment">まだ予約はありません。</p>
-                {% endfor %}
             </div>
         </div>
         <!--end--予約状況 一覧-->

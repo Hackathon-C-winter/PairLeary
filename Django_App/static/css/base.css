@@ -194,6 +194,8 @@ header {
     right: 0;
     bottom: 0;
     margin: 0 20px 20px 0;
+    position: fixed;
+    z-index: 5;
 }
 .tutorial a {
     display: flex;

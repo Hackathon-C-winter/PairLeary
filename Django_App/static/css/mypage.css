@@ -124,15 +124,6 @@
     background: #676767;
 }
 
-/* 予約一覧表示エリア */
-.booking-box__right {
-    position: relative;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 680px;
-    height: 500px;
-}
 /* まだ予約はありません表示指定 */
 .comment {
     position: absolute;
@@ -141,21 +132,3 @@
     top: 30px;
     left: calc(50% - 34px);
 }
-
-.booking-box__right--order-list {
-    position: relative;
-    display: flex;
-    border: #000000;
-}
-
-.booking-box__right ul {
-    position: relative;
-    /* display: block; */
-    background-color: aqua;
-}
-.booking-box__right ul li {
-    position: relative;
-    display: block;
-    border: blue solid;
-}
-
