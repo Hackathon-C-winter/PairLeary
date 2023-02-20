@@ -153,4 +153,4 @@ EMAIL_HOST = 'smtp.office365.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'pairleary@hotmail.com'  # 送信元のメールアドレス
-EMAIL_HOST_PASSWORD = 'Aabbcccc'  # 送信元のメールアドレスのパスワード
+EMAIL_HOST_PASSWORD = 'Aabbcccc'  # 送信元のメールアドレスのパスワード(hotmail)

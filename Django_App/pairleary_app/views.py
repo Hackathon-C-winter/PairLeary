@@ -110,9 +110,9 @@ def search_matching(request):
         # メール送信処理
         recipient_list = [order.user_id.email, order.matched_user_id.email]        
         # メールの件名
-        subject = '【pairleary】マッチングが成立しました'
+        subject = '【リマインダー】pairlearyからのお知らせ'
         # メールの本文
-        message = 'マッチングが成立しました。詳細はアプリで確認してください。'
+        message = 'ご希望の予約が完了しました。詳細はアプリで確認してください。'
         from_email = settings.EMAIL_HOST_USER  # 送信元のメールアドレス
 
         send_mail(subject, message, from_email, recipient_list, fail_silently=False)
