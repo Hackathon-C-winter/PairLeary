@@ -6,6 +6,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import UserPassesTestMixin  # 追加
 from django.contrib.auth.decorators import login_required
 from .models import CustomUser, Orders
+from django.core.mail import send_mail
+from django.conf import settings
+
 
 # 新規登録
 def signupfunc(request):
@@ -49,9 +52,7 @@ def mypage(request):
 
 # マッチング新規予約
 def create_order(request):
-
     if request.method == 'POST':
-
         obj = Orders.objects.create(
             # マッチング日付
             order_date = request.POST['date'],
@@ -66,7 +67,6 @@ def create_order(request):
             # user_id
             user_id_id = request.user.id
             )
-
         return redirect('search_matching')
     else:
         return render(request, 'create_order.html')
@@ -75,7 +75,6 @@ def create_order(request):
 # @login_required(login_url='/login/')
 # マッチング検索機能
 def search_matching(request):
-
     if request.method == "POST":
         #フォームから入力された条件を受け取る
         category = request.POST.get("purpose")
@@ -93,13 +92,32 @@ def search_matching(request):
                 matched_user_id__isnull=True, 
                 user_id__gender_type=gender
                 ).exclude(user_id=request.user).select_related('user_id')
-
         if orders:
             context = {'orders': orders}
         else:
             context = {'error_message': '条件に一致するデータがありません'}
+
     else:
         context = {}
+    
+    # 申し込みボタンが押された場合
+    if request.method == "POST" and 'matching_button' in request.POST:
+        order_id = request.POST.get('order_id')
+        order = Orders.objects.get(pk=order_id)
+        order.matched_user_id = request.user
+
+        order.save()
+        # メール送信処理
+        recipient_list = [order.user_id.email, order.matched_user_id.email]        
+        # メールの件名
+        subject = '【リマインダー】pairlearyからのお知らせ'
+        # メールの本文
+        message = 'ご希望の予約が完了しました。詳細はアプリで確認してください。'
+        from_email = settings.EMAIL_HOST_USER  # 送信元のメールアドレス
+
+        send_mail(subject, message, from_email, recipient_list, fail_silently=False)
+        return redirect('mypage')
+    
     return render(request, 'search_matching.html', context)
 
 class Tutorial(TemplateView):

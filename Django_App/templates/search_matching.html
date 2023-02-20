@@ -24,7 +24,7 @@
         <!--end--背景の白ボックスとページタイトル ※共通CSS-base.css-->
         <main>
             <!--start--検索条件入力・新規予約エリア-->
-            <form method="POST">{% csrf_token %}
+            <form method="POST" class="select">{% csrf_token %}
                 <h2>探す条件</h2>
                 <h3>目的</h3>
                 <div class="select-button">
@@ -87,9 +87,15 @@
                     <div class="search__result--box-right-bottom">
                         <p class="search__result--comment">{{ order.comment }}</p>
                     </div>
-                        <!-- 参加する！ボタン -->
-                    <input type="submit" class="search-result__apply" name="" value="参加する！ >">
-                </div>    
+                <!-- 参加する！ボタン -->
+                <!-- <input type="submit" class="search-result__apply" name="matching_button" value="参加する！ >"> -->
+                <form method="POST" class="search-result__button" action="{% url 'search_matching' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="order_id" value="{{ order.order_id }}">
+                    <input type="submit" class="search-result__apply" name="matching_button" value="参加する！ >">
+                </form>
+                
+                
                 {% endfor %}
                 {% endif %}
             </div>

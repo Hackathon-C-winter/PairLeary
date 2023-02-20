@@ -43,7 +43,7 @@
                 <!-- メールアドレスフォーム -->
                 <div class="inputBox">
                     <label>メールアドレス</label>
-                    <input type="email" class="inputBox__textbox" name="email" required="" value="{{ user.email }}">
+                    <input type="password" class="inputBox__textbox" name="email" required="" value="{{ user.email }}">
                     <button class="edit-button"><!--編集ボタン ※共通CSS-->
                         <img src="{% static 'img/myPage/mypage-edit-btn+.svg' %}"></a>
                         <img src="{% static 'img/myPage/mypage-edit-btn-hover.svg' %}" class="edit-button__hover"></a>
@@ -52,7 +52,7 @@
                 <!-- パスワードフォーム -->
                 <div class="inputBox">
                     <label>パスワード</label>
-                    <input type="password" class="inputBox__textbox" name="password" required="" value="{{ user.password }}">
+                    <input type="text" class="inputBox__textbox" name="password" required="" value="{{ user.password }}">***
                     <button class="edit-button"><!--編集ボタン ※共通CSS-->
                         <img src="{% static 'img/myPage/mypage-edit-btn+.svg' %}"></a>
                         <img src="{% static 'img/myPage/mypage-edit-btn-hover.svg' %}" class="edit-button__hover"></a>
