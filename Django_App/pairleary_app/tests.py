@@ -11,12 +11,14 @@ def test_is_empty(self):
 
 class UserTestCase(TestCase):
   def setUp(self):
+    """サンプルユーザー作成"""  
     user = CustomUser(username='test', email='test@example.com', gender_type='男性')
     user.save()
     
   def test_saved_single_user(self):
-      qs_counter = CustomUser.objects.count()
-      self.assertEqual(qs_counter, 1)
+    """サンプルユーザーが登録されているか"""  
+    qs_counter = CustomUser.objects.count()
+    self.assertEqual(qs_counter, 1)
 
   # def test_signup(self):
   #     self.assertEqual(self.res.status_code, 302)
