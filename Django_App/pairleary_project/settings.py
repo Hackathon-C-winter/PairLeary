@@ -147,3 +147,10 @@ STATICFILES_DIRS = [BASE_DIR / "static" ]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'pairleary_app.CustomUser'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.office365.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'pairleary@hotmail.com'  # 送信元のメールアドレス
+EMAIL_HOST_PASSWORD = 'Aabbcccc'  # 送信元のメールアドレスのパスワード

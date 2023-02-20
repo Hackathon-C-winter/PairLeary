@@ -6,6 +6,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import UserPassesTestMixin  # 追加
 from django.contrib.auth.decorators import login_required
 from .models import CustomUser, Orders
+from django.core.mail import send_mail
+from django.conf import settings
+
 
 # 新規登録
 def signupfunc(request):
@@ -104,6 +107,15 @@ def search_matching(request):
         order.matched_user_id = request.user
 
         order.save()
+        # メール送信処理
+        recipient_list = [order.user_id.email, order.matched_user_id.email]        
+        # メールの件名
+        subject = '【pairleary】マッチングが成立しました'
+        # メールの本文
+        message = 'マッチングが成立しました。詳細はアプリで確認してください。'
+        from_email = settings.EMAIL_HOST_USER  # 送信元のメールアドレス
+
+        send_mail(subject, message, from_email, recipient_list, fail_silently=False)
         return redirect('mypage')
     
     return render(request, 'search_matching.html', context)
