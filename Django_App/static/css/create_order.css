@@ -154,14 +154,15 @@ label:hover {
     background: #E91E63;
     border-radius: 5px;
     border: none;
+    box-shadow: 2px 2px rgb(173, 20, 87);
     cursor: pointer;
 }
 .order-formbox-button__apply:hover {
     background: linear-gradient(355.35deg, #E91E63 3.29%, #DB316B 42.82%, #FF377B 95.84%);
     color: #FFFFFF;
     transform: translate(-1px, -1px);
-    box-shadow: 2px 2px #650D34;
-    transition: all 0.25s;
+    box-shadow: 3px 3px rgb(173, 20, 87);
+    transition: all 0.2s;
 }
 .order-formbox-button__apply {
     transform: translate(0.05em, 0.05em);

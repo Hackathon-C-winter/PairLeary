@@ -1,18 +1,19 @@
+/* マッチング部屋のCSS */
+/* 検索結果リストのCSSは別ファイル　search_result_list.css */
 
 main {
     position: relative;
     display: flex;
     height: calc(100% - 90px);
-    border: #283593 solid;
 }
 
-form {
+.select{
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 205px;
-    height: 690px;
+    height: 660px;
     left: 3%;
     margin-top: 25px;
     padding: 20px;
@@ -80,9 +81,9 @@ label:hover {
     position: relative;
     width: 0;
     height: 0;
-    margin: 22px 0px;
+    margin: 16px 0px;
     border-style: solid;
-    border-width: 15px 30px 0 30px;
+    border-width: 10px 20px 0px 20px;
     border-color: #283593 transparent transparent transparent;
 }
 
@@ -139,22 +140,11 @@ form p {
     line-height: 23px;
 }
 
-.search-result {
-    position: relative;
-    width: 755px;
-    left: 3%;
-    display: flex;
-    flex-direction: column;
-    /* border: #676767 solid; */
-}
-
-.search-result p {
+/* 検索条件に～の指定 */
+.error-message {
     position: absolute;
     left: 30%;
     top: 3%;
     font-weight: 700;
     font-size: 16px;
-
 }
-
-

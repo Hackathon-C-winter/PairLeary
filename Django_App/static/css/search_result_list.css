@@ -1,0 +1,182 @@
+/* 検索結果エリアの指定 */
+
+.search {
+    position: relative;
+    width: 755px;
+    left: 3%;
+    top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-mypage {
+    position: relative;
+    width: 683px;
+    height: 100%;
+    top: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: #9CE1C0 solid;
+}
+
+
+
+/* 検索結果リスト大枠の四角の指定 */
+.search__result,.booking-box__right {
+    position: relative;
+    display: grid;
+    grid-template-rows: 51px 28px 61px ;
+    grid-template-columns: 120px 325px 148px ;
+    width: 600px;
+    height: 140px;
+    margin-bottom: 20px;
+    background: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.25), 1px 3px 8px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    font-family: 'Noto Sans JP';
+    font-style: normal;
+    font-weight: 700;
+    color: #000000;
+}
+
+/* 検索結果リスト 日にち・時間指定 */
+.search__result--box-left-up {
+    position: relative;
+    grid-row: 1 / 2;
+    grid-column: 1 / 1;
+    text-align: center;
+    width: 110px;
+    height: 68px;
+    padding: 3px;
+    top: 11px;
+    left: 10px;
+    background: #D0D0D0;
+    border-radius: 3px;
+}
+.search__result--year {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+}
+.search__result--month-day {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 25px;
+}
+.search__result--time {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 18px;
+}
+
+/* 希望目的と相手の性別 */
+.search__result--box-left-bottom {
+    position: relative;
+    grid-row: 3 / 4;
+    grid-column: 1 / 2;
+    width: 110px;
+    height: 45px;
+    top: 5px;
+    left: 10px;
+}
+.search__result--box-left-bottom p {
+    position: relative;
+    text-align: center;
+    font-weight: 500;
+    font-size: 11.5px;
+    gap: 5px;
+    line-height: 20px;
+    color: #676767;
+}
+.search__result--purpose {
+    background: #9CE1C0;
+    border-radius: 3px;
+}
+.search__result--gender {
+    background: #FFF59D;
+    border-radius: 3px;
+    margin-top: 5px;
+}
+
+/* 予約作成ユーザー名と性別 */
+.search__result--box-right-up {
+    position: relative;
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+    width: 324px;
+    height: 44px;
+    top: 7px;
+    left: 8px;
+    border: none;
+    border-bottom:1px solid #000000;
+}
+.search__result--user-name {
+    font-size: 16px;
+    line-height: 23px;
+    color: #000000;
+}
+.search__result--user-gender {
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 17px;
+    color: #676767;
+}
+
+/* 予約作成者のコメント */
+.search__result--box-right-bottom {
+    position: relative;
+    grid-row: 2 / 4;
+    grid-column: 2 / 3;
+    width: 324px;
+    height: 72px;
+    padding: 2px;
+    top: 6px;
+    left: 8px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 17px;
+    background: #F2F2F2;
+    border-radius: 5px;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.search__result--box-right-bottom::-webkit-scrollbar {
+    display:none;
+}
+
+/* 参加するボタン　マッチング検索ページのみ */
+.search-result__apply {
+    position: relative;
+    grid-row: 2 / 3;
+    grid-column: 3 / 4;
+    width: 120px;
+    top: -3px;
+    height: 40px;
+    left: 20px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 23px;
+    color: #FFFFFF;
+    background: #E91E63;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    box-shadow: 2px 2px rgb(173, 20, 87);
+    cursor: pointer;
+    border: blue solid;
+}
+.search-result__apply:hover {
+    background: linear-gradient(355.35deg, #E91E63 3.29%, #DB316B 42.82%, #FF377B 95.84%);
+    color: #FFFFFF;
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px rgb(173, 20, 87);
+    transition: all 0.2s;
+}
+.search-result__apply:active {
+    transform: translate(0.05em, 0.05em);
+    box-shadow: 0.05em 0.05em;
+}
