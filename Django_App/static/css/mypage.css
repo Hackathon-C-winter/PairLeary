@@ -65,7 +65,7 @@
 }
 
 /* 登録情報編集ボタン */
-.edit-button {
+button {
     position: relative;
     display: block;
     width: 35px;
@@ -132,3 +132,9 @@
     top: 30px;
     left: calc(50% - 34px);
 }
+
+
+
+
+
+/* モーダル */
