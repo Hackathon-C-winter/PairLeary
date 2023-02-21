@@ -83,12 +83,6 @@ def mypage(request):
                 if user is not None:
                     login(request, user)
                 return redirect('mypage')
-                # return redirect('mypage')
-                # user = request.user
-                # new_password = request.POST.get('password')
-                # user.password = new_password
-                # user.save()
-                # return redirect('mypage')
         except IntegrityError:
             return render(request, 'mypage.html', {'error': '問題が発生しました。リロードしてください。'})
         
