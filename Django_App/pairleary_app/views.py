@@ -53,21 +53,21 @@ def mypage(request):
 # マッチング新規予約
 def create_order(request):
     if request.method == 'POST':
-        obj = Orders.objects.create(
-            # マッチング日付
-            order_date = request.POST['date'],
-            # マッチング時間帯
-            order_time_range_type = request.POST['time'],
-            # 目的（カテゴリ）
-            category = request.POST['purpose'],
-            # 希望する相手の性別
-            hope_gender_type = request.POST['gender'],
-            # コメント
-            comment = request.POST['comment'],
-            # user_id
-            user_id_id = request.user.id
-            )
-        return redirect('search_matching')
+        try:
+            obj = Orders.objects.create(                
+                order_date=request.POST['date'],  # マッチング日付
+                order_time_range_type=request.POST['time'],  # マッチング時間帯
+                category=request.POST['purpose'],  # 目的（カテゴリ）
+                hope_gender_type=request.POST['gender'],  # 希望する相手の性別
+                comment=request.POST['comment'],  # コメント
+                user_id_id=request.user.id  # user_id
+                )
+        # except ValueError:
+        #     return render(request, 'create_order.html', {'error_K': '全ての'})
+        except Exception:
+            return render(request, 'create_order.html', {'error': '全ての'})
+        else:
+            return redirect('search_matching')
     else:
         return render(request, 'create_order.html')
 
