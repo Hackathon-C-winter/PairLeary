@@ -101,10 +101,10 @@
                     <!-- <p>マッチング<br>待ち</p> -->
                     <!-- <p class="comment">{{ order.comment }}</p>  95行目に移動しました -->
                     <!-- {{order.matched_user_id}} -->
-                    {% empty %}     
-                    <p class="comment">まだ予約はありません。</p>
-                    {% endfor %}
                 </div>
+                {% empty %}     
+                <p class="comment">まだ予約はありません。</p>
+                {% endfor %}
             </div>
         </div>
         <!--end--予約状況 一覧-->

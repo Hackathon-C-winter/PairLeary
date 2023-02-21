@@ -21,6 +21,8 @@
     border: #9CE1C0 solid;
 }
 
+
+
 /* 検索結果リスト大枠の四角の指定 */
 .search__result,.booking-box__right {
     position: relative;
@@ -39,14 +41,6 @@
     font-weight: 700;
     color: #000000;
 }
-
-/* .search-mypage {
-    position: relative;
-
-
-    top: 0px;
-    left: 0px;
-} */
 
 /* 検索結果リスト 日にち・時間指定 */
 .search__result--box-left-up {
