@@ -6,6 +6,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import UserPassesTestMixin  # 追加
 from django.contrib.auth.decorators import login_required
 from .models import CustomUser, Orders
+from django.core.mail import send_mail
+from django.conf import settings
 
 
 # 新規登録
@@ -22,7 +24,6 @@ def signupfunc(request):
             return render(request, 'signup.html', {'error': 'このユーザーは登録済みです。'})
     return render(request, 'signup.html')
 
-
 # ログイン
 def loginfunc(request):
     if request.method == "POST":
@@ -36,60 +37,35 @@ def loginfunc(request):
             return redirect('signup')
     return render(request, 'login.html', {})
 
-
+# ログアウト
 def logoutfunc(request):
     logout(request)
     return redirect('login')
 
-
-# class MyPage(TemplateView):
-#     template_name = "mypage.html"
-
-
-class OnlyYouMixin(UserPassesTestMixin):
-    raise_exception = True
-
-    def test_func(self):
-        # 今ログインしてるユーザーのpkと、そのマイページのpkが同じなら許可
-        user = self.request.user
-        return user.pk == self.kwargs['pk']
-
-
-class MyPage(View, OnlyYouMixin):
-    def get(self, request, *args, **kwargs):
-        order_data = Orders.objects.all()
-
-        return render(request, 'mypage.html', {
-            'order_data': order_data,
-        })
-
+# マイページ
 @login_required
-def userlist(request):
-    return render(request, 'mypage.html')
+def mypage(request):
+    user = request.user
+    # ユーザーIDがログインしているユーザーと一致する予約情報を取得
+    order_data = Orders.objects.filter(user_id_id = user)
+    return render(request, 'mypage.html', {'order_data': order_data,})
 
 # マッチング新規予約
 def create_order(request):
-
     if request.method == 'POST':
         try:
-            obj = Orders.objects.create(
-                
-                order_date = request.POST['date'],  # マッチング日付
-                
-                order_time_range_type = request.POST['time'],  # マッチング時間帯
-                
-                category = request.POST['purpose'],  # 目的（カテゴリ）
-                
-                hope_gender_type = request.POST['gender'],  # 希望する相手の性別
-                
-                comment = request.POST['comment'],  # コメント
-                
-                user_id_id = request.user.id  # user_id
+            obj = Orders.objects.create(                
+                order_date=request.POST['date'],  # マッチング日付
+                order_time_range_type=request.POST['time'],  # マッチング時間帯
+                category=request.POST['purpose'],  # 目的（カテゴリ）
+                hope_gender_type=request.POST['gender'],  # 希望する相手の性別
+                comment=request.POST['comment'],  # コメント
+                user_id_id=request.user.id  # user_id
                 )
         # except ValueError:
         #     return render(request, 'create_order.html', {'error_K': '全ての'})
         except Exception:
-            return render(request, 'create_order.html', {'error_K': '全ての'})
+            return render(request, 'create_order.html', {'error': '全ての'})
         else:
             return redirect('search_matching')
     else:
@@ -99,7 +75,6 @@ def create_order(request):
 # @login_required(login_url='/login/')
 # マッチング検索機能
 def search_matching(request):
-
     if request.method == "POST":
         #フォームから入力された条件を受け取る
         category = request.POST.get("purpose")
@@ -110,7 +85,6 @@ def search_matching(request):
                 category=category, 
                 matched_user_id__isnull=True, 
                 ).exclude(user_id=request.user).select_related('user_id')
-            print(orders.query)
         else:
             #ordersテーブルからカテゴリがcategory、性別がgender、マッチング相手がいないデータを取得
             orders = Orders.objects.filter(
@@ -118,14 +92,32 @@ def search_matching(request):
                 matched_user_id__isnull=True, 
                 user_id__gender_type=gender
                 ).exclude(user_id=request.user).select_related('user_id')
-            print(orders.query)
-
         if orders:
             context = {'orders': orders}
         else:
             context = {'error_message': '条件に一致するデータがありません'}
+
     else:
         context = {}
+    
+    # 申し込みボタンが押された場合
+    if request.method == "POST" and 'matching_button' in request.POST:
+        order_id = request.POST.get('order_id')
+        order = Orders.objects.get(pk=order_id)
+        order.matched_user_id = request.user
+
+        order.save()
+        # メール送信処理
+        recipient_list = [order.user_id.email, order.matched_user_id.email]        
+        # メールの件名
+        subject = '【リマインダー】pairlearyからのお知らせ'
+        # メールの本文
+        message = 'ご希望の予約が完了しました。詳細はアプリで確認してください。'
+        from_email = settings.EMAIL_HOST_USER  # 送信元のメールアドレス
+
+        send_mail(subject, message, from_email, recipient_list, fail_silently=False)
+        return redirect('mypage')
+    
     return render(request, 'search_matching.html', context)
 
 class Tutorial(TemplateView):

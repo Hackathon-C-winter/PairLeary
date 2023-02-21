@@ -25,7 +25,9 @@ class Orders(models.Model):
     category = models.CharField(default='null', max_length=150)
     hope_gender_type = models.CharField(max_length=15, default=None, verbose_name="性別", blank=True, null=True)
     comment = models.CharField(default='null', max_length=255)
-    matched_user_id = models.ForeignKey(CustomUser, on_delete=models.SET_NULL,to_field='id', null=True,related_name='matched_user_id')
+    # matched_user_id = models.ForeignKey(CustomUser, on_delete=models.SET_NULL,to_field='id', null=True,related_name='matched_user_id')
+    matched_user_id = models.ForeignKey(CustomUser, on_delete=models.SET_NULL,to_field='id', null=True,related_name='matched_user')
+
 
     def save(self, *args, **kwargs):
         return super(Orders, self).save(*args, **kwargs)
