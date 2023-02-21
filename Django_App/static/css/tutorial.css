@@ -6,6 +6,7 @@
     justify-content: space-around;
     width: 1024px;
     left: calc(50% - 512px);
+    z-index: 3;
 }
 
 button {
