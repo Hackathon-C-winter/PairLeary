@@ -65,7 +65,7 @@ def create_order(request):
         # except ValueError:
         #     return render(request, 'create_order.html', {'error_K': '全ての'})
         except Exception:
-            return render(request, 'create_order.html', {'error': '全ての'})
+            return render(request, 'create_order.html', {'error': '全ての希望条件を選択してください'})
         else:
             return redirect('search_matching')
     else:
