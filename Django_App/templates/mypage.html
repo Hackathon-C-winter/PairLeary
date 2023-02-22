@@ -116,7 +116,7 @@
 
 <!-- srart--モーダル -->
     <!--start-- modal-1 UserName-->
-    <form>
+    <form method="POST">{% csrf_token %}
         <div id="modal-1" class="modal">
             <div class="modal__content">
                 <div class="modal__content--title">
@@ -124,13 +124,14 @@
                 </div>
                 <span class="modal-close">×</span>
                 <input type="text" id="inputUsername" class="" name="username" required>
-                <input type="submit" class="" name="username" value="edit user name">
+                <!-- <input type="button" class="" name="username" value="edit user name"> -->
+                <button>edit user name</button>
             </div>
         </div>
     </form>
     <!--end-- modal-1 -->
     <!--start-- modal-2 Mail-Address-->
-    <form>
+    <form method="POST">{% csrf_token %}
         <div id="modal-2" class="modal">
             <div class="modal__content">
                 <div class="modal__content--title">
@@ -138,13 +139,14 @@
                 </div>
                 <span class="modal-close">×</span>
                 <input type="email" name="email" required>
-                <input type="submit" class="" name="email" value="edit email address">
+                <!-- <input type="submit" class="" name="email" value="edit email address"> -->
+                <button>edit email address</button>
             </div>
         </div>
     </form>
     <!--end-- modal-2 -->
     <!--start-- modal-3 Password-->
-    <form>
+    <form method="POST">{% csrf_token %}
         <div id="modal-3" class="modal">
             <div class="modal__content">
                 <div class="modal__content--title">
@@ -152,13 +154,14 @@
                 </div>
                 <span class="modal-close">×</span>
                 <input type="password" id="inputPassword" class="" name="password" required>
-                <input type="submit" class="" name="password" value="edit password">
+                <!-- <input type="submit" class="" name="password" value="edit password"> -->
+                <button>edit password</button>
             </div>
         </div>
     </form>
     <!-- end--modal-3 -->
     <!--start-- modal-4 Gender -->
-    <form>
+    <form method="POST">{% csrf_token %}
         <div id="modal-4" class="modal">
             <div class="modal__content">
                 <div class="modal__content--title">
@@ -166,7 +169,8 @@
                 </div>
                 <span class="modal-close">×</span>
                 <input type="text" id="inputGender" class="" name="gender" required autofocus>
-                <input type="submit" class="" name="gender" value="edit gender">
+                <!-- <input type="submit" class="" name="gender" value="edit gender"> -->
+                <button>edit gender</button>
         </div>
     </form>
     <!-- end--modal-4 -->
