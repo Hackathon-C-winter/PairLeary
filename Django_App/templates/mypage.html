@@ -79,36 +79,43 @@
                 <img src="{% static 'img/mypage/reservation-icon.svg' %}" alt="reservation-icon">
                 <p>予約状況</p>
             </div>
-            <div class="booking-box__border"></div>
-            <div class="search-mypage">
-                {% for order in order_data %}
-                <div class="booking-box__right">
-                    <div class="search__result--box-left-up">
-                        <p class="search__result--year">{{ order.order_date|date:"Y年" }}</p>
-                        <p class="search__result--month-day">{{ order.order_date|date:"m月j日" }}</p>
-                        <p class="search__result--time">{{order.order_time_range_type}}</p>
-                    </div>
-
-                    <div class="search__result--box-left-bottom">
-                        <p id="add-class-name" class="search__result--purpose">{{ order.category }}</p>
-                        <p id="add-class-name" class="search__result--gender">{{ order.hope_gender_type }}希望</p>
-                    </div>
-                    <div class="search__result--box-right-up">
-                        <p class="search__result--user-name">{{ user.username }}さん</p>
-                        <p class="search__result--user-gender">{{ user.gender_type }}</p>
-                    </div>
-                    <div class="search__result--box-right-bottom">
-                        <p class="search__result--comment">{{ order.comment }}</p>
-                    </div>
-                    <!-- <p>マッチング<br>待ち</p> -->
-                    <!-- <p class="comment">{{ order.comment }}</p>  95行目に移動しました -->
-                    <!-- {{order.matched_user_id}} -->
-                </div>
-                {% empty %}     
-                <p class="comment">まだ予約はありません。</p>
-                {% endfor %}
-            </div>
         </div>
+            <!-- <div class="booking-box__border"></div> -->
+        <div class="search-mypage">
+            {% for order in order_data %}
+            <div class="search__result">
+                <div class="search__result--box-left-up">
+                    <p class="search__result--year">{{ order.order_date|date:"Y年" }}</p>
+                    <p class="search__result--month-day">{{ order.order_date|date:"m月j日" }}</p>
+                    <p class="search__result--time">{{order.order_time_range_type}}</p>
+                </div>
+
+                <div class="search__result--box-left-bottom">
+                    <p id="add-class-name" class="search__result--purpose">{{ order.category }}</p>
+                    <p id="add-class-name" class="search__result--gender">{{ order.hope_gender_type }}希望</p>
+                </div>
+                <div class="search__result--box-right-up">
+                    <p class="search__result--user-name">{{ user.username }}さん</p>
+                    <p class="search__result--user-gender">{{ user.gender_type }}</p>
+                </div>
+                <div class="search__result--box-right-bottom">
+                    <p class="search__result--comment">{{ order.comment }}</p>
+                </div>
+                {%if order.matched_user_id == none%}
+                <div class="matching-status">
+                    <p class="matching-status-none">マッチング<br>待ち</p>
+                </div>
+                {% else %}
+                <div class="matching-status">
+                    <p class="matching-status-on"><span>{{order.matched_user_id}}<br>さんと</span><br>マッチング中</p>
+                </div>
+                {% endif %}
+                <!-- <p>マッチング<br>待ち</p> -->
+            </div>
+            {% empty %}     
+            <p class="comment">まだ予約はありません。</p>
+            {% endfor %}
+        </div>    
         <!--end--予約状況 一覧-->
     </div>
     {% endif %}
@@ -124,7 +131,7 @@
                 </div>
                 <span class="modal-close">×</span>
                 <input type="text" id="inputUsername" class="" name="username" required>
-                <input type="submit" class="" name="username" value="edit user name">
+                <button>edit user name</button>
             </div>
         </div>
     </form>
@@ -138,7 +145,7 @@
                 </div>
                 <span class="modal-close">×</span>
                 <input type="email" name="email" required>
-                <input type="submit" class="" name="email" value="edit email address">
+                <button>edit email</button>
             </div>
         </div>
     </form>
@@ -152,7 +159,7 @@
                 </div>
                 <span class="modal-close">×</span>
                 <input type="password" id="inputPassword" class="" name="password" required>
-                <input type="submit" class="" name="password" value="edit password">
+                <button>edit password</button>
             </div>
         </div>
     </form>
@@ -166,7 +173,7 @@
                 </div>
                 <span class="modal-close">×</span>
                 <input type="text" id="inputGender" class="" name="gender" required autofocus>
-                <input type="submit" class="" name="gender" value="edit gender">
+                <button>edit gender</button>
         </div>
     </form>
     <!-- end--modal-4 -->

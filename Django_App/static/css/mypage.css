@@ -97,8 +97,9 @@ button {
 .booking-box {
     position: relative;
     display: flex;
-    width: 840px;
-    height: 55%;
+    align-items: center;
+    width: 160px;
+    height: 240px;
     top: 40px;
     left: calc(50% - 420px);
     background: rgba(255, 255, 255, 0.5);
@@ -111,18 +112,17 @@ button {
     position: relative;
     text-align: center;
     width: 160px;
-    height: 68px;
-    top: calc(50% - 34px);
+    height: 75px;
 }
 
 /* 縦線 */
-.booking-box__border {
+/* .booking-box__border {
     position: relative;
     width: 2px;
-    height: 90%;
-    top: 4.5%;
+    height: 45%;
+    top: 3%;
     background: #676767;
-}
+} */
 
 /* まだ予約はありません表示指定 */
 .comment {
@@ -133,8 +133,3 @@ button {
     left: calc(50% - 34px);
 }
 
-
-
-
-
-/* モーダル */
