@@ -13,7 +13,7 @@
 
 {% block body %}
 <body>
-    {% if request.user.is_authenticated %}
+    <!-- {% if request.user.is_authenticated %} -->
     <!--start--背景の白ボックスとページタイトル ※共通CSS-base.css -->
     <div class="background-white-box">
         <div class="page-title">
@@ -25,6 +25,7 @@
         </div> 
         <!--end--背景の白ボックスとページタイトル ※共通CSS-->
         <!--start--編集 編集 mail パスワード-->
+
         <div class="edit-user-detail">
             <!-- ユーザーネームフォーム -->
             <div class="edit-user-detail__icon">
@@ -96,7 +97,7 @@
                 </div>
                 <div class="search__result--box-right-up">
                     <p class="search__result--user-name">{{ user.username }}さん</p>
-                    <p class="search__result--user-gender">{{ user.gender_type }}</p>
+                    <p class="search__result--user-gender">{{ order.user_id.gender_type }}</p>
                 </div>
                 <div class="search__result--box-right-bottom">
                     <p class="search__result--comment">{{ order.comment }}</p>
@@ -123,7 +124,7 @@
 
 <!-- srart--モーダル -->
     <!--start-- modal-1 UserName-->
-    <form>
+    <form method="POST">{% csrf_token %}
         <div id="modal-1" class="modal">
             <div class="modal__content">
                 <div class="modal__content--title">
@@ -137,7 +138,7 @@
     </form>
     <!--end-- modal-1 -->
     <!--start-- modal-2 Mail-Address-->
-    <form>
+    <form method="POST">{% csrf_token %}
         <div id="modal-2" class="modal">
             <div class="modal__content">
                 <div class="modal__content--title">
@@ -151,7 +152,7 @@
     </form>
     <!--end-- modal-2 -->
     <!--start-- modal-3 Password-->
-    <form>
+    <form method="POST">{% csrf_token %}
         <div id="modal-3" class="modal">
             <div class="modal__content">
                 <div class="modal__content--title">
@@ -165,7 +166,7 @@
     </form>
     <!-- end--modal-3 -->
     <!--start-- modal-4 Gender -->
-    <form>
+    <form method="POST">{% csrf_token %}
         <div id="modal-4" class="modal">
             <div class="modal__content">
                 <div class="modal__content--title">

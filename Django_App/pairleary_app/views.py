@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from .models import CustomUser, Orders
 from django.core.mail import send_mail
 from django.conf import settings
+from django.contrib.auth.hashers import make_password
 
 
 # 新規登録
@@ -48,26 +49,63 @@ def mypage(request):
     user = request.user
     # ユーザーIDがログインしているユーザーと一致する予約情報を取得
     order_data = Orders.objects.filter(user_id_id = user)
+    # 画面側から送られてきた箇所をアップデートする
+    if request.method == 'POST':
+        try:
+            if 'username' in request.POST:
+                user = request.user
+                print(user)
+                new_username = request.POST.get('username')
+                user.username = new_username
+                print(user)
+                user.save()
+                return redirect('mypage')
+            if 'email' in request.POST:
+                user = request.user
+                new_email = request.POST.get('email')
+                user.email = new_email
+                user.save()
+                return redirect('mypage')
+            if 'gender' in request.POST:
+                user = request.user
+                new_gender = request.POST.get('gender')
+                user.gender_type = new_gender
+                user.save()
+                return redirect('mypage')
+            if 'password' in request.POST:
+                user = request.user
+                new_password = request.POST.get('password')
+                hashed_password = make_password(new_password)
+                user.password = hashed_password
+                user.save()
+                # セッションを再認証する
+                user = authenticate(username=user.username, password=new_password)
+                if user is not None:
+                    login(request, user)
+                return redirect('mypage')
+        except IntegrityError:
+            return render(request, 'mypage.html', {'error': '問題が発生しました。リロードしてください。'})
+        
     return render(request, 'mypage.html', {'order_data': order_data,})
 
 # マッチング新規予約
 def create_order(request):
     if request.method == 'POST':
-        obj = Orders.objects.create(
-            # マッチング日付
-            order_date = request.POST['date'],
-            # マッチング時間帯
-            order_time_range_type = request.POST['time'],
-            # 目的（カテゴリ）
-            category = request.POST['purpose'],
-            # 希望する相手の性別
-            hope_gender_type = request.POST['gender'],
-            # コメント
-            comment = request.POST['comment'],
-            # user_id
-            user_id_id = request.user.id
-            )
-        return redirect('search_matching')
+        try:
+            obj = Orders.objects.create(                
+                order_date=request.POST['date'],  # マッチング日付
+                order_time_range_type=request.POST['time'],  # マッチング時間帯
+                category=request.POST['purpose'],  # 目的（カテゴリ）
+                hope_gender_type=request.POST['gender'],  # 希望する相手の性別
+                comment=request.POST['comment'],  # コメント
+                user_id_id=request.user.id  # user_id
+                )
+        # except ValueError:
+        #     return render(request, 'create_order.html', {'error_K': '全ての'})
+        except Exception:
+            return render(request, 'create_order.html', {'error': '全ての希望条件を選択してください'})
+        else:
+            return redirect('search_matching')
     else:
         return render(request, 'create_order.html')
 

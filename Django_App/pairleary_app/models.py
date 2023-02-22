@@ -4,7 +4,6 @@ from django.contrib.auth.models import User, AbstractUser, BaseUserManager
 from django.utils import timezone
 
 
-
 #Userを継承しカラムを追加したクラス
 
 
