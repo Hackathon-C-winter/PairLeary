@@ -1,15 +1,22 @@
 /* 検索結果エリアの指定 */
 
-/* MyPageのリスト表示エリア指定 */
+/* マッチング部屋のリスト表示エリア指定 */
 .search {
     position: relative;
     width: 755px;
     height: auto;
     top: 25px;
-    left: 3%;
+    left: 4%;
+    padding: 0 0 30px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.search::-webkit-scrollbar {
+    display: none;
 }
 
 /* MyPageのリスト表示エリア指定 */
@@ -17,9 +24,9 @@
     position: relative;
     width: 680px;
     height: auto;
-    top: -205px;
-    left: calc(58% - 340px);
-    padding: 5px 0 30px 0;
+    top: -203px;
+    left: calc(58% - 320px);
+    padding: 0px 0 30px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -122,7 +129,7 @@
     position: relative;
     grid-row: 1 / 2;
     grid-column: 2 / 3;
-    width: 324px;
+    width: 325px;
     height: 44px;
     top: 7px;
     left: 8px;
@@ -130,10 +137,18 @@
     border-bottom: 1px solid #000000;
 }
 
+/* 予約ユーザー名 */
 .search__result--user-name {
     font-size: 16px;
     line-height: 23px;
     color: #000000;
+}
+
+/* さんの指定 */
+.search__result--user-name span {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
 }
 
 .search__result--user-gender {
@@ -148,7 +163,7 @@
     position: relative;
     grid-row: 2 / 4;
     grid-column: 2 / 3;
-    width: 324px;
+    width: 325px;
     height: 72px;
     padding: 2px;
     top: 6px;

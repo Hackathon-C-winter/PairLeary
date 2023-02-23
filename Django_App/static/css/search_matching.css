@@ -14,7 +14,7 @@ main {
     align-items: center;
     width: 205px;
     height: 660px;
-    left: 3%;
+    left: 8%;
     margin-top: 25px;
     padding: 20px;
     background: rgba(255, 255, 255, 0.5);
@@ -143,8 +143,8 @@ form p {
 /* 検索条件に～の指定 */
 .error-message {
     position: absolute;
-    left: 30%;
+    left: 28%;
     top: 3%;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 20px;
 }

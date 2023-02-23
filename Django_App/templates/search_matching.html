@@ -72,7 +72,7 @@
                 <div class="search__result">
                     <div class="search__result--box-left-up">
                         <p class="search__result--year">{{ order.order_date|date:"Y年" }}</p>
-                        <p class="search__result--month-day">{{ order.order_date|date:"m月j日" }}</p>
+                        <p class="search__result--month-day">{{ order.order_date|date:"n月j日" }}</p>
                         <p class="search__result--time">{{order.order_time_range_type}}</p>
                     </div>
                     <div class="search__result--box-left-bottom">
@@ -81,7 +81,7 @@
                     </div>
                 
                     <div class="search__result--box-right-up">
-                        <p class="search__result--user-name">{{ order.user_id }}</p>
+                        <p class="search__result--user-name">{{ order.user_id }}<span>さん</span></p>
                         <p class="search__result--user-gender">{{ order.user_id.gender_type }}</p>
                     </div>
                     <div class="search__result--box-right-bottom">
