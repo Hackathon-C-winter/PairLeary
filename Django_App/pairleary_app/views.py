@@ -44,7 +44,7 @@ def logoutfunc(request):
     return redirect('login')
 
 # マイページ
-@login_required
+@login_required(login_url='/login/')
 def mypage(request):
     user = request.user
     # ユーザーIDがログインしているユーザーと一致する予約情報を取得
@@ -89,6 +89,7 @@ def mypage(request):
     return render(request, 'mypage.html', {'order_data': order_data,})
 
 # マッチング新規予約
+@login_required(login_url='/login/')
 def create_order(request):
     if request.method == 'POST':
         try:
@@ -110,7 +111,7 @@ def create_order(request):
         return render(request, 'create_order.html')
 
 # ログインしているユーザーにのみ表示される
-# @login_required(login_url='/login/')
+@login_required(login_url='/login/')
 # マッチング検索機能
 def search_matching(request):
     if request.method == "POST":
