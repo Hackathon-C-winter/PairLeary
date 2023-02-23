@@ -32,9 +32,9 @@ body {
 /* header 色指定 */
 header {
     display: flex;
+    position: fixed;
     height: 60px;
     width: 100vw;
-    position: fixed;
     background: linear-gradient(89.85deg, rgba(40, 53, 147, 0.9) -3.64%, rgba(40, 53, 147, 0.7) 40.19%, rgba(233, 30, 99, 0.6) 101.22%);
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(2.5px);
@@ -153,7 +153,7 @@ header {
     display: flex;
     align-items: center;
     width: 950px;
-    height: 76px;
+    height: 65px;
     top: 0px;
     left: calc(50% - 475px);
     border: none;

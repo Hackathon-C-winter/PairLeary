@@ -5,11 +5,13 @@
 .edit-user-detail {
     position: relative;
     display: flex;
-    width: 840px;
+    width: 800px;
     height: 230px;
+    padding-right: 20px;
     top: 20px;
-    left: calc(50% - 420px);
+    left: calc(50% - 400px);
     background: rgba(255, 255, 255, 0.5);
+    border: 2px solid #FFFFFF;
     box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.25), 1px 3px 8px 4px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
 }
@@ -17,7 +19,7 @@
 .edit-user-detail__icon {
     position: relative;
     text-align: center;
-    width: 160px;
+    width: 180px;
     height: 71px;
     top: calc(50% - 36px);
 }
@@ -26,23 +28,14 @@
     height: 40px;
 }
 
-/* 縦線 */
-.edit-user-detail__border {
-    position: relative;
-    width: 1.5px;
-    height: 190px;
-    top: 20px;
-    background: #676767;
-}
-
 /* フォーム全体　横線 */
 .inputBox {
     position: relative;
     display: flex;
     align-items: center;
-    width: 600px;
+    width: 580px;
     height: 50px;
-    left: 40px;
+    left: 20px;
     top: 8px;
     border-bottom: 1px solid #676767;
     font-weight: 400;
@@ -54,7 +47,7 @@
 /* テキストボックス指定 */
 .inputBox__textbox {
     position: absolute;
-    width: 350px;
+    width: 360px;
     height: 35px;
     left: 150px;
     font-weight: 400;
@@ -97,11 +90,13 @@ button {
 .booking-box {
     position: relative;
     display: flex;
-    width: 840px;
-    height: 55%;
+    align-items: center;
+    width: 180px;
+    height: 240px;
     top: 40px;
-    left: calc(50% - 420px);
+    left: calc(50% - 400px);
     background: rgba(255, 255, 255, 0.5);
+    border: 2px solid #FFFFFF;
     box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.25), 1px 3px 8px 4px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
 }
@@ -110,31 +105,17 @@ button {
 .booking-box__left {
     position: relative;
     text-align: center;
-    width: 160px;
-    height: 68px;
-    top: calc(50% - 34px);
-}
-
-/* 縦線 */
-.booking-box__border {
-    position: relative;
-    width: 2px;
-    height: 90%;
-    top: 4.5%;
-    background: #676767;
+    width: 180px;
+    height: 75px;
 }
 
 /* まだ予約はありません表示指定 */
-.comment {
+p.comment {
     position: absolute;
-    width: 176px;
+    width: 220px;
     height: 30px;
-    top: 30px;
-    left: calc(50% - 34px);
+    left: calc(50% - 110px);
+    font-weight: 700;
+    font-size: 20px;
 }
 
-
-
-
-
-/* モーダル */

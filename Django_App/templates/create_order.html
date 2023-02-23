@@ -33,6 +33,7 @@
             <h2>希望条件を入力してください</h2>
             
             <form method="POST">{% csrf_token %}
+                <p class="error-message">{{ error }}</p>
                 <h3>マッチング日</h3> <!-- マッチング日フォーム -->
                 <input type="input" id="calender" placeholder="日付を選択してください" class="order-date" name="date" required="" readonly="readonly"> <!-- "name="date"は変更不可 -->
 
@@ -77,7 +78,6 @@
                         <label for="both">どちらでもOK</label>
                     </div>
                 </div>
-                <h2 style="color: red;">{{ error }}</h2>
                 <h3>コメント</h3>
                 <div class="comment">
                     <textarea id="comment-text" class="comment__from" name="comment" value="" required></textarea> <!-- name="comment"は変更不可 -->
