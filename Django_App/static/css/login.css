@@ -68,7 +68,7 @@ body {
 /* PairLearyロゴの指定 */
 .app-logo {
     position: relative;
-    top: -10%;
+    top: -50px;
     font-family: 'Oleo Script Swash Caps';
     font-style: normal;
     font-weight: 400;
@@ -80,7 +80,7 @@ body {
 /* 「夢は～」の文字指定 */
 .subtitle {
     position: relative;
-    top: -10%;
+    top: -55px;
     font-family: 'Noto Sans JP';
     font-style: normal;
     font-weight: 400;
@@ -104,7 +104,7 @@ body {
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 700;
-    font-size: 24px;
+    font-size: 22px;
     line-height: 33px;
     color: #000000;
 }
@@ -115,7 +115,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 60px;
-    margin-top: 40px;
+    margin-top: 25px;
 }
 
 /* テキスト入力フォームのタイトル指定 */
@@ -124,7 +124,7 @@ body {
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 27px;
     color: #000000;
 }
@@ -151,7 +151,7 @@ body {
     position: relative;
     width: 200px;
     height: 40px;
-    margin-top: 60px;
+    margin-top: 50px;
     left: calc(50% - 100px);
     background: #E91E63;
     border-radius: 10px;
@@ -179,6 +179,7 @@ body {
 
 /* Do not have an account?の文字指定 */
 .change-registration p {
+    width: 330px;
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 700;
@@ -190,8 +191,11 @@ body {
 /* Signinボタンの指定 */
 .change-registration__button {
     position: relative;
-    width: 85px;
-    height: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    height: 30px;
     top: -4px;
     background: rgba(255, 255, 255, 0.8);
     border: 2px solid #BFBFBF;
@@ -207,7 +211,14 @@ body {
 /* Signinボタンのリンクエリアをボタンサイズにする */
 .change-registration__button a {
     display: block;
+    margin-bottom: 4px;
+    color:inherit;
     text-decoration: none;
+    font-family: 'Noto Sans JP';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #000000;
 }
 
 /* chormeの補完機能(mailドレス自動入力)で背景色を変えないようにする */

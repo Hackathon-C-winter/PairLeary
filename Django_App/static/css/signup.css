@@ -5,15 +5,21 @@ header {
     display: none;
 }
 
-/* base.htmlにあるtutorialを隠す */
-.tutorial , .background-white-box-background {
+/* base.htmlにあるtutorialと白ボックスを隠す */
+.tutorial,
+.background-white-box-background {
     display: none;
 }
 
 /*** フェードインアニメーション ***/
 @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 /* 背景画像の指定ロゴ・フォームのセンター指定 */
@@ -34,7 +40,7 @@ body {
 /* PairLearyロゴの指定 */
 .app-logo {
     position: relative;
-    top: -10%;
+    top: -50px;
     font-family: 'Oleo Script Swash Caps';
     font-style: normal;
     font-weight: 400;
@@ -46,7 +52,7 @@ body {
 /* 「夢は～」の文字指定 */
 .subtitle {
     position: relative;
-    top: -10%;
+    top: -55px;
     font-family: 'Noto Sans JP';
     font-style: normal;
     font-weight: 400;
@@ -62,7 +68,6 @@ body {
     flex-direction: column;
     width: 320px;
     height: 420px;
-    /* border: #000000 solid; */
 }
 
 /* Sign upの文字指定 */
@@ -70,7 +75,7 @@ body {
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 700;
-    font-size: 24px;
+    font-size: 22px;
     line-height: 33px;
     color: #000000;
 }
@@ -80,7 +85,7 @@ body {
     font-family: 'Noto Sans JP';
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 20px;
     color: #676767;
 }
@@ -91,7 +96,7 @@ body {
     display: flex;
     flex-direction: column;
     height: 60px;
-    margin-top: 40px;
+    margin-top: 25px;
 }
 
 /* テキスト入力フォームのタイトル指定 */
@@ -100,7 +105,7 @@ body {
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 27px;
     color: #000000;
 }
@@ -111,9 +116,8 @@ body {
     height: 35px;
     border: none;
     border-bottom: #000000 solid;
-    background-color:transparent;
+    background-color: transparent;
     outline: none;
-
     font-family: 'Noto Sans JP';
     font-style: normal;
     font-weight: 400;
@@ -127,7 +131,7 @@ body {
     position: relative;
     width: 200px;
     height: 40px;
-    margin-top: 60px;
+    margin-top: 50px;
     left: calc(50% - 100px);
     background: #E91E63;
     border-radius: 10px;
@@ -141,6 +145,7 @@ body {
     cursor: pointer;
     transition: all 0.3s;
 }
+
 .registration-button:hover {
     background: #AD1457;
 }
@@ -155,6 +160,7 @@ body {
 
 /* Already have an account?の文字指定 */
 .change-registration p {
+    width: 330px;
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 700;
@@ -163,17 +169,22 @@ body {
     color: #000000;
 }
 
-/* Log inボタンの指定 */
+/* Signinupへのボタンの指定 */
 .change-registration__button {
     position: relative;
-    width: 85px;
-    height: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    height: 30px;
     top: -4px;
     background: rgba(255, 255, 255, 0.8);
     border: 2px solid #BFBFBF;
     border-radius: 10px;
     transition: all 0.3s;
+
 }
+
 .change-registration__button:hover {
     background: rgba(222, 222, 222, 0.8);
     border: 2px solid #565656;
@@ -183,7 +194,14 @@ body {
 /* Log inボタンのリンクエリアをボタンサイズにする */
 .change-registration__button a {
     display: block;
+    margin-bottom: 4px;
+    color:inherit;
     text-decoration: none;
+    font-family: 'Noto Sans JP';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #000000;
 }
 
 /* chormeの補完機能(mailドレス自動入力)で背景色を変えないようにする */
