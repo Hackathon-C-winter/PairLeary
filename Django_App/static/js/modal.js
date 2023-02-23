@@ -2,7 +2,7 @@
 const modalBtns = document.querySelectorAll(".modal-toggle");
 modalBtns.forEach(function (btn) {
     btn.onclick = function () {
-    let modal = btn.getAttribute('data-modal');
+    const modal = btn.getAttribute('data-modal');
         document.getElementById(modal).style.display = "block";
     };
 });
@@ -11,7 +11,7 @@ modalBtns.forEach(function (btn) {
 const closeBtns = document.querySelectorAll(".modal-close");
 closeBtns.forEach(function (btn) {
     btn.onclick = function () {
-    let modal = btn.closest('.modal');
+    const modal = btn.closest('.modal');
     modal.style.display = "none";
     };
 });
