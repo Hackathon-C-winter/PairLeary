@@ -154,9 +154,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'pairleary_app.CustomUser'
 
+# メール通知機能設定
+# hotmailを使う方法（エラーが表示されるようになったので新しい設定）
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.office365.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'pairleary@hotmail.com'  # 送信元のメールアドレス
+# EMAIL_HOST_PASSWORD = 'Aabbcccc'  # 送信元のメールアドレスのパスワード(hotmail)
+
+# 自鯖で設定
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.office365.com'
+EMAIL_HOST = 'purewest.dip.jp'
 EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'pairleary@hotmail.com'  # 送信元のメールアドレス
-EMAIL_HOST_PASSWORD = 'Aabbcccc'  # 送信元のメールアドレスのパスワード(hotmail)
+EMAIL_USE_TLS = False
+EMAIL_HOST_USER = 'pairleary@regulus.wjg.jp'  # 送信元のメールアドレス
+EMAIL_HOST_PASSWORD = 'aabbcccc'  # 送信元のメールアドレスのパスワード
