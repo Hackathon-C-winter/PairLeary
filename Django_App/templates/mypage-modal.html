@@ -1,6 +1,6 @@
 <!--start-- modal-1 UserName-->
     <form method="POST">{% csrf_token %}
-        <div id="modal-1" class="modal">
+        <div id="editUserName" class="modal">
             <div class="modal__content">
                 <div class="modal__content--title">
                     <h2>User-name</h2>
@@ -14,7 +14,7 @@
     <!--end-- modal-1 -->
     <!--start-- modal-2 Mail-Address-->
     <form method="POST">{% csrf_token %}
-        <div id="modal-2" class="modal">
+        <div id="editEmail" class="modal">
             <div class="modal__content">
                 <div class="modal__content--title">
                     <h2>Mail-Address</h2>
@@ -28,7 +28,7 @@
     <!--end-- modal-2 -->
     <!--start-- modal-3 Password-->
     <form method="POST">{% csrf_token %}
-        <div id="modal-3" class="modal">
+        <div id="editPassword" class="modal">
             <div class="modal__content">
                 <div class="modal__content--title">
                     <h2>Password</h2>
@@ -42,13 +42,12 @@
     <!-- end--modal-3 -->
     <!--start-- modal-4 Gender -->
     <form method="POST">{% csrf_token %}
-        <div id="modal-4" class="modal">
+        <div id="editGender" class="modal">
             <div class="modal__content">
                 <div class="modal__content--title">
                     <h2>Gender</h2>
                 </div>
                 <span class="modal-close">×</span>
-                <!-- <input type="text" id="inputGender" class="" name="gender" required autofocus> -->
                 <div class="select-button">
                     <input type="radio" id="female" class="radio-button" name="gender" value="男性">
                     <label for="female">男性</label>
@@ -62,12 +61,13 @@
                     <label for="female">回答しない</label>
                 </div>
                 <button>edit gender</button>
+            </div>
         </div>
     </form>
     <!-- end--modal-4 -->
     <!--start-- modal-5 delete-->
     <form>
-        <div id="modal-5" class="modal">
+        <div id="modalDelete" class="modal">
             <div class="modal__content">
                 <div class="modal__content--title">
                     <h2>Delete</h2>

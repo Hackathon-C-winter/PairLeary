@@ -1,5 +1,5 @@
 // tutorialのモーダルのJS指定
-const modalBtns = document.querySelectorAll(".modal-toggle");
+const modalBtns = document.querySelectorAll(".modalOpen");
 modalBtns.forEach(function (btn) {
     btn.onclick = function () {
     const modal = btn.getAttribute('data-modal');
