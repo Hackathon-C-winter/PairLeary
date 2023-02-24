@@ -9,7 +9,7 @@ from .models import CustomUser, Orders
 from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib.auth.hashers import make_password
-
+from django.core.mail import EmailMessage
 
 # 新規登録
 def signupfunc(request):
@@ -135,26 +135,27 @@ def search_matching(request):
             context = {'orders': orders}
         else:
             context = {'error_message': '条件に一致するデータがありません'}
-
     else:
         context = {}
     
     # 申し込みボタンが押された場合
+    # matched_user_idにボタンを押した人のuser_idを追加
     if request.method == "POST" and 'matching_button' in request.POST:
         order_id = request.POST.get('order_id')
         order = Orders.objects.get(pk=order_id)
         order.matched_user_id = request.user
-
         order.save()
-        # メール送信処理
-        recipient_list = [order.user_id.email, order.matched_user_id.email]        
+
+        # マッチング成立後メールをBCCで送信するための処理
+        bcc_list = [order.user_id.email, order.matched_user_id.email]
         # メールの件名
         subject = '【リマインダー】pairlearyからのお知らせ'
         # メールの本文
         message = 'ご希望の予約が完了しました。詳細はアプリで確認してください。'
         from_email = settings.EMAIL_HOST_USER  # 送信元のメールアドレス
+        mail = EmailMessage(subject, message, from_email=from_email, bcc=bcc_list)
+        mail.send()
 
-        send_mail(subject, message, from_email, recipient_list, fail_silently=False)
         return redirect('mypage')
     
     return render(request, 'search_matching.html', context)
