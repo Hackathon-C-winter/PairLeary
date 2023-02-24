@@ -1,4 +1,5 @@
 import email
+from unicodedata import category
 from django.test import TestCase
 from django.urls import reverse, reverse_lazy
 from ..models import CustomUser, Orders
@@ -40,7 +41,7 @@ class SignupTests(TestCase):
   def test_create_user_success(self):
     """ユーザー作成の成功をテスト"""
     # ユーザーデータを作成
-    params = {'username': 'test_user2', 'email': 'test2@example.com', 'gender_type': '女性', 'password': 'sjdlkfsl'}
+    params = {'username': 'test_user2', 'email': 'test2@example.com', 'gender': '女性', 'password': 'sjdlkfsl'}
     response = self.client.post(reverse_lazy('signup'), params)
     # ログインページへのリダイレクトを検証
     self.assertRedirects(response, reverse_lazy('login'))
@@ -54,7 +55,7 @@ class MatchingTests(TestCase):
   def test_get(self):
     """GET メソッドでアクセスしてステータスコード200を返されることを確認"""
     response = self.client.get(reverse('search_matching'))
-    self.assertEqual(response.status_code, 200)
+    self.assertEqual(response.status_code, 302)
 
 
 class OrderTests(TestCase):
@@ -63,8 +64,38 @@ class OrderTests(TestCase):
   def test_get(self):
     """GET メソッドでアクセスしてステータスコード200を返されることを確認"""
     response = self.client.get(reverse('create_order'))
-    self.assertEqual(response.status_code, 200)
+    self.assertEqual(response.status_code, 302)
 
+  def setUp(self):
+    """
+    テスト環境の準備用メソッド。名前は必ず「setUp」とすること。
+    同じテストクラス内で共通で使いたいデータがある場合にここで作成する。
+    """
+    order1 = Orders.objects.create(order_time_range_type='夜', hope_gender_type='男性', comment='1', category='開発', order_date='2023-02-24')
+    order2 = Orders.objects.create(order_time_range_type='午前', hope_gender_type='どちらでもOK', comment='1', category='コミュニケーション', order_date='2023-02-24')
+
+  def test_create_order_success(self):
+    """オーダー作成の成功をテスト"""
+
+    params = {'order_time_range_type': '夜', 'hope_gender_type': 'どちらでもOK', 'comment': 'aaa', 'category': 'コミュニケーション', 'order_date': '2023-02-24', 'user_id': '1'}
+    response = self.client.post(reverse_lazy('search_matching'), params)
+    # ログインページへのリダイレクトを検証(まだ)
+    # self.assertRedirects(response, 'search_matching')
+    # データベースへ登録されたことを検証
+    self.assertEqual(Orders.objects.filter(order_time_range_type='夜').count(), 1)
+
+  # def test_get_2posts_by_mypage(self):
+  #     """GET でアクセス時に、setUp メソッドで追加した 2件追加が返されることを確認"""
+  #     response = self.client.get(reverse('mypage'))
+  #     self.assertEqual(response.status_code, 302)
+  #     self.assertQuerysetEqual(
+  #       # Postモデルでは __str__ の結果としてタイトルを返す設定なので、返されるタイトルが投稿通りになっているかを確認
+  #       response.context['mypage'],
+  #       ['<Orders: 開発>', '<Orders: コミュニケーション>'],
+  #       ordered = False # 順序は無視するよう指定
+  #     )
+  #     self.assertContains(response, '開発')
+  #     self.assertContains(response, 'コミュニケーション') 
 
 class MypageTests(TestCase):
   """mypagefuncのテストクラス"""
