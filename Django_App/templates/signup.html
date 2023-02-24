@@ -22,14 +22,14 @@
                 <label for="inputusername" class="inputBox__title">User Name</label>
                 <input type="text" id="inputusername" class="inputBox__inputform" placeholder="slackと同名（全角18文字まで）" name="username" required autofocus>
             </div>
-            
-            <!-- メールアドレスフォーム -->
-            <div class="inputBox"> <!-- cssが適用されていない -->
-                <label>Mail address</label>
-                <input type="email" name="email" required="">
-            </div>
 
-            <div class="inputBox"> <!-- パスワードフォーム -->
+            <!-- メールアドレスフォーム -->
+            <div class="inputBox">
+                <label for="input-email" class="inputBox__title">Mail address</label>
+                <input type="email" id="inputemail" class="inputBox__inputform" placeholder="メールアドレス" name="email" required autofocus>
+            </div>
+            <!-- パスワードフォーム -->
+            <div class="inputBox"> 
                 <label for="inputPassword" class="inputBox__title">Password</label>
                 <input type="password" id="inputPassword" class="inputBox__inputform" placeholder="パスワード" name="password" required>
             </div>
@@ -56,7 +56,7 @@
 
             <!--ログインへの遷移部分-->
             <div class="change-registration">
-                <p>Already have an account?→</p>
+                <p>Already have an account? →</p>
                 <button class="change-registration__button"><a href="{% url 'login' %}">Log in</a></button>
             </div>
         </form>
