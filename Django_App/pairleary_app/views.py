@@ -173,6 +173,7 @@ def search_matching(request):
     
     return render(request, 'search_matching.html', context)
 
+@login_required(login_url='/login/')
 class Tutorial(TemplateView):
     template_name = "tutorial.html"
 
