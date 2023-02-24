@@ -8,8 +8,9 @@ from django.contrib.auth.decorators import login_required
 from .models import CustomUser, Orders
 from django.core.mail import send_mail
 from django.conf import settings
-from django.contrib.auth.hashers import make_password
+from django.contrib.auth.hashers import make_password, check_password
 from django.core.mail import EmailMessage
+
 
 # 新規登録
 def signupfunc(request):
@@ -51,7 +52,9 @@ def mypage(request):
     order_data = Orders.objects.filter(user_id_id = user)
     # 画面側から送られてきた箇所をアップデートする
     if request.method == 'POST':
+        print(request)
         try:
+            # ユーザー名の編集
             if 'username' in request.POST:
                 user = request.user
                 print(user)
@@ -60,26 +63,42 @@ def mypage(request):
                 print(user)
                 user.save()
                 return redirect('mypage')
+            # メールアドレスの編集
             if 'email' in request.POST:
                 user = request.user
                 new_email = request.POST.get('email')
                 user.email = new_email
                 user.save()
                 return redirect('mypage')
+            # 性別の編集
             if 'gender' in request.POST:
                 user = request.user
                 new_gender = request.POST.get('gender')
                 user.gender_type = new_gender
                 user.save()
                 return redirect('mypage')
-            if 'password' in request.POST:
-                user = request.user
-                new_password = request.POST.get('password')
-                hashed_password = make_password(new_password)
-                user.password = hashed_password
-                user.save()
+            # パスワードの編集
+            if 'presentPassword' or 'newPassword' or 'confirmPassword' in request.POST:
+                # 現在のパスワード
+                presentPassword = request.POST.get('presentPassword')
+                # 新しいパスワード
+                newPassword = request.POST.get('newPassword')
+                # 新しいパスワードの確認用
+                confirmPassword = request.POST.get('confirmPassword')
+                # 現在のパスワードのチェック
+                if check_password(presentPassword, user.password):
+                    try:
+                        # 新しいパスワードと確認用パスワードのチェック
+                        if newPassword==confirmPassword:
+                            hashed_password = make_password(newPassword)
+                            user.password = hashed_password
+                            user.save()
+                        else:
+                            return render(request, 'mypage.html', {'error':'確認のためのパスワードが一致しません。'})
+                    except IntegrityError:
+                        return render(request, 'mypage.html', {'error':'現在のパスワードが一致しません。'})
                 # セッションを再認証する
-                user = authenticate(username=user.username, password=new_password)
+                user = authenticate(username=user.username, password=newPassword)
                 if user is not None:
                     login(request, user)
                 return redirect('mypage')
