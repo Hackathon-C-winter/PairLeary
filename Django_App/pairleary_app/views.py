@@ -12,18 +12,31 @@ from django.contrib.auth.hashers import make_password
 from django.core.mail import EmailMessage
 
 # 新規登録
+# def signupfunc(request):
+#     if request.method == "POST":
+#         username = request.POST['username']
+#         email = request.POST['email']
+#         password = request.POST['password']
+#         try:
+#             user = CustomUser.objects.create_user(username, email, password)
+#             # user = User.objects.create_user(username, email, password)
+#             return redirect('login')
+#         except IntegrityError:
+#             return render(request, 'signup.html', {'error': 'このユーザーは登録済みです。'})
+#     return render(request, 'signup.html')
 def signupfunc(request):
     if request.method == "POST":
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
+        gender_type = request.POST['gender']
         try:
-            user = CustomUser.objects.create_user(username, email, password)
-            # user = User.objects.create_user(username, email, password)
+            user = CustomUser.objects.create_user(username=username, email=email, password=password, **{'gender_type': gender_type})
             return redirect('login')
         except IntegrityError:
             return render(request, 'signup.html', {'error': 'このユーザーは登録済みです。'})
     return render(request, 'signup.html')
+
 
 # ログイン
 def loginfunc(request):
