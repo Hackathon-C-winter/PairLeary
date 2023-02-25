@@ -109,6 +109,10 @@
                     <img src="{% static 'img/myPage/mypage-edit-btn+.svg' %}">
                     <img src="{% static 'img/myPage/mypage-edit-btn-hover.svg' %}" class="edit-button__hover">
                 </button>
+                    <!--編集ボタン ※共通CSS-->
+                    <img src="{% static 'img/myPage/mypage-edit-btn+.svg' %}">
+                    <img src="{% static 'img/myPage/mypage-edit-btn-hover.svg' %}" class="edit-button__hover">
+                </button>
                 {% else %}
                 <div class="matching-status">
                     <p class="matching-status-on"><span>{{order.matched_user_id}}<br>さんと</span><br>マッチング中</p>
@@ -123,9 +127,12 @@
     </div>
     {% endif %}
 
-    {% include './mypage-modal.html' %}
+    <!-- {% include './mypage-modal.html' %} -->
+    {% include './mypage-modal.html' with order_id=order.order_id %}
 
     {% load static %}
         <script src="{% static 'js/modal.js' %}" type="text/javascript"></script>
+
+    
 </body>
 {% endblock %}

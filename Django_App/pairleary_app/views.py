@@ -32,7 +32,7 @@ def signupfunc(request):
         password = request.POST['password']
         gender_type = request.POST['gender']
         try:
-            user = CustomUser.objects.create_user(username=username, email=email, password=password, **{'gender_type': gender_type})
+            CustomUser.objects.create_user(username=username, email=email, password=password, **{'gender_type': gender_type})
             return redirect('login')
         except IntegrityError:
             return render(request, 'signup.html', {'error': 'このユーザーは登録済みです。'})
@@ -62,7 +62,16 @@ def logoutfunc(request):
 def mypage(request):
     user = request.user
     # ユーザーIDがログインしているユーザーと一致する予約情報を取得
-    order_data = Orders.objects.filter(user_id_id = user)
+    order_data = Orders.objects.filter(user_id_id=user)
+    if request.method == "POST" and 'delete_order' in request.POST:
+        print('deleteしたい')
+        order_id = request.POST.get('delete_order')
+        order = Orders.objects.get(order_id=order_id)
+        if order.matched_user_id is None:
+            order.delete()
+            return redirect('mypage')
+    else:
+        return render(request, 'mypage.html', {'order_data': order_data, 'error_message': 'この予約は削除できません。'})
     # 画面側から送られてきた箇所をアップデートする
     if request.method == 'POST':
         print(request)
@@ -102,14 +111,14 @@ def mypage(request):
                 if check_password(presentPassword, user.password):
                     try:
                         # 新しいパスワードと確認用パスワードのチェック
-                        if newPassword==confirmPassword:
+                        if newPassword == confirmPassword:
                             hashed_password = make_password(newPassword)
                             user.password = hashed_password
                             user.save()
                         else:
-                            return render(request, 'mypage.html', {'error':'確認のためのパスワードが一致しません。'})
+                            return render(request, 'mypage.html', {'error': '確認のためのパスワードが一致しません。'})
                     except IntegrityError:
-                        return render(request, 'mypage.html', {'error':'現在のパスワードが一致しません。'})
+                        return render(request, 'mypage.html', {'error': '現在のパスワードが一致しません。'})
                 # セッションを再認証する
                 user = authenticate(username=user.username, password=newPassword)
                 if user is not None:
@@ -117,15 +126,14 @@ def mypage(request):
                 return redirect('mypage')
         except IntegrityError:
             return render(request, 'mypage.html', {'error': '問題が発生しました。リロードしてください。'})
-        
-    return render(request, 'mypage.html', {'order_data': order_data,})
+    return render(request, 'mypage.html', {'order_data': order_data})
 
 # マッチング新規予約
 @login_required(login_url='/login/')
 def create_order(request):
     if request.method == 'POST':
         try:
-            obj = Orders.objects.create(                
+            Orders.objects.create(
                 order_date=request.POST['date'],  # マッチング日付
                 order_time_range_type=request.POST['time'],  # マッチング時間帯
                 category=request.POST['purpose'],  # 目的（カテゴリ）
@@ -133,8 +141,6 @@ def create_order(request):
                 comment=request.POST['comment'],  # コメント
                 user_id_id=request.user.id  # user_id
                 )
-        # except ValueError:
-        #     return render(request, 'create_order.html', {'error_K': '全ての'})
         except Exception:
             return render(request, 'create_order.html', {'error': '全ての希望条件を選択してください'})
         else:
@@ -142,25 +148,25 @@ def create_order(request):
     else:
         return render(request, 'create_order.html')
 
-# ログインしているユーザーにのみ表示される
-@login_required(login_url='/login/')
+
+@login_required(login_url='/login/')  # ログインしているユーザーにのみ表示される
 # マッチング検索機能
 def search_matching(request):
     if request.method == "POST":
-        #フォームから入力された条件を受け取る
+        # フォームから入力された条件を受け取る
         category = request.POST.get("purpose")
         gender = request.POST.get("gender")
-        #ordersテーブルからカテゴリがcategory、性別がどちらでもOK、マッチング相手がいないデータを取得
+        # ordersテーブルからカテゴリがcategory、性別がどちらでもOK、マッチング相手がいないデータを取得
         if gender == 'どちらでもOK':
             orders = Orders.objects.filter(
-                category=category, 
-                matched_user_id__isnull=True, 
+                category=category,
+                matched_user_id__isnull=True,
                 ).exclude(user_id=request.user).select_related('user_id')
         else:
-            #ordersテーブルからカテゴリがcategory、性別がgender、マッチング相手がいないデータを取得
+            # ordersテーブルからカテゴリがcategory、性別がgender、マッチング相手がいないデータを取得
             orders = Orders.objects.filter(
-                category=category, 
-                matched_user_id__isnull=True, 
+                category=category,
+                matched_user_id__isnull=True,
                 user_id__gender_type=gender
                 ).exclude(user_id=request.user).select_related('user_id')
         if orders:
@@ -169,7 +175,7 @@ def search_matching(request):
             context = {'error_message': '条件に一致するデータがありません'}
     else:
         context = {}
-    
+
     # 申し込みボタンが押された場合
     # matched_user_idにボタンを押した人のuser_idを追加
     if request.method == "POST" and 'matching_button' in request.POST:
@@ -189,12 +195,20 @@ def search_matching(request):
         mail.send()
 
         return redirect('mypage')
-    
     return render(request, 'search_matching.html', context)
 
-@login_required(login_url='/login/')
+
+# @login_required(login_url='/login/')
 class Tutorial(TemplateView):
     template_name = "tutorial.html"
 
+
 class Header(TemplateView):
     template_name = "header.html"
+
+
+def mypage_modal(request):
+    user = request.user
+    # ユーザーIDがログインしているユーザーと一致する予約情報を取得
+    order_data = Orders.objects.filter(user_id_id=user)
+    return render(request, 'mypage-modal.html', {'order_data': order_data})

@@ -71,14 +71,28 @@
     </form>
     <!-- end--modal-4 -->
     <!--start-- modal-5 delete-->
-    <form>
+    {% for order in order_data %}
+    <form method="POST">{% csrf_token %}
         <div id="modalDelete" class="modal">
             <div class="modal__content">
                 <div class="modal__content--title">
                     <h2>Delete</h2>
                 </div>
                 <span class="modal-close">×</span>
-                <button>Delete</button>
+                <button type="submit" name="delete_order" value="{{ order.order_id }}">Delete</button>
+            </div>
+        </div>
+    </form>
+    {% endfor %}
+    <form method="POST">{% csrf_token %}
+        <div id="modalListEdit" class="modal">
+            <div class="modal__content">
+                <div class="modal__content--title">
+                    <h2>EditList</h2>
+                </div>
+                <span class="modal-close">×</span>
+                <input type="text" id="inputUsername" class="" name="username" required>
+                <button>EditList</button>
             </div>
         </div>
     </form>
