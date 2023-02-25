@@ -8,7 +8,7 @@ modalBtns.forEach(function (btn) {
 });
 
 // 閉じるボタンを押したらモーダルを閉じる
-const closeBtns = document.querySelectorAll(".modal-close");
+const closeBtns = document.querySelectorAll(".modalClose");
 closeBtns.forEach(function (btn) {
     btn.onclick = function () {
     const modal = btn.closest('.modal');
@@ -16,6 +16,14 @@ closeBtns.forEach(function (btn) {
     };
 });
 
+// 閉じるボタンを押したらモーダルを閉じる
+const cancelBtns = document.querySelectorAll(".cancelButton");
+cancelBtns.forEach(function (btn) {
+    btn.onclick = function () {
+    const modal = btn.closest('.modal');
+    modal.style.display = "none";
+    };
+});
 // モーダル以外をクリックしたら閉じる
 window.onclick = function (event) {
     if (event.target.className === "modal") {

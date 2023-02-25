@@ -1,4 +1,4 @@
-/* tutorialページのモーダルのCSS指定ファイル */
+/* MyPage LogoutのモーダルのCSS指定ファイル */
 
 .modal {
     display: none;
@@ -10,55 +10,305 @@
     width: 100%;
     overflow: auto;
     background-color: rgba(0,0,0,0.5);
+    border: #AD1457 solid;
 }
 
+/* ユーザー名モーダル */
 .modal__content {
-    background-color: #f4f4f4;
-    margin: 20% auto;
-    width: 50%;
-    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+    position: relative;
+    width: 500px;
+    height: 390px;
+    left: calc(50% - 250px);
+    top: calc(50% - 195px);
+    background: rgba(167, 181, 255, 0.7);
+    border: 1px solid #FFFFFF;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.25), 1px 3px 8px 4px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
     animation-name: modalopen;
     animation-duration: 1s;
 }
-/* .modal-content-2 {
+/* パスワード編集、性別編集モーダル */
+.modal__content-password,.modal__content-gender {
+    position: relative;
     background-color: #f4f4f4;
-    margin: 20% auto;
-    width: 50%;
-    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+    margin: 150px auto auto;
+    width: 500px;
+    height: 530px;
+    background: rgba(167, 181, 255, 0.7);
+    border: 1px solid #FFFFFF;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.25), 1px 3px 8px 4px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
     animation-name: modalopen;
     animation-duration: 1s;
 }
-.modal-content-3 {
-    background-color: #f4f4f4;
-    margin: 20% auto;
-    width: 50%;
-    box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2),0 7px 20px 0 rgba(0,0,0,0.17);
+/* 予約削除モーダル */
+.modal__content-delete {
+    position: relative;
+    width: 500px;
+    height: 300px;
+    left: calc(50% - 250px);
+    top: calc(50% - 195px);
+    background: rgba(255, 117, 117, 0.8);
+    border: 1px solid #FFFFFF;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.25), 1px 3px 8px 4px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
     animation-name: modalopen;
     animation-duration: 1s;
-} */
-
+}
 /* モーダルを開く際のアニメーション */
 @keyframes modalopen {
     from {opacity: 0}
     to {opacity: 1}
 }
 
-.modal__content--title h2 {
-    margin: 1rem 0;
+/* モーダルタイトル */
+.modal__content--title {
+    position: relative;
+    width: auto;
+    height: 35px;
+    margin-top: 15px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 35px;
+    text-align: center;
+    color: #020202;
 }
 
-.modal-content__header {
-    background: rgba(63, 81, 181, 0.3);
-    padding: 3px 15px;
+/* モーダルサブタイトル */
+.modal__content--subtitle {
+    position: relative;
+    width: auto;
+    height: 25px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26px;
+    text-align: center;
+    color: #020202;
+}
+
+/* モーダルの白ボックス */
+.modal__content--base {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 480px;
+    height: 290px;
+    margin: 15px 10px 10px 10px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(15px);
+    border-radius: 0px 0px 20px 20px;
+}
+.modal__content--base-password,.modal__content--base-gender {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 480px;
+    height: 430px;
+    margin: 15px 10px 10px 10px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(15px);
+    border-radius: 0px 0px 20px 20px;
+}
+.modal__content--base-delete {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 480px;
+    height: 200px;
+    margin: 15px 10px 10px 10px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(15px);
+    border-radius: 0px 0px 20px 20px;
+}
+
+
+/* モーダル「～してください」の指定 */
+.modal__content--base P {
+    position: relative;
+    margin: 35px auto;
+}
+.modal__content--base-gender p {
+    position: relative;
+    margin: 35px auto;
+}
+
+/* 入力フォームの指定 */
+#inputForm {
+    position: relative;
+    width: 330px;
+    height: 40px;
+    padding: 5px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    color: #000000;
+    border: 2px solid #283593;
+    border-radius: 5px;
+}
+
+/* モーダル内の「X」ボタンの指定 */
+.modalClose {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    top: 5px;
+    left: 460px;
+    text-align: center;
+    font-weight: 700;
+    line-height: 30px;
+    font-size: 32px;
+    cursor: pointer;
+}
+.modalClose:hover {
+    cursor: pointer;
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    background: rgba(92, 105, 173, 0.5);
+    transition: all 0.3s;
+}
+
+/* OKキャンセルボタン全体 */
+.modal__content--button {
+    position: absolute;
     display: flex;
     justify-content: space-between;
+    width: 330px;
+    height: 40px;
+    bottom: 0;
+    margin-bottom: 54px;
+    transition: all 0.3s;
 }
 
-/* モーダル内のXボタンの指定 */
-.modal-close {
-    font-size: 2rem;
+/* モーダル内のキャンセルボタンの指定 */
+.cancelButton {
+    position: relative;
+    width: 150px;
+    height: 40px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 35px;
+    border: 2px solid #3F51B5;
+    border-radius: 5px;
     cursor: pointer;
 }
-.modal-close:hover {
+.cancelButton:hover {
     cursor: pointer;
+    background: rgba(0, 0, 0, 0.15);
+    transition: all 0.3s;
+}
+
+/* モーダル内のOKボタンの指定 */
+.OK-button,.deleteCancelButton {
+    position: relative;
+    width: 150px;
+    height: 40px;
+    background-color: #3F51B5;
+    color: #ffffff;
+    padding-left: 35px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 42px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.OK-button:hover {
+    cursor: pointer;
+    background-color: #283593;
+    transition: all 0.3s;
+}
+
+
+/* ----パスワードモーダルの個別指定---- */
+.modal__content--base-password p {
+    position: relative;
+    margin-top: 25px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    color: #000000;
+}
+.modal__content--base-password p:first-child{
+    margin-top: 38px;
+}
+
+.modal__content--button-password {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 330px;
+    height: 40px;
+    bottom: 0;
+    top: 50px;
+    transition: all 0.3s;
+}
+
+/* ----性別変更の個別指定---- */
+/* ラジオボタンの指定 */
+.radio-button {
+    display: none;
+}
+.label-gender {
+    position: relative;
+    display: block;
+    width: 330px;
+    height: 40px;
+    top: -30px;
+    margin-top: 32px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 32px;
+    background: #D9D9D9;
+    border: 2px solid #676767;
+    border-radius: 5px;
+    color: #283593;
+    cursor: pointer;
+}
+.label-gender:hover {
+    background-color: #BEBEBE; 
+    color: #283593;
+    transition: all 0.3s;
+}
+.radio-button:checked + .label-gender {
+    background-color: #283593;
+    border: 2px solid #283593;
+    color: #FFFFFF;
+    transition: all 0.3s;
+}
+
+/* ---予約リストを削除モーダルの指定--- */
+
+.modal__content--base-delete p {
+    position: relative;
+    margin: 35px auto;
+}
+
+#deleteClose:hover {
+    cursor: pointer;
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    background: rgba(204, 53, 53, 0.8);
+    transition: all 0.3s;
+}
+
+/* モーダル削除ボタンの指定 */
+#deleteCancelButton {
+    border: 2px solid #E91E63;
+}
+.deleteCancelButton {
+    background-color: #E91E63;
+}
+.deleteCancelButton:hover {
+    cursor: pointer;
+    background-color: #AD1457;
+    transition: all 0.3s;
 }

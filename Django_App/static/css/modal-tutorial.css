@@ -1,0 +1,56 @@
+/*  チュートリアルのモーダルのCSS指定ファイル */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 4;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal__content {
+    position: relative;
+    width: 500px;
+    height: 390px;
+    left: calc(50% - 250px);
+    top: calc(50% - 195px);
+    border: 1px solid #FFFFFF;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.25), 1px 3px 8px 4px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    animation-name: modalopen;
+    animation-duration: 1s;
+}
+
+/* モーダルを開く際のアニメーション */
+@keyframes modalopen {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+/* モーダル内の「X」ボタンの指定 */
+.modalClose {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    top: 5px;
+    left: 460px;
+    text-align: center;
+    font-weight: 700;
+    line-height: 30px;
+    font-size: 32px;
+    cursor: pointer;
+}
+.modalClose:hover {
+    cursor: pointer;
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.2);
+    transition: all 0.3s;
+}

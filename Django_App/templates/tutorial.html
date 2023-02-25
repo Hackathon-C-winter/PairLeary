@@ -3,7 +3,7 @@
 {% block head %}
     {% load static %}
     <!-- モーダルのCSS読み込み -->
-    <link rel="stylesheet" href="{% static 'css/modal.css' %}">
+    <link rel="stylesheet" href="{% static 'css/modal-tutorial.css' %}">
     <link rel="stylesheet" href="{% static 'css/tutorial.css' %}">
 {% endblock %}
 
@@ -13,70 +13,79 @@
 {% block body %}
 <body>
     <!--start--背景の白ボックスとページタイトル ※共通CSS-base.css -->
-    <div class="background-white-box"></div>
-    <div class="page-title">
-        <img src="#" alt="">
-        <div class="page-title-box">
-            <p class="page-title__page-title-box--page-name">Tutorial</p>
-            <p class="page-title__page-title-box--page-subname">アプリの使い方</p>
-        </div>
-    </div> 
-    <!--end--背景の白ボックスとページタイトル ※共通CSS-->
+    <div class="background-white-box">
+        <div class="page-title">
+            <img src="{% static 'img/tutorial/tutorial-icon.svg' %}" alt="mypage-icon">
+            <div class="page-title-box">
+                <p class="page-title__page-title-box--page-name">Tutorial</p>
+                <p class="page-title__page-title-box--page-subname">アプリの使い方</p>
+            </div>
+        </div> 
+        <!--end--背景の白ボックスとページタイトル ※共通CSS-->
 
-    <div class="container">
-        <button class="modalOpen" data-modal="HowToUse">
-            <h2>How to use</h2>
-            <p>ペアリーの使い方</p>
-        </button>
-        <button class="modalOpen" data-modal="pairlearysDetail">
-            <h2>detail</h2>
-            <p>ペアリーの説明</p>
-        </button>
-        <button class="modalOpen" data-modal="whatIsPairleary">
-            <h2>What is Pairleary</h2>
-            <p>ペアリーの目的</p>  
-        </button>
-    </div>
-    <!-- srart--モーダル -->
-    <!--start-- modal-1 -->
-    <div id="HowToUse" class="modal">
-        <div class="modal__content">
-            <div class="modal__content--title">
-                <h2>How to use</h2>
+        <div class="container">
+            <div class="container_modal">
+                <button class="modalOpen" data-modal="HowToUse">
+                    <img src="{% static 'img/tutorial/tutorial-howtouse.jpg' %}" alt="pairlearyの使い方">
+                    <h2>How to use</h2>
+                    <p>ペアリーの使い方</p>
+                </button>
+                <img src="{% static 'img/tutorial/tutorial-modal-open-icon.svg' %}" alt="modalopenicon" class="container_modal__open-icon">
             </div>
-            <span class="modal-close">×</span>
-        </div>
-        <div class="modal-container">
-            <img class="img" src="#" alt="">
-            <p></p>
-        </div>
-    </div>
-    <!--end-- modal-1 -->
-    <!--start-- modal-2 -->
-    <div id="pairlearysDetail" class="modal">
-        <div class="modal__content">
-            <div class="modal__content--title">
-                <h2>detail</h2>
+            <div class="container_modal">
+                <button class="modalOpen" data-modal="pairlearysDetail">
+                    <img src="{% static 'img/tutorial/tutorial-detail.jpg' %}" alt="pairlearyの使い方" class="modalopen-icon">
+                    <h2>detail</h2>
+                    <p>ペアリーの説明</p>
+                </button>
+                <img src="{% static 'img/tutorial/tutorial-modal-open-icon.svg' %}" alt="modalopenicon" class="container_modal__open-icon">
             </div>
-            <span class="modal-close">×</span>
-        </div>
-        <div class="modal-container">
-            <img class="img" src="#" alt="">
-            <p></p>
-        </div>
-    </div>
-    <!--end-- modal-2 -->
-    <!--start-- modal-3 -->
-    <div id="whatIsPairleary" class="modal">
-        <div class="modal__content">
-            <div class="modal__content--title">
-                <h2>What is Pairleary</h2>
+            <div class="container_modal">
+                <button class="modalOpen" data-modal="whatIsPairleary">
+                    <img src="{% static 'img/tutorial/tutorial-whatispairleary.jpg' %}" alt="pairlearyの使い方">
+                    <h2>What is <span>PairLeary</span></h2>
+                    <p>ペアリーの目的</p>  
+                    <img src="{% static 'img/tutorial/tutorial-modal-open-icon.svg' %}" alt="modalopenicon" class="container_modal__open-icon" width="30">
+                </button>
             </div>
-            <span class="modal-close">×</span>
         </div>
-        <div class="modal-container">
-            <img class="img" src="#" alt="">
-            <p></p>
+
+
+        <!-- srart--モーダル -->
+        <!--start-- modal-1 pairlearyの使い方-->
+        <div id="HowToUse" class="modal">
+            <div class="modal__content">
+                <h2 class="modal__content--title">How to use</h2>
+                <p class="modalClose">×</p>
+            </div>
+            <div class="modal-container">
+                <img class="img" src="#" alt="">
+                <p></p>
+            </div>
+        </div>
+        <!--end-- modal-1 -->
+        <!--start-- modal-2 pairlearyの説明-->
+        <div id="pairlearysDetail" class="modal">
+            <div class="modal__content">
+                <h2 class="modal__content--title">detail</h2>
+                <p class="modalClose">×</p>
+            </div>
+            <div class="modal-container">
+                <img class="img" src="#" alt="">
+                <p></p>
+            </div>
+        </div>
+        <!--end-- modal-2 -->
+        <!--start-- modal-3 pairlearyの目的-->
+        <div id="whatIsPairleary" class="modal">
+            <div class="modal__content">
+                <h2 class="modal__content--title">What is Pairleary</h2>
+                <p class="modalClose">×</p>
+            </div>
+            <div class="modal-container">
+                <img class="img" src="#" alt="">
+                <p></p>
+            </div>
         </div>
     </div>
     <!-- end--modal-3 -->
