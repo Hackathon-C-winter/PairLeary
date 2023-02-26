@@ -182,9 +182,10 @@ body {
     width: 330px;
     font-family: 'Open Sans';
     font-style: normal;
-    font-weight: 700;
+    font-weight: 400;
     font-size: 16px;
-    line-height: 22px;
+    line-height: 27px;
+    letter-spacing: 0.7px;
     color: #000000;
 }
 
@@ -217,7 +218,7 @@ body {
     font-family: 'Noto Sans JP';
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 14px;
     color: #000000;
 }
 

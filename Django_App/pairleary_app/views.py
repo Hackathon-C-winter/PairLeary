@@ -8,22 +8,36 @@ from django.contrib.auth.decorators import login_required
 from .models import CustomUser, Orders
 from django.core.mail import send_mail
 from django.conf import settings
-from django.contrib.auth.hashers import make_password
+from django.contrib.auth.hashers import make_password, check_password
+from django.core.mail import EmailMessage
 
 
 # 新規登録
+# def signupfunc(request):
+#     if request.method == "POST":
+#         username = request.POST['username']
+#         email = request.POST['email']
+#         password = request.POST['password']
+#         try:
+#             user = CustomUser.objects.create_user(username, email, password)
+#             # user = User.objects.create_user(username, email, password)
+#             return redirect('login')
+#         except IntegrityError:
+#             return render(request, 'signup.html', {'error': 'このユーザーは登録済みです。'})
+#     return render(request, 'signup.html')
 def signupfunc(request):
     if request.method == "POST":
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
+        gender_type = request.POST['gender']
         try:
-            user = CustomUser.objects.create_user(username, email, password)
-            # user = User.objects.create_user(username, email, password)
+            user = CustomUser.objects.create_user(username=username, email=email, password=password, **{'gender_type': gender_type})
             return redirect('login')
         except IntegrityError:
             return render(request, 'signup.html', {'error': 'このユーザーは登録済みです。'})
     return render(request, 'signup.html')
+
 
 # ログイン
 def loginfunc(request):
@@ -44,14 +58,16 @@ def logoutfunc(request):
     return redirect('login')
 
 # マイページ
-@login_required
+@login_required(login_url='/login/')
 def mypage(request):
     user = request.user
     # ユーザーIDがログインしているユーザーと一致する予約情報を取得
     order_data = Orders.objects.filter(user_id_id = user)
     # 画面側から送られてきた箇所をアップデートする
     if request.method == 'POST':
+        print(request)
         try:
+            # ユーザー名の編集
             if 'username' in request.POST:
                 user = request.user
                 print(user)
@@ -60,26 +76,42 @@ def mypage(request):
                 print(user)
                 user.save()
                 return redirect('mypage')
+            # メールアドレスの編集
             if 'email' in request.POST:
                 user = request.user
                 new_email = request.POST.get('email')
                 user.email = new_email
                 user.save()
                 return redirect('mypage')
+            # 性別の編集
             if 'gender' in request.POST:
                 user = request.user
                 new_gender = request.POST.get('gender')
                 user.gender_type = new_gender
                 user.save()
                 return redirect('mypage')
-            if 'password' in request.POST:
-                user = request.user
-                new_password = request.POST.get('password')
-                hashed_password = make_password(new_password)
-                user.password = hashed_password
-                user.save()
+            # パスワードの編集
+            if 'presentPassword' or 'newPassword' or 'confirmPassword' in request.POST:
+                # 現在のパスワード
+                presentPassword = request.POST.get('presentPassword')
+                # 新しいパスワード
+                newPassword = request.POST.get('newPassword')
+                # 新しいパスワードの確認用
+                confirmPassword = request.POST.get('confirmPassword')
+                # 現在のパスワードのチェック
+                if check_password(presentPassword, user.password):
+                    try:
+                        # 新しいパスワードと確認用パスワードのチェック
+                        if newPassword==confirmPassword:
+                            hashed_password = make_password(newPassword)
+                            user.password = hashed_password
+                            user.save()
+                        else:
+                            return render(request, 'mypage.html', {'error':'確認のためのパスワードが一致しません。'})
+                    except IntegrityError:
+                        return render(request, 'mypage.html', {'error':'現在のパスワードが一致しません。'})
                 # セッションを再認証する
-                user = authenticate(username=user.username, password=new_password)
+                user = authenticate(username=user.username, password=newPassword)
                 if user is not None:
                     login(request, user)
                 return redirect('mypage')
@@ -89,6 +121,7 @@ def mypage(request):
     return render(request, 'mypage.html', {'order_data': order_data,})
 
 # マッチング新規予約
+@login_required(login_url='/login/')
 def create_order(request):
     if request.method == 'POST':
         try:
@@ -110,7 +143,7 @@ def create_order(request):
         return render(request, 'create_order.html')
 
 # ログインしているユーザーにのみ表示される
-# @login_required(login_url='/login/')
+@login_required(login_url='/login/')
 # マッチング検索機能
 def search_matching(request):
     if request.method == "POST":
@@ -134,30 +167,32 @@ def search_matching(request):
             context = {'orders': orders}
         else:
             context = {'error_message': '条件に一致するデータがありません'}
-
     else:
         context = {}
     
     # 申し込みボタンが押された場合
+    # matched_user_idにボタンを押した人のuser_idを追加
     if request.method == "POST" and 'matching_button' in request.POST:
         order_id = request.POST.get('order_id')
         order = Orders.objects.get(pk=order_id)
         order.matched_user_id = request.user
-
         order.save()
-        # メール送信処理
-        recipient_list = [order.user_id.email, order.matched_user_id.email]        
+
+        # マッチング成立後メールをBCCで送信するための処理
+        bcc_list = [order.user_id.email, order.matched_user_id.email]
         # メールの件名
         subject = '【リマインダー】pairlearyからのお知らせ'
         # メールの本文
         message = 'ご希望の予約が完了しました。詳細はアプリで確認してください。'
         from_email = settings.EMAIL_HOST_USER  # 送信元のメールアドレス
+        mail = EmailMessage(subject, message, from_email=from_email, bcc=bcc_list)
+        mail.send()
 
-        send_mail(subject, message, from_email, recipient_list, fail_silently=False)
         return redirect('mypage')
     
     return render(request, 'search_matching.html', context)
 
+# @login_required(login_url='/login/')
 class Tutorial(TemplateView):
     template_name = "tutorial.html"
 
