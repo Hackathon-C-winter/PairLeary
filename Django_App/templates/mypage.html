@@ -2,7 +2,6 @@
 <!-- CSSファイルインポート ★CSSファイルのリンク先は実装時に要修正-->
 {% block head %}
     {% load static %}
-    <!-- <link rel="stylesheet" href="{% static 'css/modal.css' %}"> -->
     <link rel="stylesheet" href="{% static 'css/mypage.css' %}">
     <link rel="stylesheet" href="{% static 'css/search_result_list.css' %}">
 {% endblock %}
@@ -90,8 +89,19 @@
                     <p class="search__result--time">{{order.order_time_range_type}}</p>
                 </div>
                 <div class="search__result--box-left-bottom">
-                    <p id="add-class-name" class="search__result--purpose">{{ order.category }}</p>
-                    <p id="add-class-name" class="search__result--gender">{{ order.hope_gender_type }}希望</p>
+                    {%if order.category == "コミュニケーション" %}
+                    <p id="communication" class="search__result--purpose">{{ order.category }}</p>
+                    {% elif order.category == "開発" %}
+                    <p id="develop" class="search__result--purpose">{{ order.category }}</p>
+                    {% endif %}
+                    
+                    {%if order.hope_gender_type == "男性" %}
+                    <p id="man" class="search__result--gender">{{ order.hope_gender_type }}希望</p>
+                    {% elif order.hope_gender_type == "女性" %}
+                    <p id="woman" class="search__result--gender">{{ order.hope_gender_type }}希望</p>
+                    {% elif order.hope_gender_type == "どちらでもOK" %}
+                    <p id="both" class="search__result--gender">{{ order.hope_gender_type }}</p>
+                    {% endif %}
                 </div>
                 <div class="search__result--box-right-up">
                     <p class="search__result--user-name">{{ user.username }}<span>さん</span></p>
@@ -125,7 +135,5 @@
 
     {% include './mypage-modal.html' %}
 
-    <!-- {% load static %}
-        <script src="{% static 'js/#.js' %}" type="text/javascript"></script> -->
 </body>
 {% endblock %}

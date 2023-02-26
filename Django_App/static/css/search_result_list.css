@@ -99,18 +99,30 @@
     font-size: 11.5px;
     gap: 5px;
     line-height: 20px;
-    color: #676767;
+    color: #535353;
 }
 
-.search__result--purpose {
-    background: #9CE1C0;
+#communication {
+    background: #FFCCBC;
+    border-radius: 3px;
+}
+
+#develop {
+    background: #C5CAE9;
     border-radius: 3px;
 }
 
 .search__result--gender {
-    background: #FFF59D;
+    background: #FFF495;
     border-radius: 3px;
     margin-top: 5px;
+}
+
+#man {
+    background: #B3E5FC;
+}
+#woman {
+    background: #F8BBD0;
 }
 
 /* 予約作成ユーザー名と性別 */

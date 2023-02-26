@@ -35,46 +35,17 @@
             </div>
 
             <!-- 性別入力フォーム -->
-            <div class="inputGender"> <!-- 性別フォーム -->
-<!-- 
-                <div class="inputGender-button">
-                    <input type="radio" id="man" class="inputGender__radiobutton" name="gender" value="男性"/>
-                    <label class="inputGender_label" for="man"><span>男性</span></label>
-                </div>
-                <div class="inputGender-button">
-                    <input type="radio" id="female" class="inputGender-radiobutton" name="gender" value="女性"/>
-                    <label class="inputGender_label" for="female"><span>女性</span></label>
-                </div>
-                <div class="inputGender-button">
-                    <input type="radio" id="no-answer" class="inputGender-radiobutton" name="gender" value=""/>
-                    <label class="inputGender_label" for="no-answer"><span>回答しない</span></label>
+            <div class="inputGender">
+                <label for="man" class="inputGender_label"><span class="select-gender">男性</span></label>
+                <input id="man" class="inputGender-radiobutton" name="gender" type="radio" value="男性" />
+
+                <label for="female" class="inputGender_label"><span class="select-gender">女性</span></label>
+                <input id="female" class="inputGender-radiobutton" name="gender" type="radio" value="女性" />
+
+                <label for="no-answer" class="inputGender_label__noanswer"><span>回答しない</span></label>
+                <input id="no-answer" class="inputGender-radiobutton" name="gender" type="radio" value="" />
                 <span id="slider"></span>
-                </div> -->
-
-                <!-- <div class="select-gender"> -->
-                    <label for="man" class="inputGender_label"><span class="select-gender">男性</span></label>
-                    <input id="man" class="inputGender-radiobutton" name="gender" type="radio" value="男性" />
-
-                    <label for="female" class="inputGender_label"><span class="select-gender">女性</span></label>
-                    <input id="female" class="inputGender-radiobutton" name="gender" type="radio" value="女性" />
-
-                    <label for="no-answer" class="inputGender_label__noanswer"><span>回答しない</span></label>
-                    <input id="no-answer" class="inputGender-radiobutton" name="gender" type="radio" value="" />
-                    <span id="slider"></span>
-                <!-- </div> -->
             </div>
-
-            <!-- 確認パスワードフォーム -->
-            <!-- <div class="inputBox">
-                <label>Confirm Password</label>
-                <input type="password" name="" required="">
-            </div> -->
-            <!-- 性別登録フォーム -->
-            <!-- <div class="radio-button">
-                <input type="radio" name="gender" value="man">Man
-                <input type="radio" name="gender" value="woman">Woman
-                <input type="radio" name="gender" value="noanswer">No Answer
-            </div> -->
 
             <!-- サインアップボタン -->
             <button class="registration-button" type="submit">Sign up</button>

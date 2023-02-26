@@ -76,10 +76,20 @@
                         <p class="search__result--time">{{order.order_time_range_type}}</p>
                     </div>
                     <div class="search__result--box-left-bottom">
-                        <p id="add-class-name" class="search__result--purpose">{{ order.category }}</p>
-                        <p id="add-class-name" class="search__result--gender">{{ order.hope_gender_type }}希望</p>
+                        {%if order.category == "コミュニケーション" %}
+                        <p id="communication" class="search__result--purpose">{{ order.category }}</p>
+                        {% elif order.category == "開発" %}
+                        <p id="develop" class="search__result--purpose">{{ order.category }}</p>
+                        {% endif %}
+
+                        {%if order.hope_gender_type == "男性" %}
+                        <p id="man" class="search__result--gender">{{ order.hope_gender_type }}希望</p>
+                        {% elif order.hope_gender_type == "女性" %}
+                        <p id="woman" class="search__result--gender">{{ order.hope_gender_type }}希望</p>
+                        {% elif order.hope_gender_type == "どちらでもOK" %}
+                        <p id="both" class="search__result--gender">{{ order.hope_gender_type }}</p>
+                        {% endif %}
                     </div>
-                
                     <div class="search__result--box-right-up">
                         <p class="search__result--user-name">{{ order.user_id }}<span>さん</span></p>
                         <p class="search__result--user-gender">{{ order.user_id.gender_type }}</p>
@@ -88,7 +98,6 @@
                         <p class="search__result--comment">{{ order.comment }}</p>
                     </div>
                 <!-- 参加する！ボタン -->
-                <!-- <input type="submit" class="search-result__apply" name="matching_button" value="参加する！ >"> -->
                     <form method="POST" class="search-result__button" action="{% url 'search_matching' %}">
                         {% csrf_token %}
                         <input type="hidden" name="order_id" value="{{ order.order_id }}">
@@ -101,7 +110,5 @@
             <!--end--検索結果表示エリア-->       
         </main>
     </div>
-    <!-- {% load static %}
-    <script src="{% static 'js/matching_list.js' %}" type="text/javascript"></script> -->
 </body>
 {% endblock %}
