@@ -252,3 +252,32 @@
     background: rgba(222, 222, 222, 0.8);
     border-radius: 5px;
 }
+
+
+
+/* スクロールCSS */
+.fade-in {
+    opacity: 0;
+    transition-duration: 500ms;
+    transition-property: opacity, transform;
+}
+.fade-in-up {
+    transform: translate(0, 50px);
+}
+
+/* .fade-in-down {
+    transform: translate(0, -50px);
+}
+
+.fade-in-left {
+    transform: translate(-50px, 0);
+}
+
+.fade-in-right {
+    transform: translate(50px, 0);
+}
+
+.scroll-in {
+    opacity: 1;
+    transform: translate(0, 0);
+} */

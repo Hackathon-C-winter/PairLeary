@@ -1,5 +1,6 @@
 /*  チュートリアルのモーダルのCSS指定ファイル */
 
+/* モーダル以外の画面を暗くする指定 */
 .modal {
     display: none;
     position: fixed;
@@ -12,7 +13,8 @@
     background-color: rgba(0,0,0,0.5);
 }
 
-.modal__content {
+/* モーダル大枠の指定 */
+.modal__content-tutorial {
     position: relative;
     width: 500px;
     height: 390px;

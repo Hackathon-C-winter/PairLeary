@@ -7,7 +7,7 @@ modalBtns.forEach(function (btn) {
     };
 });
 
-// 閉じるボタンを押したらモーダルを閉じる
+// Xボタンを押したらモーダルを閉じる
 const closeBtns = document.querySelectorAll(".modalClose");
 closeBtns.forEach(function (btn) {
     btn.onclick = function () {
@@ -16,7 +16,7 @@ closeBtns.forEach(function (btn) {
     };
 });
 
-// 閉じるボタンを押したらモーダルを閉じる
+// キャンセルボタンを押したらモーダルを閉じる
 const cancelBtns = document.querySelectorAll(".cancelButton");
 cancelBtns.forEach(function (btn) {
     btn.onclick = function () {

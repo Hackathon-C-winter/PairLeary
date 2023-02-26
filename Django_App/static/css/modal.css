@@ -58,6 +58,22 @@
     animation-name: modalopen;
     animation-duration: 1s;
 }
+/* ログアウトモーダル */
+.modal__content-logout {
+    position: relative;
+    background-color: #f4f4f4;
+    margin: 150px auto auto;
+    width: 500px;
+    height: 300px;
+    background: rgba(167, 181, 255, 0.7);
+    border: 1px solid #FFFFFF;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.25), 1px 3px 8px 4px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    animation-name: modalopen;
+    animation-duration: 1s;
+}
+
 /* モーダルを開く際のアニメーション */
 @keyframes modalopen {
     from {opacity: 0}
@@ -114,7 +130,7 @@
     backdrop-filter: blur(15px);
     border-radius: 0px 0px 20px 20px;
 }
-.modal__content--base-delete {
+.modal__content--base-delete,.modal__content--base-logout {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -129,11 +145,7 @@
 
 
 /* モーダル「～してください」の指定 */
-.modal__content--base P {
-    position: relative;
-    margin: 35px auto;
-}
-.modal__content--base-gender p {
+.modal__content--base p,.modal__content--base-gender p,.modal__content--base-logout p {
     position: relative;
     margin: 35px auto;
 }
@@ -310,5 +322,28 @@
 .deleteCancelButton:hover {
     cursor: pointer;
     background-color: #AD1457;
+    transition: all 0.3s;
+}
+
+.modal__content--button a {
+    position: relative;
+    display: block;
+    width: 150px;
+    height: 40px;
+    background: #3F51B5;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 37px;
+    text-align: center;
+    color: #ffffff;
+    text-decoration: none;
+    
+}
+.modal__content--button a:hover {
+    cursor: pointer;
+    color:inherit;
+color: #ffffff;
+    background-color: #283593;
     transition: all 0.3s;
 }
