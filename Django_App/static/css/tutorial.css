@@ -1,27 +1,75 @@
-/* tutorialページのモーダルのCSS指定ファイル */
+/* tutorialページのCSS指定ファイル */
 
+/* base.htmlにあるtutorialを隠す */
+.tutorial {
+    display: none;
+}
+/* ボタンの3つの横並び指定 */
 .container {
     position: relative;
     display: flex;
     justify-content: space-around;
-    width: 1024px;
-    left: calc(50% - 512px);
+    width: 900px;
+    top: 10%;
+    left: calc(50% - 450px);
     z-index: 3;
 }
 
-button {
+/* ボタン3つの大枠指定 */
+.modalOpen__content {
+    position: relative;
     width: 230px;
     height: 320px;
+    padding: 5px;
     background: #FFFFFF;
-    border: none;
-    /* シャドウ/30％ */
-    box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.3);
-    border-radius: 20px;
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.25), 1px 3px 8px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
     transition:box-shadow 0.3s, transform 0.3s;
 }
-
-button:hover {
+.modalOpen__content:hover {
     cursor: pointer;
     box-shadow:0 6px 14px rgba(0, 0, 0, 0.24);
-    transform:translate(0, -2px);
+    transform:translate(0, -8px);
+}
+/* ボタン内の画像指定 */
+.modalOpen__content__img {
+    position: relative;
+    width: 230px;
+    height: 200px;
+    top: -5px;
+    left: -5px;
+    border-radius: 10px 10px 0px 0px;
+}
+/* ボタン内のタイトル指定 */
+.modalOpen__content h2 {
+    position: relative;
+    margin-top: -10px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 35px;
+    color: #283593;
+}
+/* ボタン内サブタイトル指定 */
+.modalOpen__content p {
+    position: relative;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+}
+/* ボタン内の開くアイコン指定 */
+.modalOpen__content--open-icon {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    top: 20px;
+    left: 86%;
+}
+
+/* <h2>What is <span>PairLeary</span></h2>のspan指定 */
+.container span {
+    font-family: 'Oleo Script Swash Caps';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 38px;
 }
