@@ -10,7 +10,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib.auth.hashers import make_password, check_password
 from django.core.mail import EmailMessage
-
+from datetime import date
 
 # 新規登録
 # def signupfunc(request):
@@ -161,13 +161,15 @@ def search_matching(request):
             orders = Orders.objects.filter(
                 category=category,
                 matched_user_id__isnull=True,
+                order_date__gte=date.today(),  # 今日の日付以降のデータのみを取得する
                 ).exclude(user_id=request.user).select_related('user_id')
         else:
             # ordersテーブルからカテゴリがcategory、性別がgender、マッチング相手がいないデータを取得
             orders = Orders.objects.filter(
                 category=category,
                 matched_user_id__isnull=True,
-                user_id__gender_type=gender
+                user_id__gender_type=gender,
+                order_date__gte=date.today(),  # 今日の日付以降のデータのみを取得する
                 ).exclude(user_id=request.user).select_related('user_id')
         if orders:
             context = {'orders': orders}
