@@ -77,17 +77,17 @@
                     </div>
                     <div class="search__result--box-left-bottom">
                         {%if order.category == "コミュニケーション" %}
-                        <p id="communication" class="search__result--purpose">{{ order.category }}</p>
+                        <p class="result__communication">{{ order.category }}</p>
                         {% elif order.category == "開発" %}
-                        <p id="develop" class="search__result--purpose">{{ order.category }}</p>
+                        <p class="result__develop">{{ order.category }}</p>
                         {% endif %}
-
+                        
                         {%if order.hope_gender_type == "男性" %}
-                        <p id="man" class="search__result--gender">{{ order.hope_gender_type }}希望</p>
+                        <p class="result__man">{{ order.hope_gender_type }}希望</p>
                         {% elif order.hope_gender_type == "女性" %}
-                        <p id="woman" class="search__result--gender">{{ order.hope_gender_type }}希望</p>
+                        <p class="result__woman">{{ order.hope_gender_type }}希望</p>
                         {% elif order.hope_gender_type == "どちらでもOK" %}
-                        <p id="both" class="search__result--gender">{{ order.hope_gender_type }}</p>
+                        <p class="result__both">{{ order.hope_gender_type }}</p>
                         {% endif %}
                     </div>
                     <div class="search__result--box-right-up">

@@ -219,14 +219,27 @@ input:-webkit-autofill {
 .inputGender {
     position: relative;
     display: flex;
-
+    justify-content: space-between;
     top: 32px;
     width: 310px;
     height: 26px;
 }
+.inputGender-radiobutton {
+    position: relative;
+    display: flex;
+    width: auto;
+    /* border: #AD1457 solid; */
+}
+
+.inputGender-radiobutton span {
+    font-size: 16px;
+    padding-left: 7px;
+    line-height: 25px;
+    color: #000000;
+}
 
 /* 性別フォーム男性・女性・回答しないの指定 */
-.select-gender {
+/* .select-gender {
     position: relative;
     display: block;
     width: 50px;
@@ -237,7 +250,6 @@ input:-webkit-autofill {
     font-size: 16px;
     line-height: 25px;
     color: #000000;
-    /* border: #AD1457 solid; */
 }
 .inputGender_label__noanswer span {
     position: relative;
@@ -248,15 +260,51 @@ input:-webkit-autofill {
     padding-left: 7px;
     line-height: 25px;
     color: #000000;
-}
+} */
 
 /* デフォルトラジオボタン表示なしの指定 */
-.inputGender-radiobutton {
+/* .inputGender-radiobutton-man {
+    position: relative;
+    top: 7px;
+    left: 9px;
     display: none;
 }
+.inputGender-radiobutton-female {
+    position: relative;
+    left: 108px;
+    top: 8px;
+    display: none;
+}
+.inputGender-radiobutton-noanswer {
+    position: relative;
+    left: 209px;
+    top: 7px;
+    display: none;
+} */
+
+/* .inputGender-radiobutton-man {
+    position: absolute;
+    top: 7px;
+    left: 9px;
+    border: #AD1457 solid;
+    display: none;
+}
+.inputGender-radiobutton-female {
+    position: absolute;
+    left: 108px;
+    top: 8px;
+    display: none;
+}
+.inputGender-radiobutton-noanswer {
+    position: absolute;
+    left: 209px;
+    top: 7px;
+    display: none;
+} */
+
 
 /* ラジオボタン外丸の指定 */
-.inputGender_label {
+/* .inputGender_label {
     position: relative;
     float: left;
     width: 30px;
@@ -275,10 +323,10 @@ input:-webkit-autofill {
     margin:0%;
     border-radius:50%;
     cursor:pointer;
-}
+} */
 
 /* ラジオボタン中丸の指定 */
-#slider{
+/* #slider{
     position:absolute;
     left:5px;
     top:5px;
@@ -292,13 +340,13 @@ input:-webkit-autofill {
     animation-duration:.3s;
     animation-fill-mode: forwards;
     transition: 0.2s left .05s ease-in-out;
-}
+} */
 
 /* ラジオボタンアニメーション */
-#man:checked  ~ #slider{ animation-name: man; left: 5px; }
+/* #man:checked  ~ #slider{ animation-name: man; left: 5px; }
 #female:checked  ~ #slider{ animation-name: female; left: 105px; }
 #no-answer:checked  ~ #slider{ animation-name: no-answer; left: 205px; }
 
 @keyframes man{ 30%, 70% { transform:scale(0.5); } }
 @keyframes female{ 30%, 70% { transform:scale(0.5); } }
-@keyframes no-answer{ 30%, 70% { transform:scale(0.5); } }
+@keyframes no-answer{ 30%, 70% { transform:scale(0.5); } } */

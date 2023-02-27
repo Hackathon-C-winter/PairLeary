@@ -36,15 +36,19 @@
 
             <!-- 性別入力フォーム -->
             <div class="inputGender">
-                <label for="man" class="inputGender_label"><span class="select-gender">男性</span></label>
-                <input id="man" class="inputGender-radiobutton" name="gender" type="radio" value="男性" />
-
-                <label for="female" class="inputGender_label"><span class="select-gender">女性</span></label>
-                <input id="female" class="inputGender-radiobutton" name="gender" type="radio" value="女性" />
-
-                <label for="no-answer" class="inputGender_label__noanswer"><span>回答しない</span></label>
-                <input id="no-answer" class="inputGender-radiobutton" name="gender" type="radio" value="" />
-                <span id="slider"></span>
+                <div class="inputGender-radiobutton">
+                    <input id="man" class="inputGender-radiobutton-man" name="gender" type="radio" value="男性" />
+                    <label for="man" class="inputGender_label"><span class="select-gender">男性</span></label>
+                </div>
+                <div class="inputGender-radiobutton">
+                    <input id="female" class="inputGender-radiobutton-female" name="gender" type="radio" value="女性" />
+                    <label for="female" class="inputGender_label"><span class="select-gender">女性</span></label>
+                </div>
+                <div class="inputGender-radiobutton">
+                    <input id="no-answer" class="inputGender-radiobutton-noanswer" name="gender" type="radio" value="" />
+                    <label for="no-answer" class="inputGender_label__noanswer"><span>回答しない</span></label>
+                    <!-- <span id="slider"></span> -->
+                </div>
             </div>
 
             <!-- サインアップボタン -->

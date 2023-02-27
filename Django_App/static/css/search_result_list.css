@@ -102,29 +102,31 @@
     color: #000000;
 }
 
-#communication {
+.result__communication {
     background: #FFCCBC;
     border-radius: 3px;
     font-size: 12px;
-    letter-spacing: -0.9px;
+    letter-spacing: -2px;
 }
 
-#develop {
+.result__develop {
     background: #C5CAE9;
     border-radius: 3px;
 }
 
-.search__result--gender {
-    background: #FFF495;
+.result__man,.result__woman,.result__both {
     border-radius: 3px;
     margin-top: 5px;
 }
 
-#man {
+.result__man {
     background: #B3E5FC;
 }
-#woman {
+.result__woman {
     background: #F8BBD0;
+}
+.result__both {
+    background: #FFF495;
 }
 
 /* 予約作成ユーザー名と性別 */
