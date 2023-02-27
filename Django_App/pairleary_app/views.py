@@ -1,30 +1,15 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, View
-# from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.mixins import UserPassesTestMixin  # 追加
 from django.contrib.auth.decorators import login_required
 from .models import CustomUser, Orders
-from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib.auth.hashers import make_password, check_password
 from django.core.mail import EmailMessage
 from datetime import date
 
 # 新規登録
-# def signupfunc(request):
-#     if request.method == "POST":
-#         username = request.POST['username']
-#         email = request.POST['email']
-#         password = request.POST['password']
-#         try:
-#             user = CustomUser.objects.create_user(username, email, password)
-#             # user = User.objects.create_user(username, email, password)
-#             return redirect('login')
-#         except IntegrityError:
-#             return render(request, 'signup.html', {'error': 'このユーザーは登録済みです。'})
-#     return render(request, 'signup.html')
 def signupfunc(request):
     if request.method == "POST":
         username = request.POST['username']
@@ -37,7 +22,6 @@ def signupfunc(request):
         except IntegrityError:
             return render(request, 'signup.html', {'error': 'このユーザーは登録済みです。'})
     return render(request, 'signup.html')
-
 
 # ログイン
 def loginfunc(request):
@@ -199,16 +183,15 @@ def search_matching(request):
         return redirect('mypage')
     return render(request, 'search_matching.html', context)
 
-
-# @login_required(login_url='/login/')
-class Tutorial(TemplateView):
-    template_name = "tutorial.html"
-
+@login_required(login_url='/login/')
+# チュートリアル画面
+def tutorial(request):
+    return render(request, "tutorial.html")
 
 class Header(TemplateView):
     template_name = "header.html"
 
-
+# モーダルに値を受け渡すための関数
 def mypage_modal(request):
     user = request.user
     # ユーザーIDがログインしているユーザーと一致する予約情報を取得
