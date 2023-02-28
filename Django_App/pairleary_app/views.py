@@ -48,25 +48,21 @@ def mypage(request):
     # ユーザーIDがログインしているユーザーと一致する予約情報を取得
     order_data = Orders.objects.filter(user_id_id=user)
     if request.method == "POST" and 'delete_order' in request.POST:
-        print('deleteしたい')
         order_id = request.POST.get('delete_order')
         order = Orders.objects.get(order_id=order_id)
         if order.matched_user_id is None:
             order.delete()
             return redirect('mypage')
-    else:
-        return render(request, 'mypage.html', {'order_data': order_data, 'error_message': 'この予約は削除できません。'})
+        else:
+            return render(request, 'mypage.html', {'order_data': order_data, 'error_message': 'この予約は削除できません。'})
     # 画面側から送られてきた箇所をアップデートする
     if request.method == 'POST':
-        print(request)
         try:
             # ユーザー名の編集
             if 'username' in request.POST:
                 user = request.user
-                print(user)
                 new_username = request.POST.get('username')
                 user.username = new_username
-                print(user)
                 user.save()
                 return redirect('mypage')
             # メールアドレスの編集
