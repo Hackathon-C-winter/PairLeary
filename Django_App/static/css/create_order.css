@@ -170,8 +170,8 @@ label:hover {
 .error-message {
     position: absolute;
     width: 290px;
-    left: 29%;
-    top: -55px;
+    left: 23%;
+    top: -44px;
     font-weight: 700;
     text-align: right;
     color: red;

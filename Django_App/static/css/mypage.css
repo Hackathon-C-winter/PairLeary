@@ -119,3 +119,8 @@ p.comment {
     font-size: 20px;
 }
 
+.list-edit-buttons {
+    position: relative;
+    left: 500px;
+    top: -70px;
+}

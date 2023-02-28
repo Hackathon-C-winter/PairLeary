@@ -2,12 +2,17 @@
     <form method="POST">{% csrf_token %}
         <div id="editUserName" class="modal">
             <div class="modal__content">
-                <div class="modal__content--title">
-                    <h2>User-name</h2>
+                <h2 class="modal__content--title">Edit your name</h2>
+                <p class="modal__content--subtitle">ユーザー名の変更</p>
+                <p class="modalClose">×</p>
+                <div class="modal__content--base">
+                    <p>新しいユーザー名を入力してください</p>
+                    <input type="text" id="inputForm" class="" name="username" required autofocus>
+                    <div class="modal__content--button">
+                        <div class="cancelButton">キャンセル</div>
+                        <button class="OK-button">OK</button>
+                    </div>
                 </div>
-                <span class="modal-close">×</span>
-                <input type="text" id="inputUsername" class="" name="username" required>
-                <button>edit user name</button>
             </div>
         </div>
     </form>
@@ -16,12 +21,17 @@
     <form method="POST">{% csrf_token %}
         <div id="editEmail" class="modal">
             <div class="modal__content">
-                <div class="modal__content--title">
-                    <h2>Mail-Address</h2>
+                <h2 class="modal__content--title">Edit your mail address</h2>
+                <p class="modal__content--subtitle">メールアドレスの変更</p>
+                <p class="modalClose">×</p>
+                <div class="modal__content--base">
+                    <p>新しいメールアドレスを入力してください</p>
+                    <input type="email" id="inputForm" name="email" required>
+                    <div class="modal__content--button">
+                        <div class="cancelButton">キャンセル</div>
+                        <button class="OK-button">OK</button>
+                    </div>
                 </div>
-                <span class="modal-close">×</span>
-                <input type="email" name="email" required>
-                <button>edit email</button>
             </div>
         </div>
     </form>
@@ -29,18 +39,22 @@
     <!--start-- modal-3 Password-->
     <form method="POST">{% csrf_token %}
         <div id="editPassword" class="modal">
-            <div class="modal__content">
-                <div class="modal__content--title">
-                    <h2>Password</h2>
+            <div class="modal__content-password">
+                <h2 class="modal__content--title">Password</h2>
+                <p class="modalClose">×</p>
+                <p class="modal__content--subtitle">パスワードの変更</p>
+                <div class="modal__content--base-password">
+                    <p>現在のパスワード</p>
+                    <input type="password"  id="inputForm" class="" name="presentPassword" required>
+                    <p>新しいパスワード</p>
+                    <input type="password"  id="inputForm" class="" name="newPassword" required>
+                    <p>新しいパスワードを再入力してください</p>
+                    <input type="password"  id="inputForm" class="" name="confirmPassword" required>
+                    <div class="modal__content--button-password">
+                        <div class="cancelButton">キャンセル</div>
+                        <button class="OK-button">OK</button>
+                    </div>
                 </div>
-                <span class="modal-close">×</span>
-                <p>現在のパスワード</p>
-                <input type="password" id="inputPassword" class="" name="presentPassword" required>
-                <p>新しいパスワード</p>
-                <input type="password" id="inputPassword" class="" name="newPassword" required>
-                <p>新しいパスワードを再入力してください</p>
-                <input type="password" id="inputPassword" class="" name="confirmPassword" required>
-                <button>edit password</button>
             </div>
         </div>
     </form>
@@ -48,24 +62,29 @@
     <!--start-- modal-4 Gender -->
     <form method="POST">{% csrf_token %}
         <div id="editGender" class="modal">
-            <div class="modal__content">
-                <div class="modal__content--title">
-                    <h2>Gender</h2>
+            <div class="modal__content-gender">
+                <h2 class="modal__content--title">Edit your gender</h2>
+                <p class="modal__content--subtitle">性別の変更</p>
+                <p class="modalClose">×</p>
+                <div class="modal__content--base-gender">
+                    <p>変更する項目を選択してください</p>
+                    <div class="select-button">
+                        <input type="radio" id="man" class="radio-button" name="gender" value="男性">
+                        <label class="label-gender" for="man">男性</label>
+                    </div>
+                    <div class="select-button">
+                        <input type="radio" id="female" class="radio-button" name="gender" value="女性">
+                        <label class="label-gender" for="female">女性</label>
+                    </div>
+                    <div class="select-button">
+                        <input type="radio" id="no-answer" class="radio-button" name="gender" value="">
+                        <label class="label-gender" for="no-answer">回答しない</label>
+                    </div>
+                    <div class="modal__content--button">
+                        <div class="cancelButton">キャンセル</div>
+                        <button class="OK-button">OK</button>
+                    </div>
                 </div>
-                <span class="modal-close">×</span>
-                <div class="select-button">
-                    <input type="radio" id="female" class="radio-button" name="gender" value="男性">
-                    <label for="female">男性</label>
-                </div>
-                <div class="select-button">
-                    <input type="radio" id="female" class="radio-button" name="gender" value="女性">
-                    <label for="female">女性</label>
-                </div>
-                <div class="select-button">
-                    <input type="radio" id="female" class="radio-button" name="gender" value="">
-                    <label for="female">回答しない</label>
-                </div>
-                <button>edit gender</button>
             </div>
         </div>
     </form>
@@ -74,9 +93,16 @@
     {% for order in order_data %}
     <form method="POST">{% csrf_token %}
         <div id="modalDelete" class="modal">
-            <div class="modal__content">
-                <div class="modal__content--title">
-                    <h2>Delete</h2>
+            <div class="modal__content-delete">
+                <h2 class="modal__content--title">Delete your reservetion</h2>
+                <p class="modal__content--subtitle">予約の削除</p>
+                <p class="modalClose" id="deleteClose">×</p>
+                <div class="modal__content--base-delete">
+                    <p>選択した予約リストを削除しますか？</p>
+                    <div class="modal__content--button">
+                        <div class="cancelButton" id="deleteCancelButton">キャンセル</div>
+                        <button type="submit" class="deleteCancelButton" name="delete_order" value="{{ order.order_id }}">削除する</button>
+                    </div>
                 </div>
                 <span class="modal-close">×</span>
                 <button type="submit" name="delete_order" value="{{ order.order_id }}">Delete</button>

@@ -76,10 +76,20 @@
                         <p class="search__result--time">{{order.order_time_range_type}}</p>
                     </div>
                     <div class="search__result--box-left-bottom">
-                        <p id="add-class-name" class="search__result--purpose">{{ order.category }}</p>
-                        <p id="add-class-name" class="search__result--gender">{{ order.hope_gender_type }}希望</p>
+                        {%if order.category == "コミュニケーション" %}
+                        <p class="result__communication">{{ order.category }}</p>
+                        {% elif order.category == "開発" %}
+                        <p class="result__develop">{{ order.category }}</p>
+                        {% endif %}
+                        
+                        {%if order.hope_gender_type == "男性" %}
+                        <p class="result__man">{{ order.hope_gender_type }}希望</p>
+                        {% elif order.hope_gender_type == "女性" %}
+                        <p class="result__woman">{{ order.hope_gender_type }}希望</p>
+                        {% elif order.hope_gender_type == "どちらでもOK" %}
+                        <p class="result__both">{{ order.hope_gender_type }}</p>
+                        {% endif %}
                     </div>
-                
                     <div class="search__result--box-right-up">
                         <p class="search__result--user-name">{{ order.user_id }}<span>さん</span></p>
                         <p class="search__result--user-gender">{{ order.user_id.gender_type }}</p>
@@ -88,11 +98,17 @@
                         <p class="search__result--comment">{{ order.comment }}</p>
                     </div>
                 <!-- 参加する！ボタン -->
-                <!-- <input type="submit" class="search-result__apply" name="matching_button" value="参加する！ >"> -->
                     <form method="POST" class="search-result__button" action="{% url 'search_matching' %}">
                         {% csrf_token %}
                         <input type="hidden" name="order_id" value="{{ order.order_id }}">
                         <input type="submit" class="search-result__apply" name="matching_button" value="参加する！ >">
+
+                        <!--予約確認モーダルボタン-->
+                        <button id="reservetionConfirm-button" class="modalOpen" type="button" data-modal="modalReservetionConfirm">
+                            <img src="{% static 'img/myPage/mypage-edit-btn+.svg' %}">
+                            <img src="{% static 'img/myPage/mypage-edit-btn-hover.svg' %}" class="edit-button__hover">
+                        </button>
+
                     </form>
                 </div>
                 {% endfor %}
@@ -101,7 +117,24 @@
             <!--end--検索結果表示エリア-->       
         </main>
     </div>
-    <!-- {% load static %}
-    <script src="{% static 'js/matching_list.js' %}" type="text/javascript"></script> -->
 </body>
+
+<form method="POST">{% csrf_token %}
+    <div id="modalReservetionConfirm" class="modal">
+        <div class="modal__content-delete">
+            <h2 class="modal__content--title">Confirm reservetion</h2>
+            <p class="modal__content--subtitle">予約の確認</p>
+            <p class="modalClose" id="deleteClose">×</p>
+            <div class="modal__content--base-delete">
+                <p>このマッチングに参加しますか？</p>
+                <div class="modal__content--button">
+                    <div class="cancelButton" id="deleteCancelButton">キャンセル</div>
+                    <button class="deleteCancelButton">参加する！＞</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
 {% endblock %}

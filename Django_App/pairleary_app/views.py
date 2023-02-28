@@ -48,6 +48,7 @@ def mypage(request):
     # ユーザーIDがログインしているユーザーと一致する予約情報を取得
     order_data = Orders.objects.filter(user_id_id=user)
     if request.method == "POST" and 'delete_order' in request.POST:
+        print(request.POST)
         order_id = request.POST.get('delete_order')
         order = Orders.objects.get(order_id=order_id)
         if order.matched_user_id is None:

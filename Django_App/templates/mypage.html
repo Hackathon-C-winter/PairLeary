@@ -2,7 +2,6 @@
 <!-- CSSファイルインポート ★CSSファイルのリンク先は実装時に要修正-->
 {% block head %}
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/modal.css' %}">
     <link rel="stylesheet" href="{% static 'css/mypage.css' %}">
     <link rel="stylesheet" href="{% static 'css/search_result_list.css' %}">
 {% endblock %}
@@ -90,8 +89,19 @@
                     <p class="search__result--time">{{order.order_time_range_type}}</p>
                 </div>
                 <div class="search__result--box-left-bottom">
-                    <p id="add-class-name" class="search__result--purpose">{{ order.category }}</p>
-                    <p id="add-class-name" class="search__result--gender">{{ order.hope_gender_type }}希望</p>
+                    {%if order.category == "コミュニケーション" %}
+                    <p class="result__communication">{{ order.category }}</p>
+                    {% elif order.category == "開発" %}
+                    <p class="result__develop">{{ order.category }}</p>
+                    {% endif %}
+                    
+                    {%if order.hope_gender_type == "男性" %}
+                    <p class="result__man">{{ order.hope_gender_type }}希望</p>
+                    {% elif order.hope_gender_type == "女性" %}
+                    <p class="result__woman">{{ order.hope_gender_type }}希望</p>
+                    {% elif order.hope_gender_type == "どちらでもOK" %}
+                    <p class="result__both">{{ order.hope_gender_type }}</p>
+                    {% endif %}
                 </div>
                 <div class="search__result--box-right-up">
                     <p class="search__result--user-name">{{ user.username }}<span>さん</span></p>
@@ -104,15 +114,23 @@
                 <div class="matching-status">
                     <p class="matching-status-none">マッチング<br>待ち</p>
                 </div>
-                <button class="modalOpen" type="button" data-modal="modalDelete">
+                <div class="list-edit-buttons">
+                    <!--メニューボタン ※共通CSS-->
+                    <button class="modalOpen" type="button" data-modal="modalReservetionEdit">
+                        <img src="{% static 'img/myPage/mypage-menu-btn.svg' %}">
+                        <img src="{% static 'img/myPage/mypage-menu-btn-hover.svg' %}" class="edit-button__hover">
+                    </button>
+                    <!--削除ボタン ※共通CSS-->
+                    <button class="modalOpen" type="button" data-modal="modalDelete">
+                        <img src="{% static 'img/myPage/mypage-delete-btn.svg' %}">
+                        <img src="{% static 'img/myPage/mypage-delete-btn-hover.svg' %}" class="edit-button__hover">
+                    </button>
                     <!--編集ボタン ※共通CSS-->
-                    <img src="{% static 'img/myPage/mypage-edit-btn+.svg' %}">
-                    <img src="{% static 'img/myPage/mypage-edit-btn-hover.svg' %}" class="edit-button__hover">
-                </button>
-                    <!--編集ボタン ※共通CSS-->
-                    <img src="{% static 'img/myPage/mypage-edit-btn+.svg' %}">
-                    <img src="{% static 'img/myPage/mypage-edit-btn-hover.svg' %}" class="edit-button__hover">
-                </button>
+                    <button class="modalOpen" type="button" data-modal="modalReservetionEdit">
+                        <img src="{% static 'img/myPage/mypage-listEdit-btn.svg' %}">
+                        <img src="{% static 'img/myPage/mypage-listEdit-btn-hover.svg' %}" class="edit-button__hover">
+                    </button>
+                </div>
                 {% else %}
                 <div class="matching-status">
                     <p class="matching-status-on"><span>{{order.matched_user_id}}<br>さんと</span><br>マッチング中</p>
@@ -120,7 +138,7 @@
                 {% endif %}
             </div>
             {% empty %}     
-            <p class="comment">まだ予約はありません。</p>
+            <p class="comment">まだ予約はありません</p>
             {% endfor %}
         </div>    
         <!--end--予約状況 一覧-->
@@ -130,9 +148,5 @@
     <!-- {% include './mypage-modal.html' %} -->
     {% include './mypage-modal.html' with order_id=order.order_id %}
 
-    {% load static %}
-        <script src="{% static 'js/modal.js' %}" type="text/javascript"></script>
-
-    
 </body>
 {% endblock %}
