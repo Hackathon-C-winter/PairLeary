@@ -97,12 +97,13 @@
                     <div class="search__result--box-right-bottom">
                         <p class="search__result--comment">{{ order.comment }}</p>
                     </div>
+
                 <!-- 参加する！ボタン -->
                     <form method="POST" class="search-result__button" action="{% url 'search_matching' %}">
                         {% csrf_token %}
-                        <!-- <input type="submit" class="search-result__apply"  value="参加する！ >"> -->
-                        <!-- <input type="hidden" name="order_id" value="{{ order.order_id }}"> -->
-                        <!--予約確認モーダルボタン-->
+                        <input type="hidden" name="order_id" value="{{ order.order_id }}">
+
+                <!--予約確認モーダルボタン-->
                         <button id="reservetionConfirm-button" class="modalOpen" type="button" data-modal="modalReservetionConfirm">参加する！></button>
                             <div id="modalReservetionConfirm" class="modal">
                                 <div class="modal__content-delete">

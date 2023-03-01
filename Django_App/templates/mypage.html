@@ -158,20 +158,24 @@
                 </div>
                 <div class="list-edit-buttons">
                     <!--メニューボタン ※共通CSS-->
-                    <button class="modalOpen" date-order_id="" type="button" data-modal="">
+                    <!-- <button class="modalOpen" date-order_id="" type="button" data-modal="">
                         <img src="{% static 'img/myPage/mypage-menu-btn.svg' %}">
                         <img src="{% static 'img/myPage/mypage-menu-btn-hover.svg' %}" class="edit-button__hover">
-                    </button>
+                    </button> -->
+                    
                     <!--削除ボタン ※共通CSS-->
-                    <button class="modalOpen" data-order_id="{{order.order_id}}" type="button" data-modal="modalDelete">
-                        <img src="{% static 'img/myPage/mypage-delete-btn.svg' %}">
-                        <img src="{% static 'img/myPage/mypage-delete-btn-hover.svg' %}" class="edit-button__hover">
-                    </button>
+                    <form method="POST">{% csrf_token %}
+                        <button type="submit" class="delete-apply" name="delete_order" value="{{ order.order_id }}">
+                            <img src="{% static 'img/myPage/mypage-delete-btn.svg' %}">
+                            <img src="{% static 'img/myPage/mypage-delete-btn-hover.svg' %}" class="edit-button__hover">
+                        </button>
+                    </form>
+
                     <!--編集ボタン ※共通CSS-->
-                    <button class="modalOpen" data-order_id="{{order.order_id}}" type="button" data-modal="modalReservetionEdit">
+                    <!-- <button class="modalOpen" data-order_id="{{order.order_id}}" type="button" data-modal="modalReservetionEdit">
                         <img src="{% static 'img/myPage/mypage-listEdit-btn.svg' %}">
                         <img src="{% static 'img/myPage/mypage-listEdit-btn-hover.svg' %}" class="edit-button__hover">
-                    </button>
+                    </button> -->
                 </div>
                 {% include './mypage-modal.html' with order_id=order.order_id %}
                 {% else %}

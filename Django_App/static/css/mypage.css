@@ -121,6 +121,12 @@ p.comment {
 
 .list-edit-buttons {
     position: relative;
-    left: 500px;
-    top: -70px;
+    left: 495px;
+    top: -60px;
+}
+
+.delete-apply {
+    position: relative;
+    width: 35px;
+    height: 35px;
 }
