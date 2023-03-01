@@ -100,28 +100,25 @@
                 <!-- 参加する！ボタン -->
                     <form method="POST" class="search-result__button" action="{% url 'search_matching' %}">
                         {% csrf_token %}
-                        <input type="hidden" name="order_id" value="{{ order.order_id }}">
-                        <input type="submit" class="search-result__apply"  value="参加する！ >">
-
+                        <!-- <input type="submit" class="search-result__apply"  value="参加する！ >"> -->
+                        <!-- <input type="hidden" name="order_id" value="{{ order.order_id }}"> -->
                         <!--予約確認モーダルボタン-->
-                        <button id="reservetionConfirm-button" class="modalOpen" type="button" data-modal="modalReservetionConfirm">
-                            <img src="{% static 'img/myPage/mypage-edit-btn+.svg' %}">
-                            <img src="{% static 'img/myPage/mypage-edit-btn-hover.svg' %}" class="edit-button__hover">
-                        </button>
-                        <div id="modalReservetionConfirm" class="modal">
-                            <div class="modal__content-delete">
-                                <h2 class="modal__content--title">Confirm reservetion</h2>
-                                <p class="modal__content--subtitle">予約の確認</p>
-                                <p class="modalClose" id="deleteClose">×</p>
-                                <div class="modal__content--base-delete">
-                                    <p>このマッチングに参加しますか？</p>
-                                    <div class="modal__content--button">
-                                        <div class="cancelButton" id="deleteCancelButton">キャンセル</div>
-                                        <button class="deleteCancelButton" name="matching_button" value="{{order.order_id}}">参加する！＞</button>
+                        <button id="reservetionConfirm-button" class="modalOpen" type="button" data-modal="modalReservetionConfirm">参加する！></button>
+                            <div id="modalReservetionConfirm" class="modal">
+                                <div class="modal__content-delete">
+                                    <h2 class="modal__content--title">Confirm reservetion</h2>
+                                    <p class="modal__content--subtitle">予約の確認</p>
+                                    <p class="modalClose" id="deleteClose">×</p>
+                                    <div class="modal__content--base-delete">
+                                        <p>このマッチングに参加しますか？</p>
+                                        <div class="modal__content--button">
+                                            <div class="cancelButton" id="deleteCancelButton">キャンセル</div>
+                                            <input type="hidden" name="order_id" value="{{ order.order_id }}">
+                                            <button class="apply-Button" name="matching_button" value="{{order.order_id}}">参加する！＞</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </form>
                 </div>
                 {% endfor %}
