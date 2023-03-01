@@ -4,6 +4,12 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/mypage.css' %}">
     <link rel="stylesheet" href="{% static 'css/search_result_list.css' %}">
+<!-- カレンダー表示CDN -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js" integrity="sha256-Huqxy3eUcaCwqqk92RwusapTfWlvAasF6p2rxV6FJaE=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/l10n/ja.js" integrity="sha256-us400PA8+wpkgAkYwnKn7ueJbkk00UuwAcqrHqLGQJw=" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css" integrity="sha256-GzSkJVLJbxDk36qko2cnawOGiqz/Y8GsQv/jMTUrx1Q=" crossorigin="anonymous">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/themes/light.min.css" integrity="sha256-vxrocMyy3+x+gmiNuoCS5Iv5rEurStwP6vnN5Mr1PfA=" crossorigin="anonymous">
 {% endblock %}
 
 {% block title %}
@@ -116,12 +122,12 @@
                 </div>
                 <div class="list-edit-buttons">
                     <!--メニューボタン ※共通CSS-->
-                    <button class="modalOpen" type="button" data-modal="modalReservetionEdit">
+                    <button class="modalOpen" type="button" data-modal="">
                         <img src="{% static 'img/myPage/mypage-menu-btn.svg' %}">
                         <img src="{% static 'img/myPage/mypage-menu-btn-hover.svg' %}" class="edit-button__hover">
                     </button>
                     <!--削除ボタン ※共通CSS-->
-                    <button class="modalOpen" type="button" data-modal="modalDelete">
+                    <button class="listModalOpen" data-order_id="modalDelete-{{order.order_id}}"type="button" data-modal="modalDelete-{{order.order_id}}">
                         <img src="{% static 'img/myPage/mypage-delete-btn.svg' %}">
                         <img src="{% static 'img/myPage/mypage-delete-btn-hover.svg' %}" class="edit-button__hover">
                     </button>
@@ -131,6 +137,7 @@
                         <img src="{% static 'img/myPage/mypage-listEdit-btn-hover.svg' %}" class="edit-button__hover">
                     </button>
                 </div>
+                {% include './mypage-modal.html' with order_id=order.order_id %}
                 {% else %}
                 <div class="matching-status">
                     <p class="matching-status-on"><span>{{order.matched_user_id}}<br>さんと</span><br>マッチング中</p>
@@ -147,6 +154,8 @@
 
     <!-- {% include './mypage-modal.html' %} -->
     {% include './mypage-modal.html' with order_id=order.order_id %}
+
+
 
 </body>
 {% endblock %}
