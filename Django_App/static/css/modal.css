@@ -364,8 +364,19 @@
 
 /* モーダル削除ボタンの指定 */
 #deleteCancelButton {
+    position: relative;
+    width: 150px;
+    height: 40px;
     border: 2px solid #E91E63;
+    /* padding-left: 35px; */
+    text-align: center;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 35px;
+    border-radius: 5px;
+    cursor: pointer;
 }
+
 .deleteCancelButton {
     background-color: #E91E63;
 }

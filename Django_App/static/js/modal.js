@@ -5,11 +5,12 @@ const modalBtns = document.querySelectorAll(".modalOpen");
 modalBtns.forEach(function (btn) {
     btn.onclick = function () {
     const modal = btn.getAttribute('data-modal');
+    const order_id = btn.getAttribute('data-order_id')
         document.getElementById(`${modal}-${order_id}`).style.display = "block";
     };
 });
 // 上記以外のモーダルを開く記述
-const openModalBtns = document.querySelectorAll(".listModalOpen");
+const openModalBtns = document.querySelectorAll(".modalOpen");
 modalBtns.forEach(function (btn) {
     btn.onclick = function () {
     const modal = btn.getAttribute('data-modal');
