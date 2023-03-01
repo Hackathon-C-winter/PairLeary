@@ -508,17 +508,44 @@
 }
 
 /* マウスオーバー時の背景色を指定する */
-.label-fix-time,.label-fix-purpose,.label-fix-gender:hover {
+.label-fix-time:hover {
     background-color: #BEBEBE; 
     color: #283593;
     transition: all 0.3s;
 }
-.radio-button:checked + .label-fix-time,.label-fix-purpose,.label-fix-gender {
+.label-fix-purpose:hover {
+    background-color: #BEBEBE; 
+    color: #283593;
+    transition: all 0.3s;
+}
+.label-fix-gender:hover:hover {
+    background-color: #BEBEBE; 
+    color: #283593;
+    transition: all 0.3s;
+}
+.radio-button:checked + .label-fix-time {
     background-color: #283593;
     border: 2px solid #283593;
     color: #FFFFFF;
     transition: all 0.3s;
 }
+.radio-button:checked + .label-fix-purpose {
+    background-color: #283593;
+    border: 2px solid #283593;
+    color: #FFFFFF;
+    transition: all 0.3s;
+}
+.radio-button:checked + .label-fix-gender {
+    background-color: #283593;
+    border: 2px solid #283593;
+    color: #FFFFFF;
+    transition: all 0.3s;
+}
+
+
+
+
+
 .label-fix-purpose {
     width: 102px;
     height: 40px;
