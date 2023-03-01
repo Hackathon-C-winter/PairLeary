@@ -47,6 +47,9 @@ def mypage(request):
     user = request.user
     # ユーザーIDがログインしているユーザーと一致する予約情報を取得
     order_data = Orders.objects.filter(user_id_id=user)
+    # マッチングが成立している自分のデータを取得
+    matched_order_data = Orders.objects.filter(matched_user_id__isnull=False, matched_user_id=user)
+    # 削除ボタンを押した予約を削除する
     if request.method == "POST" and 'delete_order' in request.POST:
         print(request.POST)
         order_id = request.POST.get('delete_order')
@@ -55,7 +58,7 @@ def mypage(request):
             order.delete()
             return redirect('mypage')
         else:
-            return render(request, 'mypage.html', {'order_data': order_data, 'error_message': 'この予約は削除できません。'})
+            return render(request, 'mypage.html', {'order_data': order_data, 'matched_order_data':matched_order_data, 'error_message': 'この予約は削除できません。'})
     # 画面側から送られてきた箇所をアップデートする
     if request.method == 'POST':
         try:
@@ -107,7 +110,7 @@ def mypage(request):
                 # return redirect('mypage')
         except IntegrityError:
             return render(request, 'mypage.html', {'error': '問題が発生しました。リロードしてください。'})
-    return render(request, 'mypage.html', {'order_data': order_data})
+    return render(request, 'mypage.html', {'order_data': order_data, 'matched_order_data':matched_order_data})
 
 # マッチング新規予約
 @login_required(login_url='/login/')
