@@ -29,11 +29,11 @@
         <h2>Log in</h2>
         <form class="form-signin" method="POST">{% csrf_token %}
             <div class="inputBox"> <!-- ユーザーネームフォーム -->
-                <label for="inputusername" class="inputBox__title">User Name</label>
+                <label for="inputusername" class="inputBox__title--login">User Name</label>
                 <input type="text" id="username" class="inputBox__inputform" placeholder="slack名" name="username" required autofocus>
             </div>
             <div class="inputBox"> <!-- パスワードフォーム -->
-                <label for="inputPassword" class="inputBox__title">Password</label>
+                <label for="inputPassword" class="inputBox__title--login">Password</label>
                 <input type="password" id="inputPassword" class="inputBox__inputform" placeholder="パスワード" name="password" required>
             </div>
             <!-- ログインボタン -->

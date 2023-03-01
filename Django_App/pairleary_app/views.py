@@ -82,29 +82,29 @@ def mypage(request):
                 return redirect('mypage')
             # パスワードの編集
             if 'presentPassword' or 'newPassword' or 'confirmPassword' in request.POST:
-                # 現在のパスワード
+            # 現在のパスワード
                 presentPassword = request.POST.get('presentPassword')
-                # 新しいパスワード
+            # 新しいパスワード
                 newPassword = request.POST.get('newPassword')
-                # 新しいパスワードの確認用
+            # 新しいパスワードの確認用
                 confirmPassword = request.POST.get('confirmPassword')
-                # 現在のパスワードのチェック
-                if check_password(presentPassword, user.password):
-                    try:
-                        # 新しいパスワードと確認用パスワードのチェック
-                        if newPassword == confirmPassword:
-                            hashed_password = make_password(newPassword)
-                            user.password = hashed_password
-                            user.save()
-                        else:
-                            return render(request, 'mypage.html', {'error': '確認のためのパスワードが一致しません。'})
-                    except IntegrityError:
-                        return render(request, 'mypage.html', {'error': '現在のパスワードが一致しません。'})
-                # セッションを再認証する
-                user = authenticate(username=user.username, password=newPassword)
-                if user is not None:
-                    login(request, user)
-                return redirect('mypage')
+            # 現在のパスワードのチェック
+            if check_password(presentPassword, user.password):
+            # 新しいパスワードと確認用パスワードのチェック
+                if newPassword == confirmPassword:
+                    hashed_password = make_password(newPassword)
+                    user.password = hashed_password
+                    user.save()
+                else:
+                    return render(request, 'mypage.html', {'error': '確認のためのパスワードが一致しません。'})
+            else:
+                    return render(request, 'mypage.html', {'error': '現在のパスワードが一致しません'})
+                #         return render(request, 'mypage.html', {'error': '現在のパスワードが一致しません。'})
+                # # セッションを再認証する
+                # user = authenticate(username=user.username, password=newPassword)
+                # if user is not None:
+                #     login(request, user)
+                # return redirect('mypage')
         except IntegrityError:
             return render(request, 'mypage.html', {'error': '問題が発生しました。リロードしてください。'})
     return render(request, 'mypage.html', {'order_data': order_data})

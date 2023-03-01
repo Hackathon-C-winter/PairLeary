@@ -141,10 +141,10 @@ form p {
 }
 
 /* 検索条件に～の指定 */
-.error-message {
+.mypage-error-message {
     position: absolute;
     left: 28%;
     top: 3%;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 18px;
 }
