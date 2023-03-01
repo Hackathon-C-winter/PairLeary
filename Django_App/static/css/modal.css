@@ -508,12 +508,12 @@
 }
 
 /* マウスオーバー時の背景色を指定する */
-label:hover {
+.label-fix-time,.label-fix-purpose,.label-fix-gender:hover {
     background-color: #BEBEBE; 
     color: #283593;
     transition: all 0.3s;
 }
-.radio-button:checked + label {
+.radio-button:checked + .label-fix-time,.label-fix-purpose,.label-fix-gender {
     background-color: #283593;
     border: 2px solid #283593;
     color: #FFFFFF;
