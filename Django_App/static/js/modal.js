@@ -1,22 +1,30 @@
 // モーダルのJS指定
 
 // 予約編集・削除のモーダルを開く記述
-const modalBtns = document.querySelectorAll(".modalOpen");
-modalBtns.forEach(function (btn) {
-    btn.onclick = function () {
-    const modal = btn.getAttribute('data-modal');
-    const order_id = btn.getAttribute('data-order_id')
-        document.getElementById(`${modal}-${order_id}`).style.display = "block";
-    };
-});
+// const modalBtns = document.querySelectorAll(".modalOpen");
+// modalBtns.forEach(function (btn) {
+//     btn.onclick = function () {
+//     const modal = btn.getAttribute('data-modal');
+//     const order_id = btn.getAttribute('data-order_id')
+//         document.getElementById(`${modal}-${order_id}`).style.display = "block";
+//     };
+// });
 // 上記以外のモーダルを開く記述
-const openModalBtns = document.querySelectorAll(".modalOpen");
+// const openModalBtns = document.querySelectorAll(".modalOpen");
+// modalBtns.forEach(function (btn) {
+//     btn.onclick = function () {
+//     const modal = btn.getAttribute('data-modal');
+//         document.getElementById(modal).style.display = "block";
+//     };
+// });
+const modalBtns = document.querySelectorAll(".modalOpen");
 modalBtns.forEach(function (btn) {
     btn.onclick = function () {
     const modal = btn.getAttribute('data-modal');
         document.getElementById(modal).style.display = "block";
     };
 });
+
 
 
 // Xボタンを押したらモーダルを閉じる

@@ -194,10 +194,8 @@
     position: relative;
     grid-row: 2 / 3;
     grid-column: 3 / 4;
-    width: 110px;
-    top: 45px;
+    width: 150px;
     height: 40px;
-    /* left: 10px; */
     text-align: center;
     font-weight: 700;
     font-size: 16px;
@@ -223,6 +221,42 @@
     transform: translate(0.05em, 0.05em);
     box-shadow: 0.05em 0.05em;
 }
+
+#reservetionConfirm-button {
+    position: relative;
+    grid-row: 2 / 3;
+    grid-column: 3 / 4;
+    width: 120px;
+    height: 40px;
+    top: 45px;
+    left: 20px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 23px;
+    color: #FFFFFF;
+    background: #E91E63;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    box-shadow: 2px 2px rgb(173, 20, 87);
+    cursor: pointer;
+}
+
+#reservetionConfirm-button:hover {
+    background: linear-gradient(355.35deg, #E91E63 3.29%, #DB316B 42.82%, #FF377B 95.84%);
+    color: #FFFFFF;
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px rgb(173, 20, 87);
+    transition: all 0.2s;
+}
+
+#reservetionConfirm-button {
+    transform: translate(0.05em, 0.05em);
+    box-shadow: 0.05em 0.05em;
+}
+
+
 
 /* MyPageマッチングステータス状況の指定 */
 .matching-status {
@@ -251,7 +285,7 @@
     padding: 3px;
     width: 110px;
     height: auto;
-    max-height: 125px;
+    max-height: 100px;
     background: #FFEB3C;
     border-radius: 5px;
     line-height: 20px;
@@ -282,19 +316,3 @@
     transform: translate(0, 50px);
 }
 
-/* .fade-in-down {
-    transform: translate(0, -50px);
-}
-
-.fade-in-left {
-    transform: translate(-50px, 0);
-}
-
-.fade-in-right {
-    transform: translate(50px, 0);
-}
-
-.scroll-in {
-    opacity: 1;
-    transform: translate(0, 0);
-} */
