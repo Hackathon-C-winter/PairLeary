@@ -100,7 +100,7 @@
                 <div class="modal__content--base-delete">
                     <p>選択した予約リストを削除しますか？</p>
                     <div class="modal__content--button">
-                        <div class="cancelButton" id="deleteCancelButton">キャンセル</div>
+                        <div class="order-datecancelButton" id="deleteCancelButton">キャンセル</div>
                         <button type="submit" class="deleteCancelButton" name="delete_order" value="{{ order_id }}">削除する</button>
                     </div>
                 </div>
@@ -112,86 +112,89 @@
     <!-- {% endfor %} -->
     <form method="POST">{% csrf_token %}
         <div id="modalReservetionEdit" class="modal">
-            <div class="modal__content">
-                <h2 class="modal__content--title">変更内容を入力してください</h2>
-                <p class="modalClose">×</p>
-                <div class="modal__content--date">
-                    
-                    <!-- マッチング日フォーム -->
-                    <h3>マッチング日</h3>
-                    <div class="modal__content--time">
-                        <input id="" placeholder="{{ order.order_date|date:"Y年n月j日"}}" class="order-date" name="username" readonly>
-                        <!-- 再入力エリア -->
-                        <input type="input" id="calender" placeholder="日付を選択してください" class="order-date" name="date" required="" readonly="readonly"> <!-- "name="date"は変更不可 -->
-                    </div>
+            <div class="modal__content-ReservetionEdit">
+                <!-- <h2 class="modal__content--title">Edit your reservetion</h2> -->
+                <!-- <p class="modal__content--subtitle">予約の変更</p> -->
+                <div class="modal__content--base-ReservetionEdit">
+                    <p id="modalClose__ReservetionEdit" class="modalClose">×</p>
+                    <h2>変更内容を入力してください</h2>
+                    <div class="ReservetionEdit__container">
+                        
+                        <!-- マッチング日フォーム -->
+                        <h3>マッチング日</h3>
+                        <div class="modal__content--date">
+                            <input id="" placeholder="{{ order.order_date|date:"Y年n月j日" }}" class="order-date" name="username" readonly>
+                            <!-- 再入力エリア -->
+                            <input type="input" id="calender" placeholder="日付を選択してください" class="fix-order-date" name="date" required="" readonly="readonly"> <!-- "name="date"は変更不可 -->
+                        </div>
 
-                    <!-- マッチングの時間帯 -->
-                    <h3>マッチングの時間帯</h3>
-                    <div class="modal__content--time">
-                        <input type="text" id="" placeholder="{{order.order_time_range_type}}" class="order-date" name="username" readonly>
-                        <!-- 再入力エリア -->
-                        <div class="select">
-                            <div class="select__button">
-                                <input type="radio" id="morning" class="radio-button" name="time" value="午前">
-                                <label class="label-fix-time"  for="morning">午前</label>
-                            </div>
-                            <div class="select__button">
-                                <input type="radio" id="afternoon" class="radio-button" name="time" value="午後">
-                                <label class="label-fix-time"  for="afternoon">午後</label>
-                            </div>
-                            <div class="select__button">
-                                <input type="radio" id="evening" class="radio-button" name="time" value="夜">
-                                <label class="label-fix-time" for="evening">夜</label>
+                        <!-- マッチングの時間帯 -->
+                        <h3>マッチングの時間帯</h3>
+                        <div class="modal__content--time">
+                            <input type="text" id="" placeholder="{{order.order_time_range_type}}" class="order-date" name="username" readonly>
+                            <!-- 再入力エリア -->
+                            <div class="select">
+                                <div class="select__button">
+                                    <input type="radio" id="morning" class="radio-button" name="time" value="午前">
+                                    <label class="label-fix-time"  for="morning">午前</label>
+                                </div>
+                                <div class="select__button">
+                                    <input type="radio" id="afternoon" class="radio-button" name="time" value="午後">
+                                    <label class="label-fix-time"  for="afternoon">午後</label>
+                                </div>
+                                <div class="select__button">
+                                    <input type="radio" id="evening" class="radio-button" name="time" value="夜">
+                                    <label class="label-fix-time" for="evening">夜</label>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- 相手を探す目的 -->
-                    <h3>相手を探す目的</h3>
-                    <div class="modal__content--purpose">
-                        <input type="text" id="" placeholder="{{ order.category }}" class="order-date" name="username" readonly>
-                        <!-- 再入力エリア -->
-                        <div class="select">
-                            <div class="select__button">
-                                <input type="radio" id="communication" class="radio-button" name="purpose" value="コミュニケーション">
-                                <label class="label-fix-purpose" for="communication" class="radio-button__purpose">コミュニケーション</label>
-                            </div>
-                            <div class="select__button">
-                                <input type="radio" id="develop" class="radio-button" name="purpose" value="開発">
-                                <label class="label-fix-purpose" for="develop" class="radio-button__purpose">開発</label>
+                        <!-- 相手を探す目的 -->
+                        <h3>相手を探す目的</h3>
+                        <div class="modal__content--purpose">
+                            <input type="text" id="" placeholder="{{ order.category }}" class="order-date" name="username" readonly>
+                            <!-- 再入力エリア -->
+                            <div class="select">
+                                <div class="select__button">
+                                    <input type="radio" id="communication" class="radio-button" name="purpose" value="コミュニケーション">
+                                    <label class="label-fix-purpose" id="label-fix-purpose__Communication" for="communication" >コミュニ<br>ケーション</label>
+                                </div>
+                                <div class="select__button">
+                                    <input type="radio" id="develop" class="radio-button" name="purpose" value="開発">
+                                    <label class="label-fix-purpose" for="develop" >開発</label>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- 希望する相手の性別 -->
-                    <h3>希望する相手の性別</h3>
-                    <div class="modal__content--hope-gender">
-                        <input type="text" id="" placeholder="{{ order.hope_gender_type }}" class="order-date" name="username" readonly>
-                        <div class="select">
-                            <div class="select__button">
-                                <input type="radio" id="men" class="radio-button" name="gender" value="女性">
-                                <label class="label-fix-gender" for="men">男性</label>
-                            </div>
-                            <div class="select__button">
-                                <input type="radio" id="woman" class="radio-button" name="gender" value="女性">
-                                <label class="label-fix-gender" for="woman">女性</label>
-                            </div>
-                            <div class="select__button">
-                                <input type="radio" id="both" class="radio-button" name="gender" value="どちらでもOK">
-                                <label class="label-fix-gender" for="both">どちらでもOK</label>
+                        <!-- 希望する相手の性別 -->
+                        <h3>希望する相手の性別</h3>
+                        <div class="modal__content--hope-gender">
+                            <input type="text" id="" placeholder="{{ order.hope_gender_type }}" class="order-date" name="username" readonly>
+                            <div class="select">
+                                <div class="select__button">
+                                    <input type="radio" id="men" class="radio-button" name="gender" value="女性">
+                                    <label class="label-fix-gender" for="men">男性</label>
+                                </div>
+                                <div class="select__button">
+                                    <input type="radio" id="woman" class="radio-button" name="gender" value="女性">
+                                    <label class="label-fix-gender" for="woman">女性</label>
+                                </div>
+                                <div class="select__button">
+                                    <input type="radio" id="both" class="radio-button" name="gender" value="どちらでもOK">
+                                    <label class="label-fix-gender" id="label-fix-gender__both" for="both">どちら<br>でもOK</label>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <h3>コメント</h3>
-                    <div class="comment">
-                        <textarea id="comment-text" placeholder="{{ order.comment }}" class="comment__from" name="comment" value="" required></textarea> <!-- name="comment"は変更不可 -->
-                    </div>
-                    <div class="order-formbox-button">
-                        <!-- 予約キャンセルボタン（マッチング検索画面に遷移） -->
-                        <button class="order-formbox-button__cancel"><a href="{% url 'search_matching' %}">キャンセル</a></button>
-                        <!-- 申し込みボタン -->
-                        <input type="submit" class="order-formbox-button__apply" name="" value="変更する ＞">
+                        <h3>コメント</h3>
+                        <div class="comment">
+                            <textarea id="comment-text" placeholder="{{ order.comment }}" class="fixcomment__from" name="comment" value="" required></textarea> <!-- name="comment"は変更不可 -->
+                        </div>
+                        <div class="order-formbox-button">
+                            <div class="cancelButton">キャンセル</div>
+                            <!-- 申し込みボタン -->
+                            <input type="submit" class="order-formbox-button__apply" name="" value="変更する ＞">
+                        </div>
                     </div>
                 </div>
             </div>
