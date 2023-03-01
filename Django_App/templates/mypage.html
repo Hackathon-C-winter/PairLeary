@@ -83,10 +83,46 @@
         <div class="booking-box">
             <div class="booking-box__left">
                 <img src="{% static 'img/mypage/reservation-icon.svg' %}" alt="reservation-icon">
-                <p>予約状況</p>
+                <p>マッチング状況</p>
             </div>
         </div>
         <div class="search-mypage">
+            <!-- 自分がマッチングしたデータ -->
+            {% for matched_order in matched_order_data %}
+            <div class="search__result">
+                <div class="search__result--box-left-up">
+                    <p class="search__result--year">{{ matched_order.order_date|date:"Y年" }}</p>
+                    <p class="search__result--month-day">{{ matched_order.order_date|date:"n月j日" }}</p>
+                    <p class="search__result--time">{{matched_order.order_time_range_type}}</p>
+                </div>
+                <div class="search__result--box-left-bottom">
+                    {%if matched_order.category == "コミュニケーション" %}
+                    <p class="result__communication">{{ matched_order.category }}</p>
+                    {% elif matched_order.category == "開発" %}
+                    <p class="result__develop">{{ matched_order.category }}</p>
+                    {% endif %}
+                    
+                    {%if matched_order.hope_gender_type == "男性" %}
+                    <p class="result__man">{{ matched_order.hope_gender_type }}希望</p>
+                    {% elif matched_order.hope_gender_type == "女性" %}
+                    <p class="result__woman">{{ matched_order.hope_gender_type }}希望</p>
+                    {% elif matched_order.hope_gender_type == "どちらでもOK" %}
+                    <p class="result__both">{{ matched_order.hope_gender_type }}</p>
+                    {% endif %}
+                </div>
+                <div class="search__result--box-right-up">
+                    <p class="search__result--user-name">{{ matched_order.user_id.username }}<span>さん</span></p>
+                    <p class="search__result--user-gender">{{ matched_order.user_id.gender_type }}</p>
+                </div>
+                <div class="search__result--box-right-bottom">
+                    <p class="search__result--comment">{{ matched_order.comment }}</p>
+                </div>
+                <div class="matching-status">
+                    <p class="matching-status-on"><br>マッチング中</p>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- 自分が新規予約したデータ -->
             {% for order in order_data %}
             <div class="search__result">
                 <div class="search__result--box-left-up">
@@ -151,6 +187,7 @@
             {% empty %}     
             <p class="comment">まだ予約はありません</p>
             {% endfor %}
+
         </div>    
         <!--end--予約状況 一覧-->
     </div>

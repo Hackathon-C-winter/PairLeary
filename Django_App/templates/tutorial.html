@@ -57,37 +57,40 @@
         <!--start-- modal-1 pairlearyの使い方-->
         <div id="HowToUse" class="modal">
             <div class="modal__content-tutorial">
-                <h2>How to use</h2>
+                <!-- <h2>How to use</h2> -->
                 <p class="modalClose">×</p>
-            </div>
-            <div class="modal-container">
-                <img class="img" src="#" alt="">
+                <img class="img" src="{% static 'img/tutorial/tutorial-use.jpg' %}" alt="">
                 <p></p>
             </div>
+            <!-- <div class="modal-container">
+               
+            </div> -->
         </div>
         <!--end-- modal-1 -->
         <!--start-- modal-2 pairlearyの説明-->
         <div id="pairlearysDetail" class="modal">
             <div class="modal__content-tutorial">
-                <h2>detail</h2>
+                <!-- <h2>detail</h2> -->
                 <p class="modalClose">×</p>
+                     <img class="img" src="{% static 'img/tutorial/tutorial-mokuteki.jpg' %}" alt="">
+                         <p></p>
+                         <!-- <div class="modal-container"></div>
+                </div> -->
             </div>
-            <div class="modal-container">
-                <img class="img" src="#" alt="">
-                <p></p>
-            </div>
+           
         </div>
         <!--end-- modal-2 -->
         <!--start-- modal-3 pairlearyの目的-->
         <div id="whatIsPairleary" class="modal">
-            <div class="modal__content-tutorial">
-                <h2>What is Pairleary</h2>
-                <p class="modalClose">×</p>
-            </div>
-            <div class="modal-container">
-                <img class="img" src="#" alt="">
+            <div class="modal__content-tutorial" id="modal__content-tutorial-list">
+                <!-- <h2>What is Pairleary</h2> -->
+                <p  class="modalClose" id="modalClose-list">×</p>
+                <img id="img-list" src="{% static 'img/tutorial/tutorial-rist.jpg' %}" alt="">
                 <p></p>
             </div>
+            <!-- <div class="modal-container">
+               
+            </div> -->
         </div>
     </div>
     <!-- end--modal-3 -->

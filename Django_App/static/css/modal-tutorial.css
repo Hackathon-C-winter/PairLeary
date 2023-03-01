@@ -16,10 +16,10 @@
 /* モーダル大枠の指定 */
 .modal__content-tutorial {
     position: relative;
-    width: 500px;
-    height: 390px;
-    left: calc(50% - 250px);
-    top: calc(50% - 195px);
+    width: 585px;
+    height: 680px;
+    left: calc(50% - 290px);
+    top: calc(50% - 300px);
     border: 1px solid #FFFFFF;
     background: rgba(255, 255, 255, 0.8);
     box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.25), 1px 3px 8px 4px rgba(0, 0, 0, 0.2);
@@ -41,7 +41,7 @@
     width: 32px;
     height: 32px;
     top: 5px;
-    left: 460px;
+    left: 530px;
     text-align: center;
     font-weight: 700;
     line-height: 30px;
@@ -57,9 +57,59 @@
     transition: all 0.3s;
 }
 
+.img {
+    position: absolute;
+    left: 7%;
+    top: 6.5%;
+}
+
+#modal__content-tutorial-list {
+    position: relative;
+    width: 660px;
+    height: 580px;
+    left: calc(50% - 330px);
+    top: calc(50% - 300px);
+    border: 1px solid #FFFFFF;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.25), 1px 3px 8px 4px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    animation-name: modalopen;
+    animation-duration: 1s;
+}
+
+#img-list {
+    position: absolute;
+    left: 4.5%;
+    top: 8%;
+}
+
+#modalClose-list {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    top: 5px;
+    left: 600px;
+    text-align: center;
+    font-weight: 700;
+    line-height: 30px;
+    font-size: 32px;
+    cursor: pointer;
+}
+
+#modalClose-list:hover {
+    cursor: pointer;
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.2);
+    transition: all 0.3s;
+}
+
 .inside-modalimg {
     position: relative;
     width: 200px;
     height: 20px;
     border: red solid;
 }
+
