@@ -31,6 +31,7 @@ body {
 
 /* header 色指定 */
 header {
+    position: relative;
     display: flex;
     position: fixed;
     height: 60px;
@@ -43,7 +44,7 @@ header {
 
 /* Pairleary フォントと位置指定 */
 .header-app-logo {
-    position: absolute;
+    position: relative;
     width: 155px;
     height: 55px;
     margin-left: 2%;
