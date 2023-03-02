@@ -10,11 +10,19 @@ ENV PYTHONUNBUFFERED=1
 RUN mkdir /code
 # コンテナのワークディレクトリを/codeに指定
 WORKDIR /code
+RUN groupadd -g 9999 www-users && \
+    useradd -s /sbin/nologin www-user -G www-users
+
+RUN mkdir -p /home/www-user/pairleary_app
+
+RUN mkdir -p /run/pairleary_app
 
 # # [wsgi.ini]作成編(記述途中)
 # COPY Docker/Django/ex /code/
 # RUN chmod +x wsgi.sh
 # RUN ./wsgi.sh
+# RUN sudo groupadd -g 9999 www-users && \
+#     sudo useradd -s /sbin/nologin www-user -G www-users
 
 # ローカルのrequirements.txtをコンテナの/codeフォルダ直下に置く
 COPY requirements.txt /code/
