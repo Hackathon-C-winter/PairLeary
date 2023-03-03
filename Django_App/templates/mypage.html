@@ -4,12 +4,12 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/mypage.css' %}">
     <link rel="stylesheet" href="{% static 'css/search_result_list.css' %}">
-<!-- カレンダー表示CDN -->
-<script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js" integrity="sha256-Huqxy3eUcaCwqqk92RwusapTfWlvAasF6p2rxV6FJaE=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/l10n/ja.js" integrity="sha256-us400PA8+wpkgAkYwnKn7ueJbkk00UuwAcqrHqLGQJw=" crossorigin="anonymous"></script>
+    <!-- カレンダー表示CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js" integrity="sha256-Huqxy3eUcaCwqqk92RwusapTfWlvAasF6p2rxV6FJaE=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/l10n/ja.js" integrity="sha256-us400PA8+wpkgAkYwnKn7ueJbkk00UuwAcqrHqLGQJw=" crossorigin="anonymous"></script>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css" integrity="sha256-GzSkJVLJbxDk36qko2cnawOGiqz/Y8GsQv/jMTUrx1Q=" crossorigin="anonymous">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/themes/light.min.css" integrity="sha256-vxrocMyy3+x+gmiNuoCS5Iv5rEurStwP6vnN5Mr1PfA=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css" integrity="sha256-GzSkJVLJbxDk36qko2cnawOGiqz/Y8GsQv/jMTUrx1Q=" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/themes/light.min.css" integrity="sha256-vxrocMyy3+x+gmiNuoCS5Iv5rEurStwP6vnN5Mr1PfA=" crossorigin="anonymous">
 {% endblock %}
 
 {% block title %}
@@ -17,186 +17,167 @@
 {% endblock %}
 
 {% block body %}
-<body>
-    <!-- {% if request.user.is_authenticated %} -->
-    <!--start--背景の白ボックスとページタイトル ※共通CSS-base.css -->
-    <div class="background-white-box">
-        <div class="page-title">
-            <img src="{% static 'img/mypage/mypage-user-icon.svg' %}" alt="mypage-icon">
-            <div class="page-title-box">
-                <p class="page-title__page-title-box--page-name">My Page</p>
-                <p class="page-title__page-title-box--page-subname">ユーザー情報</p>
-            </div>
-        </div> 
-        <!--end--背景の白ボックスとページタイトル ※共通CSS-->
-        <!--start--編集 編集 mail パスワード-->
+    <body>
+        <!--start--背景の白ボックスとページタイトル ※共通CSS-base.css -->
+        <div class="background-white-box">
+            <div class="page-title">
+                <img src="{% static 'img/mypage/mypage-user-icon.svg' %}" alt="mypage-icon">
+                <div class="page-title-box">
+                    <p class="page-title__page-title-box--page-name">My Page</p>
+                    <p class="page-title__page-title-box--page-subname">ユーザー情報</p>
+                </div>
+            </div> 
+            <!--end--背景の白ボックスとページタイトル ※共通CSS-->
 
-        <div class="edit-user-detail">
-            <!-- ユーザーネームフォーム -->
-            <div class="edit-user-detail__icon">
-                <img src="{% static 'img/mypage/user-icon.svg' %}" alt="mypage-icon">
-                <p>登録情報</p>
-            </div>
-            <div class="edit-user-detail__border"></div>
-            <form>
-                <div class="inputBox">
-                    <label>ユーザー名</label>
-                    <input type="text" class="inputBox__textbox" name="username" required="" value="{{ user.username }}" readonly>
-                    <!--編集ボタン ※共通CSS-->
-                    <!-- <button class="edit-button"> -->
-                    <button class="modalOpen" type="button" data-modal="editUserName">
-                        <img src="{% static 'img/myPage/mypage-edit-btn+.svg' %}">
-                        <img src="{% static 'img/myPage/mypage-edit-btn-hover.svg' %}" class="edit-button__hover">
+            <!--start--編集 編集 mail パスワード-->
+            <div class="edit-user-detail">
+                <!-- ユーザーネームフォーム -->
+                <div class="edit-user-detail__icon">
+                    <img src="{% static 'img/mypage/user-icon.svg' %}" alt="mypage-icon">
+                    <p>登録情報</p>
                 </div>
-                <!-- メールアドレスフォーム -->
-                <div class="inputBox">
-                    <label>メールアドレス</label>
-                    <input type="email" class="inputBox__textbox" name="email" required="" value="{{ user.email }}" readonly>
-                    <button class="modalOpen" type="button" data-modal="editEmail"><!--編集ボタン ※共通CSS-->
-                        <img src="{% static 'img/myPage/mypage-edit-btn+.svg' %}">
-                        <img src="{% static 'img/myPage/mypage-edit-btn-hover.svg' %}" class="edit-button__hover">
-                    </button>
-                </div>
-                <!-- パスワードフォーム -->
-                <div class="inputBox">
-                    <label>パスワード</label>
-                    <input type="password" class="inputBox__textbox" name="password" required="" value="{{ user.password }}" readonly>
-                    <button class="modalOpen" type="button" data-modal="editPassword"><!--編集ボタン ※共通CSS-->
-                        <img src="{% static 'img/myPage/mypage-edit-btn+.svg' %}">
-                        <img src="{% static 'img/myPage/mypage-edit-btn-hover.svg' %}" class="edit-button__hover">
-                    </button>
-                </div>
-                <!-- 性別フォーム -->
-                <div class="inputBox">
-                    <label>性別</label>
-                    <input type="text" class="inputBox__textbox" name="gender" required="" value="{{ user.gender_type }}" readonly>
-                    <button class="modalOpen" type="button" data-modal="editGender"><!--編集ボタン ※共通CSS-->
-                        <img src="{% static 'img/myPage/mypage-edit-btn+.svg' %}">
-                        <img src="{% static 'img/myPage/mypage-edit-btn-hover.svg' %}" class="edit-button__hover">
-                    </button>
-                </div>
-            </form>
-        </div>
-        <!--end--編集 mail パスワード-->
-
-        <!--start--予約状況 一覧-->       
-        <div class="booking-box">
-            <div class="booking-box__left">
-                <img src="{% static 'img/mypage/reservation-icon.svg' %}" alt="reservation-icon">
-                <p>マッチング状況</p>
-            </div>
-        </div>
-        <div class="search-mypage">
-            <!-- 自分がマッチングしたデータ -->
-            {% for matched_order in matched_order_data %}
-            <div class="search__result">
-                <div class="search__result--box-left-up">
-                    <p class="search__result--year">{{ matched_order.order_date|date:"Y年" }}</p>
-                    <p class="search__result--month-day">{{ matched_order.order_date|date:"n月j日" }}</p>
-                    <p class="search__result--time">{{matched_order.order_time_range_type}}</p>
-                </div>
-                <div class="search__result--box-left-bottom">
-                    {%if matched_order.category == "コミュニケーション" %}
-                    <p class="result__communication">{{ matched_order.category }}</p>
-                    {% elif matched_order.category == "開発" %}
-                    <p class="result__develop">{{ matched_order.category }}</p>
-                    {% endif %}
-                    
-                    {%if matched_order.hope_gender_type == "男性" %}
-                    <p class="result__man">{{ matched_order.hope_gender_type }}希望</p>
-                    {% elif matched_order.hope_gender_type == "女性" %}
-                    <p class="result__woman">{{ matched_order.hope_gender_type }}希望</p>
-                    {% elif matched_order.hope_gender_type == "どちらでもOK" %}
-                    <p class="result__both">{{ matched_order.hope_gender_type }}</p>
-                    {% endif %}
-                </div>
-                <div class="search__result--box-right-up">
-                    <p class="search__result--user-name">{{ matched_order.user_id.username }}<span>さん</span></p>
-                    <p class="search__result--user-gender">{{ matched_order.user_id.gender_type }}</p>
-                </div>
-                <div class="search__result--box-right-bottom">
-                    <p class="search__result--comment">{{ matched_order.comment }}</p>
-                </div>
-                <div class="matching-status">
-                    <p class="matching-status-on"><br>マッチング中</p>
-                </div>
-            </div>
-            {% endfor %}
-            <!-- 自分が新規予約したデータ -->
-            {% for order in order_data %}
-            <div class="search__result">
-                <div class="search__result--box-left-up">
-                    <p class="search__result--year">{{ order.order_date|date:"Y年" }}</p>
-                    <p class="search__result--month-day">{{ order.order_date|date:"n月j日" }}</p>
-                    <p class="search__result--time">{{order.order_time_range_type}}</p>
-                </div>
-                <div class="search__result--box-left-bottom">
-                    {%if order.category == "コミュニケーション" %}
-                    <p class="result__communication">{{ order.category }}</p>
-                    {% elif order.category == "開発" %}
-                    <p class="result__develop">{{ order.category }}</p>
-                    {% endif %}
-                    
-                    {%if order.hope_gender_type == "男性" %}
-                    <p class="result__man">{{ order.hope_gender_type }}希望</p>
-                    {% elif order.hope_gender_type == "女性" %}
-                    <p class="result__woman">{{ order.hope_gender_type }}希望</p>
-                    {% elif order.hope_gender_type == "どちらでもOK" %}
-                    <p class="result__both">{{ order.hope_gender_type }}</p>
-                    {% endif %}
-                </div>
-                <div class="search__result--box-right-up">
-                    <p class="search__result--user-name">{{ user.username }}<span>さん</span></p>
-                    <p class="search__result--user-gender">{{ order.user_id.gender_type }}</p>
-                </div>
-                <div class="search__result--box-right-bottom">
-                    <p class="search__result--comment">{{ order.comment }}</p>
-                </div>
-                {%if order.matched_user_id == none%}
-                <div class="matching-status">
-                    <p class="matching-status-none">マッチング<br>待ち</p>
-                </div>
-                <div class="list-edit-buttons">
-                    <!--メニューボタン ※共通CSS-->
-                    <!-- <button class="modalOpen" date-order_id="" type="button" data-modal="">
-                        <img src="{% static 'img/myPage/mypage-menu-btn.svg' %}">
-                        <img src="{% static 'img/myPage/mypage-menu-btn-hover.svg' %}" class="edit-button__hover">
-                    </button> -->
-                    
-                    <!--削除ボタン ※共通CSS-->
-                    <form method="POST">{% csrf_token %}
-                        <button type="submit" class="delete-apply" name="delete_order" value="{{ order.order_id }}">
-                            <img src="{% static 'img/myPage/mypage-delete-btn.svg' %}">
-                            <img src="{% static 'img/myPage/mypage-delete-btn-hover.svg' %}" class="edit-button__hover">
+                <div class="edit-user-detail__border"></div>
+                <form>
+                    <div class="inputBox">
+                        <label>ユーザー名</label>
+                        <input type="text" class="inputBox__textbox" name="username" required="" value="{{ user.username }}" readonly>
+                        <!--編集ボタン ※共通CSS-->
+                        <!-- <button class="edit-button"> -->
+                        <button class="modalOpen" type="button" data-modal="editUserName">
+                            <img src="{% static 'img/mypage/mypage-edit-btn+.svg' %}">
+                            <img src="{% static 'img/mypage/mypage-edit-btn-hover.svg' %}" class="edit-button__hover">
+                    </div>
+                    <!-- メールアドレスフォーム -->
+                    <div class="inputBox">
+                        <label>メールアドレス</label>
+                        <input type="email" class="inputBox__textbox" name="email" required="" value="{{ user.email }}" readonly>
+                        <button class="modalOpen" type="button" data-modal="editEmail"><!--編集ボタン ※共通CSS-->
+                            <img src="{% static 'img/mypage/mypage-edit-btn+.svg' %}">
+                            <img src="{% static 'img/mypage/mypage-edit-btn-hover.svg' %}" class="edit-button__hover">
                         </button>
-                    </form>
-
-                    <!--編集ボタン ※共通CSS-->
-                    <!-- <button class="modalOpen" data-order_id="{{order.order_id}}" type="button" data-modal="modalReservetionEdit">
-                        <img src="{% static 'img/myPage/mypage-listEdit-btn.svg' %}">
-                        <img src="{% static 'img/myPage/mypage-listEdit-btn-hover.svg' %}" class="edit-button__hover">
-                    </button> -->
-                </div>
-                {% include './mypage-modal.html' with order_id=order.order_id %}
-                {% else %}
-                <div class="matching-status">
-                    <p class="matching-status-on"><span>{{order.matched_user_id}}<br>さんと</span><br>マッチング中</p>
-                </div>
-                {% endif %}
+                    </div>
+                    <!-- パスワードフォーム -->
+                    <div class="inputBox">
+                        <label>パスワード</label>
+                        <input type="password" class="inputBox__textbox" name="password" required="" value="{{ user.password }}" readonly>
+                        <button class="modalOpen" type="button" data-modal="editPassword"><!--編集ボタン ※共通CSS-->
+                            <img src="{% static 'img/mypage/mypage-edit-btn+.svg' %}">
+                            <img src="{% static 'img/mypage/mypage-edit-btn-hover.svg' %}" class="edit-button__hover">
+                        </button>
+                    </div>
+                    <!-- 性別フォーム -->
+                    <div class="inputBox">
+                        <label>性別</label>
+                        <input type="text" class="inputBox__textbox" name="gender" required="" value="{{ user.gender_type }}" readonly>
+                        <button class="modalOpen" type="button" data-modal="editGender"><!--編集ボタン ※共通CSS-->
+                            <img src="{% static 'img/mypage/mypage-edit-btn+.svg' %}">
+                            <img src="{% static 'img/mypage/mypage-edit-btn-hover.svg' %}" class="edit-button__hover">
+                        </button>
+                    </div>
+                </form>
             </div>
-            {% empty %}     
-            <p class="comment">まだ予約はありません</p>
-            {% endfor %}
+            <!--end--編集 mail パスワード-->
 
-        </div>    
-        <!--end--予約状況 一覧-->
-    </div>
-    {% endif %}
-
-    <!-- {% include './mypage-modal.html' %} -->
-    {% include './mypage-modal.html' with order_id=order.order_id %}
-
-
-
-</body>
+            <!--start--予約状況 一覧-->       
+            <div class="booking-box">
+                <div class="booking-box__left">
+                    <img src="{% static 'img/mypage/reservation-icon.svg' %}" alt="reservation-icon">
+                    <p>マッチング状況</p>
+                </div>
+            </div>
+            <div class="search-mypage">
+                {% if order_data %}
+                    <!-- 自分が新規予約したデータ -->
+                    {% for order in order_data %}
+                        <div class="search__result">
+                            <div class="search__result--box-left-up">
+                                <p class="search__result--year">{{ order.order_date|date:"Y年" }}</p>
+                                <p class="search__result--month-day">{{ order.order_date|date:"n月j日" }}</p>
+                                <p class="search__result--time">{{order.order_time_range_type}}</p>
+                            </div>
+                            <div class="search__result--box-left-bottom">
+                                {% if order.category == "コミュニケーション" %}
+                                        <p class="result__communication">{{ order.category }}</p>
+                                    {% elif order.category == "開発" %}
+                                        <p class="result__develop">{{ order.category }}</p>
+                                    {% endif %}
+                                        
+                                    {%if order.hope_gender_type == "男性" %}
+                                        <p class="result__man">{{ order.hope_gender_type }}希望</p>
+                                    {% elif order.hope_gender_type == "女性" %}
+                                        <p class="result__woman">{{ order.hope_gender_type }}希望</p>
+                                    {% elif order.hope_gender_type == "どちらでもOK" %}
+                                        <p class="result__both">{{ order.hope_gender_type }}</p>
+                                {% endif %}
+                            </div>
+                            <div class="search__result--box-right-up">
+                                <p class="search__result--user-name">{{ user.username }}<span>さん</span></p>
+                                <p class="search__result--user-gender">{{ order.user_id.gender_type }}</p>
+                            </div>
+                            <div class="search__result--box-right-bottom">
+                                <p class="search__result--comment">{{ order.comment }}</p>
+                            </div>
+                            {% if order.matched_user_id == none%}
+                                <div class="matching-status">
+                                    <p class="matching-status-none">マッチング<br>待ち</p>
+                                </div>
+                                <div class="list-edit-buttons">
+                                    <form method="POST">{% csrf_token %}
+                                        <button type="submit" class="delete-apply" name="delete_order" value="{{ order.order_id }}">
+                                            <img src="{% static 'img/mypage/mypage-delete-btn.svg' %}">
+                                            <img src="{% static 'img/mypage/mypage-delete-btn-hover.svg' %}" class="edit-button__hover">
+                                        </button>
+                                    </form>
+                                </div>
+                                {% include './mypage-modal.html' with order_id=order.order_id %}
+                            {% else %}
+                                <div class="matching-status">
+                                    <p class="matching-status-on"><span>{{order.matched_user_id}}<br>さんと</span><br>マッチング中</p>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                <!-- 自分がマッチングしたデータ -->
+                {% elif matched_order_data %}
+                    {% for matched_order in matched_order_data %}
+                        <div class="search__result">
+                            <div class="search__result--box-left-up">
+                                <p class="search__result--year">{{ matched_order.order_date|date:"Y年" }}</p>
+                                <p class="search__result--month-day">{{ matched_order.order_date|date:"n月j日" }}</p>
+                                <p class="search__result--time">{{matched_order.order_time_range_type}}</p>
+                            </div>
+                            <div class="search__result--box-left-bottom">
+                                {% if matched_order.category == "コミュニケーション" %}
+                                    <p class="result__communication">{{ matched_order.category }}</p>
+                                {% elif matched_order.category == "開発" %}
+                                    <p class="result__develop">{{ matched_order.category }}</p>
+                                {% endif %}
+                                
+                                {% if matched_order.hope_gender_type == "男性" %}
+                                    <p class="result__man">{{ matched_order.hope_gender_type }}希望</p>
+                                {% elif matched_order.hope_gender_type == "女性" %}
+                                    <p class="result__woman">{{ matched_order.hope_gender_type }}希望</p>
+                                {% elif matched_order.hope_gender_type == "どちらでもOK" %}
+                                    <p class="result__both">{{ matched_order.hope_gender_type }}</p>
+                                {% endif %}
+                            </div>
+                            <div class="search__result--box-right-up">
+                                <p class="search__result--user-name">{{ matched_order.user_id.username }}<span>さん</span></p>
+                                <p class="search__result--user-gender">{{ matched_order.user_id.gender_type }}</p>
+                            </div>
+                            <div class="search__result--box-right-bottom">
+                                <p class="search__result--comment">{{ matched_order.comment }}</p>
+                            </div>
+                            <div class="matching-status">
+                                <p class="matching-status-on"><br>マッチング中</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="comment">まだ予約はありません</p>
+                {% endif %}
+            </div>    
+            <!--end--予約状況 一覧-->
+        </div>
+    </body>
 {% endblock %}
